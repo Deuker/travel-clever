@@ -1,4 +1,6 @@
+
 import React from 'react';
+import MapView from "./MapView"
 import './App.css';
 import { Route } from 'react-router-dom';
 import Signup from './components/Signup';
@@ -20,7 +22,10 @@ class App extends React.Component {
   render() {
     return (
       <div className='App' >
-       
+      
+      
+      <MapView />
+      
        <Navbar user={this.state.user} setUser={this.setUser} />
      
        <Route
@@ -36,6 +41,7 @@ class App extends React.Component {
       </div>
     );
   }
+
 }
 
 export default App;
