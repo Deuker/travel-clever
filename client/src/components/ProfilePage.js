@@ -10,7 +10,8 @@ class ProfilePage extends Component {
     state = {
       startpoint: "",
       endpoint: "",
-      kilometer: ""
+      kilometre: "",
+      co2emission: 
     }
 
 
@@ -19,7 +20,23 @@ class ProfilePage extends Component {
     const data = this.state
     console.log("Final data is: ",data);
     //axios request goes here
-    axios.post('/api/')
+    axios.post('/api/routes', {
+      startpoint: this.state.startpoint,
+      endpoint: this.state.endpoint,
+      kilometre: this.state.kilometre,
+      co2emission: this.state.kilometre*2
+    })
+      .then(() => {
+        this.setState({
+          startpoint: "",
+          endpoint: "",
+          kilometre: ""
+        });
+        // update state in Routes by executing getData()
+        this.props.getData();
+      }).catch(err => {
+        console.log(err);
+      });
   }
 
   handleChange = (event) => {
@@ -62,13 +79,13 @@ class ProfilePage extends Component {
               />
             </Form.Group>
             <Form.Group>
-              <Form.Label htmlFor='kilometres'>Kilometer: </Form.Label>
+              <Form.Label htmlFor='kilometre'>Kilometer: </Form.Label>
               <Form.Control
                 type='text'
-                name='kilometres'
+                name='kilometre'
                 value={this.state.kilometres}
                 onChange={this.handleChange}
-                id='kilometres'
+                id='kilometre'
               />
             </Form.Group>
           <Button type='submit'>Save</Button>
