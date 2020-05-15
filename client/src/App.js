@@ -8,10 +8,10 @@ import MapboxDirections from "@mapbox/mapbox-gl-directions/dist/mapbox-gl-direct
 import mapboxgl from "mapbox-gl";
 // import MapBoxGLDraw from '@mapbox/mapbox-gl-draw';
 import "./App.css";
-// import { Route } from "react-router-dom";
-// import Signup from "./components/Signup";
+import { Route } from "react-router-dom";
+import Signup from "./components/Signup";
 import Navbar from "./components/Navbar";
-// import Login from "./components/Login";
+import Login from "./components/Login";
 
 // mapboxgl.accessToken =
 //   "pk.eyJ1IjoidmljdG9yaWF0b3JpYSIsImEiOiJja2EzbHVrMnowMzBzM2tyd2VsNnI2YnFiIn0.rZpPyrN5hdNxsnVtAWWCOQ";
@@ -139,7 +139,7 @@ class App extends React.Component {
             ""
           )}
 
-          {/* <Route
+          <Route
             exact
             path="/signup"
             render={(props) => <Signup setUser={this.setUser} {...props} />}
@@ -148,7 +148,7 @@ class App extends React.Component {
             exact
             path="/login"
             render={(props) => <Login setUser={this.setUser} {...props} />}
-          /> */}
+          />
         </div>
       </div>
     );
