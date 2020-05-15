@@ -5,8 +5,10 @@ const userSchema = new Schema(
   {
     username: String,
     password: String,
-    // idea : total amount of kilometers
-    // routes: [{
+    routes:[{
+      type:Schema.Types.ObjectId,
+      ref:'Route'
+    }]
   },
   {
     timestamps: true

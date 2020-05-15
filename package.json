@@ -18,6 +18,10 @@
     "express-session": "^1.17.1",
     "hbs": "^4.0.1",
     "mapbox": "^1.0.0-beta10",
+<<<<<<< HEAD
+    "mongo-connect": "0.0.6",
+=======
+>>>>>>> 9997b10025563557696bf41d90458d768c99d268
     "mapbox-gl": "^1.10.0",
     "mongo-connect": "0.0.6",
     "mongoose": "^5.9.14",

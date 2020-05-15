@@ -24,6 +24,11 @@ const Navbar = props => {
             <Link to='/' onClick={() => handleLogout(props)}>
               Logout
             </Link>
+            </Nav.Brand>
+            <Nav.Brand>
+            <Link to='/routes'>
+              My saved routes
+            </Link>
           </Nav.Brand>
         </>
       ) : (
