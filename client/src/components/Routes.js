@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import axios from 'axios';
 import RoutesList from './RoutesList';
+import Dashboard from './Dashboard';
+import Profilepage from './ProfilePage'
 
 
 export default class Routes extends Component {
@@ -30,7 +32,9 @@ export default class Routes extends Component {
   render() {
     return (
       <div className="routes-container">
-        <RoutesList projects={this.state.routes} />
+        <RoutesList routes={this.state.routes} />
+        <Dashboard  />
+        <Profilepage getData={this.getData}/>
       </div>
     )
   }

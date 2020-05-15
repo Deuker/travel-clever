@@ -4,7 +4,7 @@ const Schema = mongoose.Schema;
 const routeSchema = new Schema({
     startpoint:String,
     endpoint:String,
-    kilometre: String,
+    kilometer: String,
     co2emission:String,
     owner:{
         type:Schema.Types.ObjectId,

@@ -28,12 +28,12 @@ router.get('/:id', (req, res) => {
 
 router.post('/', (req, res) => {
   console.log('post route');
-  const { startpoint, endpoint, kilometre, co2emission, ownerId } = req.body;
+  const { startpoint, endpoint, kilometer, co2emission, ownerId } = req.body;
 
   Route.create({
     startpoint, 
     endpoint, 
-    kilometre, 
+    kilometer, 
     co2emission,
     owner:ownerId
   })
@@ -53,9 +53,9 @@ router.post('/', (req, res) => {
 
 router.put('/:id', (req, res) => {
   const id = req.params.id;
-  const {startpoint, endpoint, kilometre, co2emission, ownerId  } = req.body;
+  const {startpoint, endpoint, kilometer, co2emission, ownerId  } = req.body;
 
-  Route.findByIdAndUpdate(id, { startpoint, endpoint, kilometre, co2emission, ownerId }, { new: true })
+  Route.findByIdAndUpdate(id, { startpoint, endpoint, kilometer, co2emission, ownerId }, { new: true })
     .then(route => {
       res.json(route);
     })

@@ -33,7 +33,7 @@ export default class Login extends Component {
         // successfully logged in
         // update the state for the parent component
         this.props.setUser(data);
-        this.props.history.push('/dashboard');
+        this.props.history.push('/routes');
       }
     });
   };
