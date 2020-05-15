@@ -33,7 +33,6 @@ export default class Routes extends Component {
     return (
       <div className="routes-container">
         <RoutesList routes={this.state.routes} />
-        <Dashboard  />
         <Profilepage getData={this.getData}/>
       </div>
     )
