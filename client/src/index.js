@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { BrowserRouter } from 'react-router-dom';
+import { BrowserRouter as Router } from 'react-router-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
@@ -11,9 +11,9 @@ axios.get('/api/auth/loggedin')
   .then(response => {
     const user = response.data;
     ReactDOM.render(
-      <BrowserRouter>
+      <Router>
         <App user={user} />
-      </BrowserRouter>,
+      </Router>,
       document.getElementById('root')
     );
   })

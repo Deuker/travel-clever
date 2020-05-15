@@ -4,7 +4,11 @@ const Schema = mongoose.Schema;
 const userSchema = new Schema(
   {
     username: String,
-    password: String
+    password: String,
+    routes:[{
+      type:Schema.Types.ObjectId,
+      ref:'Route'
+    }]
   },
   {
     timestamps: true
