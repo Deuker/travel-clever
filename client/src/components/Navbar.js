@@ -4,6 +4,7 @@ import { Navbar as Nav } from 'react-bootstrap';
 import { logout } from '../services/auth.js';
 
 const handleLogout = props => {
+  console.log(props);
   logout().then(() => {
     props.setUser(null);
   });
@@ -22,6 +23,11 @@ const Navbar = props => {
           <Nav.Brand>
             <Link to='/' onClick={() => handleLogout(props)}>
               Logout
+            </Link>
+            </Nav.Brand>
+            <Nav.Brand>
+            <Link to='/routes'>
+              My saved routes
             </Link>
           </Nav.Brand>
         </>
