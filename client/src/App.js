@@ -8,10 +8,10 @@ import MapboxDirections from "@mapbox/mapbox-gl-directions/dist/mapbox-gl-direct
 import mapboxgl from "mapbox-gl";
 // import MapBoxGLDraw from '@mapbox/mapbox-gl-draw';
 import "./App.css";
-// import { Route } from "react-router-dom";
-// import Signup from "./components/Signup";
+import { Route } from "react-router-dom";
+import Signup from "./components/Signup";
 import Navbar from "./components/Navbar";
-// import Login from "./components/Login";
+import Login from "./components/Login";
 
 // import React from 'react';
 // //import MapView from "./components/MapView"
@@ -155,7 +155,7 @@ class App extends React.Component {
             ""
           )}
 
-          {/* <Route
+          <Route
             exact
             path="/signup"
             render={(props) => <Signup setUser={this.setUser} {...props} />}
@@ -164,7 +164,7 @@ class App extends React.Component {
             exact
             path="/login"
             render={(props) => <Login setUser={this.setUser} {...props} />}
-          /> */}
+          />
         </div>
      <div className='App' >
       <h1>hi</h1>
