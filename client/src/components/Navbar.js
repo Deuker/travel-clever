@@ -4,6 +4,7 @@ import { Navbar as Nav } from 'react-bootstrap';
 import { logout } from '../services/auth.js';
 
 const handleLogout = props => {
+  console.log(props);
   logout().then(() => {
     props.setUser(null);
   });

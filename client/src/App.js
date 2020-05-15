@@ -12,6 +12,8 @@ import Routes from './components/Routes';
 
 
 
+import WelcomePage from './components/WelcomePage';
+import ProfilePage from './components/ProfilePage';
 
 class App extends React.Component {
 
@@ -26,6 +28,7 @@ class App extends React.Component {
   }
 
   render() {
+    console.log("this.props.user", this.props.user);
     return (
       <div className='App' >
       
@@ -63,12 +66,15 @@ exact path='/routes'
           exact path='/signup'
           render={props => <Signup setUser={this.setUser} {...props} />}
         />
-       <Route
-          exact
-          path='/login'
+        <Route
+          exact path='/login'
           render={(props) => <Login setUser={this.setUser} {...props}/>}
         />
      </Switch>
+        <Route 
+        // add protection of routes here
+          exact path='/dashboard' component={ProfilePage}
+        />
       </div>
     );
   }
