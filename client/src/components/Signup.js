@@ -31,7 +31,7 @@ export default class Signup extends Component {
         });
       } else {
         this.props.setUser(data);
-        this.props.history.push('/projects');
+        this.props.history.push('/dashboard');
       }
     });
   };
