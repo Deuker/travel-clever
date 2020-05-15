@@ -11,7 +11,7 @@ class ProfilePage extends Component {
       startpoint: "",
       endpoint: "",
       kilometre: "",
-      co2emission: 
+      co2emission: null
     }
 
 
@@ -24,7 +24,7 @@ class ProfilePage extends Component {
       startpoint: this.state.startpoint,
       endpoint: this.state.endpoint,
       kilometre: this.state.kilometre,
-      co2emission: this.state.kilometre*2
+      co2emission: this.state.kilometre*200
     })
       .then(() => {
         this.setState({

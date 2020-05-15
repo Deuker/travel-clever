@@ -3,6 +3,7 @@
 // input km from route --> receive co2 emission (kg) per kilometer
 
 let km = 100;
+let co2PerKilometer = 200;
 
 // let resultKiloCo2PerKilometer = ((km * co2PerKilometer)/1000).toFixed(2);
 const resultKiloCo2PerKilometer = (km, co2PerKilometer) => ((km * co2PerKilometer)/1000).toFixed(2);
