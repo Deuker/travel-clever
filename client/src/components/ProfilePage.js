@@ -1,4 +1,6 @@
-import React, {useState, setState, Component} from 'react'; 
+import React, { 
+ // useState, setState, 
+  Component} from 'react'; 
 import { Form, Button } from 'react-bootstrap';
 import WelcomePage from './WelcomePage';
 import Dashboard from './Dashboard';
@@ -10,8 +12,8 @@ class ProfilePage extends Component {
     state = {
       startpoint: "",
       endpoint: "",
-      kilometre: "",
-      co2emission: null
+      kilometer: "",
+      co2emission: parseInt(this.kilometer)*200
     }
 
 
@@ -21,22 +23,21 @@ class ProfilePage extends Component {
     console.log("Final data is: ",data);
     //axios request goes here
     axios.post('/api/routes', {
-      startpoint: this.state.startpoint,
-      endpoint: this.state.endpoint,
-      kilometre: this.state.kilometre,
-      co2emission: this.state.kilometre*200
+      startpoint:this.state.startpoint,
+      endpoint:this.state.endpoint,
+      kilometer:this.state.kilometer,
+      co2emission:this.state.co2emission*201.32/1000
     })
-      .then(() => {
-        this.setState({
-          startpoint: "",
-          endpoint: "",
-          kilometre: ""
-        });
-        // update state in Routes by executing getData()
-        this.props.getData();
-      }).catch(err => {
-        console.log(err);
+    .then(()=>{
+      this.setState({
+        startpoint:'',
+        endpoint:'',
+        kilometer:'',
       });
+      this.props.getData();
+    }).catch(err=>{
+      console.log(err);
+    })
   }
 
   handleChange = (event) => {
@@ -82,10 +83,10 @@ class ProfilePage extends Component {
               <Form.Label htmlFor='kilometre'>Kilometer: </Form.Label>
               <Form.Control
                 type='text'
-                name='kilometre'
-                value={this.state.kilometres}
+                name='kilometer'
+                value={this.state.kilometer}
                 onChange={this.handleChange}
-                id='kilometre'
+                id='kilometer'
               />
             </Form.Group>
           <Button type='submit'>Save</Button>
