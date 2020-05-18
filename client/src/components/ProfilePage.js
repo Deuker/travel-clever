@@ -12,8 +12,7 @@ class ProfilePage extends Component {
     state = {
       startpoint: "",
       endpoint: "",
-      kilometer: "",
-      co2emission: parseInt(this.kilometer)*200
+      distance: ""
     }
 
 
