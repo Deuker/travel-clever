@@ -9,7 +9,7 @@ import Signup from "./components/Signup";
 import Navbar from "./components/Navbar";
 import Login from "./components/Login";
 
-import MapView from "./components/MapView"
+// import MapView from "./components/MapView"
 
 import { Route, Switch } from "react-router-dom";
 import ProtectedRoute from "./components/ProtectedRoute";
@@ -26,13 +26,10 @@ class App extends React.Component {
     lat: 52.52,
     lng: 13.405,
     zoom: 13,
-
     kilometer: "",
-    user: "",
-
   };
 
-  /*componentDidMount = () => {
+  componentDidMount = () => {
     const map = new mapboxgl.Map({
       container: "map",
       style: "mapbox://styles/mapbox/streets-v11",
@@ -91,7 +88,7 @@ class App extends React.Component {
       this.state.endpoint,
       this.state.kilometer
     );
-  };*/
+  };
 
   setUser = (user) => {
     this.setState({
@@ -100,14 +97,13 @@ class App extends React.Component {
   };
 
   render() {
-    console.log("Heeeiiiii", this.state.startpoint);
+    console.log("Heeeiiiii", this.state.user);
     return (
       <div className="App">
         <Navbar user={this.state.user} setUser={this.setUser} />
-        <MapView user={this.state.user}/>
+        {/* <MapView user={this.state.user} /> */}
         <div className="pageContent">
-   
-         {/*} <div className="map">
+          <div className="map">
             <div
               ref={(el) => (this.mapContainer = el)}
               className="mapContainer"
@@ -124,7 +120,7 @@ class App extends React.Component {
             ) : (
               ""
             )}
-          </div>*/}
+          </div>
           <div className="layout">
             <ProfilePage
               startpoint={this.state.startpoint}
@@ -132,7 +128,7 @@ class App extends React.Component {
               kilometer={this.state.kilometer}
             ></ProfilePage>
             <Switch>
-             <Route
+              <Route
                 // this is an additional prop that is taken care of with ...rest
                 exact
                 path="/"
@@ -145,12 +141,12 @@ class App extends React.Component {
                 component={Routes}
               />
               ;
-              <ProtectedRoute 
-                exact 
-                path='/'
+              {/* <ProtectedRoute
+                exact
+                path="/"
                 user={this.state.user}
                 component={MapView}
-              />
+              /> */}
               ;
               <ProtectedRoute
                 exact
@@ -169,12 +165,11 @@ class App extends React.Component {
                 path="/login"
                 render={(props) => <Login setUser={this.setUser} {...props} />}
               />
-              {/* <ProtectedRoute
+              <ProtectedRoute
                 // add protection of routes here
                 exact
                 path="/dashboard"
                 component={ProfilePage}
-
                 render={(props) => (
                   <ProfilePage
                     {...props}
@@ -183,8 +178,7 @@ class App extends React.Component {
                     kilometer={this.state.kilometer}
                   />
                 )}
-              /> */}
-
+              />
             </Switch>
           </div>
         </div>
