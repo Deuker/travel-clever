@@ -9,7 +9,7 @@ import Signup from "./components/Signup";
 import Navbar from "./components/Navbar";
 import Login from "./components/Login";
 
-// import MapView from "./components/MapView"
+
 
 import { Route, Switch } from "react-router-dom";
 import ProtectedRoute from "./components/ProtectedRoute";
@@ -101,14 +101,16 @@ class App extends React.Component {
     return (
       <div className="App">
         <Navbar user={this.state.user} setUser={this.setUser} />
-        {/* <MapView user={this.state.user} /> */}
-        <div className="pageContent">
-          <div className="map">
-            <div
+      <div className="pageContent">
+   
+         <div className="map" style={this.state.user? {}:{display:'none'}}>
+          {/* <div
+
               ref={(el) => (this.mapContainer = el)}
               className="mapContainer"
-            />
-            <div>
+            /> */}
+            <div id='map' ></div>
+            <div >
               <ReactMapGL
                 {...this.state.viewport}
                 onViewportChange={(viewport) => this.setState(viewport)}
@@ -141,13 +143,7 @@ class App extends React.Component {
                 component={Routes}
               />
               ;
-              {/* <ProtectedRoute
-                exact
-                path="/"
-                user={this.state.user}
-                component={MapView}
-              /> */}
-              ;
+
               <ProtectedRoute
                 exact
                 path="/routes/:id"
