@@ -1,41 +1,39 @@
-import React, { Component } from 'react'
-import axios from 'axios';
-import RoutesList from './RoutesList';
-import Dashboard from './Dashboard';
-import Profilepage from './ProfilePage'
-
+import React, { Component } from "react";
+import axios from "axios";
+import RoutesList from "./RoutesList";
+import Dashboard from "./Dashboard";
+// import ProfilePage from "./ProfilePage";
 
 export default class Routes extends Component {
-
   state = {
-    routes: []
-  }
+    routes: [],
+  };
 
   componentDidMount = () => {
     this.getData();
-  }
+  };
 
   getData = () => {
     axios
-      .get('/api/routes')
-      .then(response => {
+      .get("/api/routes")
+      .then((response) => {
         console.log(response);
         this.setState({
-          routes: response.data
-        })
+          routes: response.data,
+        });
       })
-      .catch(err => {
+      .catch((err) => {
         console.log(err);
-      })
-  }
+      });
+  };
 
   render() {
     return (
       <div className="routes-container">
         <RoutesList routes={this.state.routes} />
-        <Dashboard  />
-        <Profilepage getData={this.getData}/>
+        {/* <Dashboard /> */}
+        {/* <ProfilePage getData={this.getData} /> */}
       </div>
-    )
+    );
   }
 }
