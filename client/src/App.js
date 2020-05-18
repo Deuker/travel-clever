@@ -8,7 +8,7 @@ import MapboxDirections from "@mapbox/mapbox-gl-directions/dist/mapbox-gl-direct
 import mapboxgl from "mapbox-gl";
 // import MapBoxGLDraw from '@mapbox/mapbox-gl-draw';
 import "./App.css";
-import { Route } from "react-router-dom";
+// import { Route } from "react-router-dom";
 import Signup from "./components/Signup";
 import Navbar from "./components/Navbar";
 import Login from "./components/Login";
@@ -16,15 +16,12 @@ import Login from "./components/Login";
 // import React from 'react';
 // //import MapView from "./components/MapView"
 // import './App.css';
-// import { Route, Switch } from 'react-router-dom';
-// import Signup from './components/Signup';
-// import Navbar from './components/Navbar';
-// import Login from './components/Login';
-// import ProtectedRoute from './components/ProtectedRoute';
-// import Routes from './components/Routes';
-// import RouteDetails from './components/RouteDetails'
-// import ProfilePage from './components/ProfilePage';
+import { Route, Switch } from "react-router-dom";
 
+import ProtectedRoute from "./components/ProtectedRoute";
+import Routes from "./components/Routes";
+import RouteDetails from "./components/RouteDetails";
+import ProfilePage from "./components/ProfilePage";
 
 // mapboxgl.accessToken =
 //   "pk.eyJ1IjoidmljdG9yaWF0b3JpYSIsImEiOiJja2EzbHVrMnowMzBzM2tyd2VsNnI2YnFiIn0.rZpPyrN5hdNxsnVtAWWCOQ";
@@ -33,26 +30,16 @@ class App extends React.Component {
   state = {
     user: this.props.user,
     showButton: false,
-    origin: [],
-    origin_name: "",
-    destination: [],
-    destination_name: "",
-    map: null,
-    draw: null,
+    startpoint: "",
+    endpoint: "",
     lat: 52.52,
     lng: 13.405,
     zoom: 13,
-    uuid: "",
-    duration: "",
     distance: "",
-    coordinates: [],
-    waypoints: [],
-    reviewTrip: false,
     user: "",
   };
 
   componentDidMount = () => {
-    console.log(this.state.lat, this.state.lng);
     const map = new mapboxgl.Map({
       container: "map",
       style: "mapbox://styles/mapbox/streets-v11",
@@ -79,20 +66,6 @@ class App extends React.Component {
     );
     map.addControl(new mapboxgl.NavigationControl());
 
-    //   map.getDirections([
-    //     origin,
-    //     destination
-    //   ], {
-    //     profile: 'mapbox.driving',
-    //     instructions: 'html',
-    //     alternatives: false,
-    //     geometry: 'geojson'
-    // }).then(function(results) {
-    //   let { origin, destination, routes } = results
-    //   this.setState({
-    //     directions: routes[0].geometry.coordinates
-    //   })
-    // })
     setInterval(() => {
       const routeEle = document.querySelector(
         ".mapbox-directions-route-summary > h1"
@@ -109,18 +82,29 @@ class App extends React.Component {
     }, 500);
   };
   getRoute = () => {
-    console.log(
-      "distance: ",
-      document.querySelector(".mapbox-directions-route-summary > h1").innerHTML
-    );
+    const distance = document.querySelector(
+      ".mapbox-directions-route-summary > h1"
+    ).innerHTML;
+    console.log("distance: ", distance);
 
     const fromToEle = document.getElementsByClassName("mapboxgl-ctrl-geocoder");
+    const startpoint = fromToEle[0].querySelector("input").value;
+    console.log("from: ", startpoint);
+    const endpoint = fromToEle[1].querySelector("input").value;
+    console.log("to: ", endpoint);
 
-    console.log("from: ", fromToEle[0].querySelector("input").value);
-
-    console.log("to: ", fromToEle[1].querySelector("input").value);
+    this.setState({
+      startpoint: startpoint,
+      endpoint: endpoint,
+      distance: distance,
+    });
+    console.log(
+      "Hello",
+      this.state.startpoint,
+      this.state.endpoint,
+      this.state.distance
+    );
   };
-
 
   setUser = (user) => {
     this.setState({
@@ -131,84 +115,67 @@ class App extends React.Component {
   render() {
     console.log("this.props.user", this.props.user);
     return (
-
       <div className="App">
         <Navbar user={this.state.user} setUser={this.setUser} />
-        {/* <div><MapView/></div> */}
-        {/* <ResponseMap />
-        <FilterPanel /> */}
-        <div class="map">
-          <div
-            ref={(el) => (this.mapContainer = el)}
-            className="mapContainer"
-          />
-          <div>
-            <ReactMapGL
-              {...this.state.viewport}
-              onViewportChange={(viewport) => this.setState(viewport)}
-              mapboxApiAccessToken="pk.eyJ1IjoidmljdG9yaWF0b3JpYSIsImEiOiJja2EzbHVrMnowMzBzM2tyd2VsNnI2YnFiIn0.rZpPyrN5hdNxsnVtAWWCOQ"
-            ></ReactMapGL>
+        <div className="pageContent">
+          <div className="map">
+            <div
+              ref={(el) => (this.mapContainer = el)}
+              className="mapContainer"
+            />
+            <div>
+              <ReactMapGL
+                {...this.state.viewport}
+                onViewportChange={(viewport) => this.setState(viewport)}
+                mapboxApiAccessToken="pk.eyJ1IjoidmljdG9yaWF0b3JpYSIsImEiOiJja2EzbHVrMnowMzBzM2tyd2VsNnI2YnFiIn0.rZpPyrN5hdNxsnVtAWWCOQ"
+              ></ReactMapGL>
+            </div>
+            {this.state.showButton ? (
+              <button onClick={this.getRoute}>BUTTON</button>
+            ) : (
+              ""
+            )}
           </div>
-          {this.state.showButton ? (
-            <button onClick={this.getRoute}>BUTTON</button>
-          ) : (
-            ""
-          )}
-
-          <Route
-            exact
-            path="/signup"
-            render={(props) => <Signup setUser={this.setUser} {...props} />}
-          />
-          <Route
-            exact
-            path="/login"
-            render={(props) => <Login setUser={this.setUser} {...props} />}
-          />
+          <div className="layout">
+            <Switch>
+              <ProtectedRoute
+                // this is an additional prop that is taken care of with ...rest
+                exact
+                path="/"
+                user={this.state.user}
+              />
+              <ProtectedRoute
+                exact
+                path="/routes"
+                user={this.state.user}
+                component={Routes}
+              />
+              ;
+              <ProtectedRoute
+                exact
+                path="/routes/:id"
+                component={RouteDetails}
+              />
+              ;
+              <Route
+                exact
+                path="/signup"
+                render={(props) => <Signup setUser={this.setUser} {...props} />}
+              />
+              <Route
+                exact
+                path="/login"
+                render={(props) => <Login setUser={this.setUser} {...props} />}
+              />
+              <ProtectedRoute
+                // add protection of routes here
+                exact
+                path="/dashboard"
+                component={ProfilePage}
+              />
+            </Switch>
+          </div>
         </div>
-     <div className='App' >
-      <h1>hi</h1>
-      
-    
-      
-       <Navbar user={this.state.user} setUser={this.setUser} />
-<Switch>
- {/*<ProtectedRoute
- 
-  // this is an additional prop that is taken care of with ...rest
-  exact path='/'
-  user={this.state.user}
-  component={MapView}
-/>*/}
-// <ProtectedRoute
-// exact path='/routes'
-//  user={this.state.user}
-//   component={Routes}
-
-// />
-
-// <ProtectedRoute
-//   exact path='/routes/:id'
-//   component={RouteDetails}
-// />
-       
-    
-//        <Route
-//           exact path='/signup'
-//           render={props => <Signup setUser={this.setUser} {...props} />}
-//         />
-//         <Route
-//           exact path='/login'
-//           render={(props) => <Login setUser={this.setUser} {...props}/>}
-//         />
-  
-//         <ProtectedRoute 
-//         // add protection of routes here
-//           exact path='/dashboard' component={ProfilePage}
-//         />
-        
-//         </Switch>
-
       </div>
     );
   }
