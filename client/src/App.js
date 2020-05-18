@@ -1,5 +1,4 @@
 import React from "react";
-// import MapView from "./components/MapView";
 // import ResponseMap from "./components/ResponseMap";
 // import TripReview from "./components/TripReview";
 // import FilterPanel from "./components/FilterPanel";
@@ -8,22 +7,16 @@ import MapboxDirections from "@mapbox/mapbox-gl-directions/dist/mapbox-gl-direct
 import mapboxgl from "mapbox-gl";
 // import MapBoxGLDraw from '@mapbox/mapbox-gl-draw';
 import "./App.css";
-import { Route } from "react-router-dom";
+import { Route, Switch } from "react-router-dom";
 import Signup from "./components/Signup";
 import Navbar from "./components/Navbar";
 import Login from "./components/Login";
-
-// import React from 'react';
 // //import MapView from "./components/MapView"
-// import './App.css';
-// import { Route, Switch } from 'react-router-dom';
-// import Signup from './components/Signup';
-// import Navbar from './components/Navbar';
-// import Login from './components/Login';
-// import ProtectedRoute from './components/ProtectedRoute';
-// import Routes from './components/Routes';
-// import RouteDetails from './components/RouteDetails'
-// import ProfilePage from './components/ProfilePage';
+import './App.css';
+import ProtectedRoute from './components/ProtectedRoute';
+import Routes from './components/Routes';
+import RouteDetails from './components/RouteDetails'
+import ProfilePage from './components/ProfilePage';
 
 
 // mapboxgl.accessToken =
@@ -137,7 +130,7 @@ class App extends React.Component {
         {/* <div><MapView/></div> */}
         {/* <ResponseMap />
         <FilterPanel /> */}
-        <div class="map">
+        <div className="map">
           <div
             ref={(el) => (this.mapContainer = el)}
             className="mapContainer"
@@ -154,7 +147,9 @@ class App extends React.Component {
           ) : (
             ""
           )}
+</div>
 
+<Switch>
           <Route
             exact
             path="/signup"
@@ -165,53 +160,33 @@ class App extends React.Component {
             path="/login"
             render={(props) => <Login setUser={this.setUser} {...props} />}
           />
-        </div>
-     <div className='App' >
-      <h1>hi</h1>
       
-    
-      
-       <Navbar user={this.state.user} setUser={this.setUser} />
-<Switch>
- {/*<ProtectedRoute
- 
-  // this is an additional prop that is taken care of with ...rest
-  exact path='/'
-  user={this.state.user}
-  component={MapView}
-/>*/}
-// <ProtectedRoute
-// exact path='/routes'
-//  user={this.state.user}
-//   component={Routes}
 
-// />
+  <ProtectedRoute
+exact path='/routes'
+user={this.state.user}
+component={Routes}/>
 
-// <ProtectedRoute
-//   exact path='/routes/:id'
-//   component={RouteDetails}
-// />
+
+
+ <ProtectedRoute
+ exact path='/routes/:id'
+component={RouteDetails}
+/>
        
     
-//        <Route
-//           exact path='/signup'
-//           render={props => <Signup setUser={this.setUser} {...props} />}
-//         />
-//         <Route
-//           exact path='/login'
-//           render={(props) => <Login setUser={this.setUser} {...props}/>}
-//         />
-  
-//         <ProtectedRoute 
-//         // add protection of routes here
-//           exact path='/dashboard' component={ProfilePage}
-//         />
-        
-//         </Switch>
 
-      </div>
-    );
+  
+ <ProtectedRoute 
+//         // add protection of routes here
+exact path='/dashboard' component={ProfilePage}
+/>
+        
+</Switch>
+</div>
+      
+    )
   }
-}
+  }
 
 export default App;
