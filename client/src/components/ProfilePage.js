@@ -2,7 +2,7 @@ import React, {
   // useState, setState,
   Component,
 } from "react";
-import { Form, Button } from "react-bootstrap";
+import { Button } from "react-bootstrap";
 import WelcomePage from "./WelcomePage";
 import Dashboard from "./Dashboard";
 import axios from "axios";
@@ -25,7 +25,7 @@ class ProfilePage extends Component {
     const sliced = parseFloat(str.split("km"));
     console.log("Co2 logic", sliced);
   };
-  // routeInfo = () => {
+  //routeInfo = () => {
   //   if (this.props.startpoint && this.props.endpoint && this.props.kilometer) {
   //     this.setState({ showInfo: true });
   //   } else if (
