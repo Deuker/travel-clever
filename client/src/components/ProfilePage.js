@@ -42,6 +42,7 @@ class ProfilePage extends Component {
     const data = this.props;
     console.log("Final data is: ", data);
     //axios request goes here
+
     axios
       .post("/api/routes", {
         startpoint: this.props.startpoint,
@@ -58,6 +59,7 @@ class ProfilePage extends Component {
       })
       .catch((err) => {
         console.log(err);
+
       });
   };
 
