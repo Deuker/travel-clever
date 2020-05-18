@@ -66,20 +66,6 @@ class App extends React.Component {
     );
     map.addControl(new mapboxgl.NavigationControl());
 
-    //   map.getDirections([
-    //     origin,
-    //     destination
-    //   ], {
-    //     profile: 'mapbox.driving',
-    //     instructions: 'html',
-    //     alternatives: false,
-    //     geometry: 'geojson'
-    // }).then(function(results) {
-    //   let { origin, destination, routes } = results
-    //   this.setState({
-    //     directions: routes[0].geometry.coordinates
-    //   })
-    // })
     setInterval(() => {
       const routeEle = document.querySelector(
         ".mapbox-directions-route-summary > h1"
@@ -96,16 +82,28 @@ class App extends React.Component {
     }, 500);
   };
   getRoute = () => {
-    console.log(
-      "distance: ",
-      document.querySelector(".mapbox-directions-route-summary > h1").innerHTML
-    );
+    const distance = document.querySelector(
+      ".mapbox-directions-route-summary > h1"
+    ).innerHTML;
+    console.log("distance: ", distance);
 
     const fromToEle = document.getElementsByClassName("mapboxgl-ctrl-geocoder");
+    const startpoint = fromToEle[0].querySelector("input").value;
+    console.log("from: ", startpoint);
+    const endpoint = fromToEle[1].querySelector("input").value;
+    console.log("to: ", endpoint);
 
-    console.log("from: ", fromToEle[0].querySelector("input").value);
-
-    console.log("to: ", fromToEle[1].querySelector("input").value);
+    this.setState({
+      startpoint: startpoint,
+      endpoint: endpoint,
+      distance: distance,
+    });
+    console.log(
+      "Hello",
+      this.state.startpoint,
+      this.state.endpoint,
+      this.state.distance
+    );
   };
 
   setUser = (user) => {
@@ -120,7 +118,6 @@ class App extends React.Component {
       <div className="App">
         <Navbar user={this.state.user} setUser={this.setUser} />
         <div className="pageContent">
-
           <div className="map">
             <div
               ref={(el) => (this.mapContainer = el)}
