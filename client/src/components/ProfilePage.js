@@ -24,7 +24,7 @@ class ProfilePage extends Component {
     axios.post('/api/routes', {
       startpoint:this.state.startpoint,
       endpoint:this.state.endpoint,
-      kilometer:this.state.kilometer
+      kilometer:this.state.kilometer,
     })
     .then(()=>{
       this.setState({
