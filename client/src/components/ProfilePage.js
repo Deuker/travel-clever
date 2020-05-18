@@ -12,7 +12,7 @@ class ProfilePage extends Component {
     state = {
       startpoint: "",
       endpoint: "",
-      kilometer: ""
+      distance: ""
     }
 
 
