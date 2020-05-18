@@ -9,6 +9,7 @@ import axios from "axios";
 axios
   .get("/api/auth/loggedin")
   .then((response) => {
+    console.log("User", response.data);
     ReactDOM.render(
       <Router>
         <App user={response.data} />
@@ -18,7 +19,6 @@ axios
   })
 
   .catch((err) => console.log(err));
-
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.

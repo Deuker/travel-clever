@@ -9,6 +9,8 @@ import Signup from "./components/Signup";
 import Navbar from "./components/Navbar";
 import Login from "./components/Login";
 
+
+
 import { Route, Switch } from "react-router-dom";
 import ProtectedRoute from "./components/ProtectedRoute";
 import Routes from "./components/Routes";
@@ -24,10 +26,7 @@ class App extends React.Component {
     lat: 52.52,
     lng: 13.405,
     zoom: 13,
-
     kilometer: "",
-    user: "",
-
   };
 
   componentDidMount = () => {
@@ -98,14 +97,15 @@ class App extends React.Component {
   };
 
   render() {
-    console.log("Heeeiiiii", this.state.startpoint);
+    console.log("Heeeiiiii", this.state.user);
     return (
       <div className="App">
         <Navbar user={this.state.user} setUser={this.setUser} />
-        <div className="pageContent">
+      <div className="pageContent">
    
          <div className="map" style={this.state.user? {}:{display:'none'}}>
           {/* <div
+
               ref={(el) => (this.mapContainer = el)}
               className="mapContainer"
             /> */}
@@ -130,7 +130,7 @@ class App extends React.Component {
               kilometer={this.state.kilometer}
             ></ProfilePage>
             <Switch>
-             <Route
+              <Route
                 // this is an additional prop that is taken care of with ...rest
                 exact
                 path="/"
@@ -144,7 +144,6 @@ class App extends React.Component {
               />
               ;
 
-            
               <ProtectedRoute
                 exact
                 path="/routes/:id"
@@ -162,12 +161,11 @@ class App extends React.Component {
                 path="/login"
                 render={(props) => <Login setUser={this.setUser} {...props} />}
               />
-              {/* <ProtectedRoute
+              <ProtectedRoute
                 // add protection of routes here
                 exact
                 path="/dashboard"
                 component={ProfilePage}
-
                 render={(props) => (
                   <ProfilePage
                     {...props}
@@ -176,8 +174,7 @@ class App extends React.Component {
                     kilometer={this.state.kilometer}
                   />
                 )}
-              /> */}
-
+              />
             </Switch>
           </div>
         </div>
