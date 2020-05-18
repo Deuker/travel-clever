@@ -9,6 +9,8 @@ import Signup from "./components/Signup";
 import Navbar from "./components/Navbar";
 import Login from "./components/Login";
 
+
+
 import { Route, Switch } from "react-router-dom";
 import ProtectedRoute from "./components/ProtectedRoute";
 import Routes from "./components/Routes";
@@ -101,10 +103,11 @@ class App extends React.Component {
     return (
       <div className="App">
         <Navbar user={this.state.user} setUser={this.setUser} />
-        <div className="pageContent">
+      <div className="pageContent">
    
          <div className="map" style={this.state.user? {}:{display:'none'}}>
           {/* <div
+
               ref={(el) => (this.mapContainer = el)}
               className="mapContainer"
             /> */}
@@ -143,7 +146,6 @@ class App extends React.Component {
               />
               ;
 
-            
               <ProtectedRoute
                 exact
                 path="/routes/:id"

@@ -2,10 +2,9 @@ import React, {
   // useState, setState,
   Component,
 } from "react";
-import {
-  //Form,
-  Button,
-} from "react-bootstrap";
+
+import { Button } from "react-bootstrap";
+
 import WelcomePage from "./WelcomePage";
 import Dashboard from "./Dashboard";
 import axios from "axios";
@@ -43,6 +42,7 @@ class ProfilePage extends Component {
       this.setState({ showInfo: false });
     }
   };
+
 
   handleSubmit = (event) => {
     event.preventDefault();
