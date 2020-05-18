@@ -2,16 +2,16 @@ import React from "react";
 // import ResponseMap from "./components/ResponseMap";
 // import TripReview from "./components/TripReview";
 // import FilterPanel from "./components/FilterPanel";
-import ReactMapGL from "react-map-gl";
-import MapboxDirections from "@mapbox/mapbox-gl-directions/dist/mapbox-gl-directions";
-import mapboxgl from "mapbox-gl";
+///import ReactMapGL from "react-map-gl";
+///import MapboxDirections from "@mapbox/mapbox-gl-directions/dist/mapbox-gl-directions";
+///import mapboxgl from "mapbox-gl";
 // import MapBoxGLDraw from '@mapbox/mapbox-gl-draw';
 import "./App.css";
 // import { Route } from "react-router-dom";
 import Signup from "./components/Signup";
 import Navbar from "./components/Navbar";
 import Login from "./components/Login";
-// //import MapView from "./components/MapView"
+import MapView from "./components/MapView"
 // import './App.css';
 import { Route, Switch } from "react-router-dom";
 
@@ -33,10 +33,10 @@ class App extends React.Component {
     lng: 13.405,
     zoom: 13,
     distance: "",
-    user: "",
+    //user: "",
   };
 
-  componentDidMount = () => {
+  /*componentDidMount = () => {
     const map = new mapboxgl.Map({
       container: "map",
       style: "mapbox://styles/mapbox/streets-v11",
@@ -101,7 +101,7 @@ class App extends React.Component {
       this.state.endpoint,
       this.state.distance
     );
-  };
+  };*/
 
   setUser = (user) => {
     this.setState({
@@ -114,8 +114,10 @@ class App extends React.Component {
     return (
       <div className="App">
         <Navbar user={this.state.user} setUser={this.setUser} />
+        <MapView user={this.state.user}/>
         <div className="pageContent">
-          <div className="map">
+   
+         {/*} <div className="map">
             <div
               ref={(el) => (this.mapContainer = el)}
               className="mapContainer"
@@ -132,10 +134,10 @@ class App extends React.Component {
             ) : (
               ""
             )}
-          </div>
+          </div>*/}
           <div className="layout">
             <Switch>
-              <ProtectedRoute
+             <Route
                 // this is an additional prop that is taken care of with ...rest
                 exact
                 path="/"
@@ -148,9 +150,17 @@ class App extends React.Component {
                 component={Routes}
               />
               ;
+              <ProtectedRoute 
+                exact 
+                path='/'
+                user={this.state.user}
+                component={MapView}
+              />
+              ;
               <ProtectedRoute
                 exact
                 path="/routes/:id"
+                user={this.state.user}
                 component={RouteDetails}
               />
               ;
@@ -170,6 +180,8 @@ class App extends React.Component {
                 path="/dashboard"
                 component={ProfilePage}
               />
+
+
             </Switch>
           </div>
         </div>

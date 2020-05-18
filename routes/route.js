@@ -4,7 +4,7 @@ const User = require('../models/User');
 const router = express.Router();
 
 router.get('/', (req, res)=>{
-    Route.find()
+    Route.find({owner: req.user._id})
     .populate('owner')
     .then(routes=>{
         res.status(200).json(routes);
@@ -42,7 +42,7 @@ router.post('/', (req, res) => {
     owner
   })
     .then(route => {
-      return Route.findByIdAndUpdate(ownerId, {
+      return User.findByIdAndUpdate(owner, {
         $push: { routes: route._id }
       }).then(() => {
         res.status(201).json({

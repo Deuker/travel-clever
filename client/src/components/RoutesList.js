@@ -13,7 +13,6 @@ const RoutesList = props => {
             <h3>
               <Link to={`/routes/${routes._id}`}>{routes.startpoint} - {routes.endpoint}</Link>
             </h3> 
-            <button>Delete</button>
             </div>
         );
       })} 
