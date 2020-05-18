@@ -114,7 +114,7 @@ class App extends React.Component {
     return (
       <div className="App">
         <Navbar user={this.state.user} setUser={this.setUser} />
-        <MapView user={this.state.user}/>
+      <MapView/>
         <div className="pageContent">
    
          {/*} <div className="map">

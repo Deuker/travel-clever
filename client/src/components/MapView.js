@@ -130,6 +130,7 @@ export default class MapView extends Component{
 
     render(){
         return(
+
             <div className="map">
             <div
               ref={(el) => (this.mapContainer = el)}
