@@ -28,21 +28,25 @@ router.get('/:id', (req, res) => {
 
 router.post('/', (req, res) => {
   console.log('post route');
-  const { startpoint, endpoint, kilometer, co2emission, ownerId } = req.body;
+  const startpoint=req.body.startpoint;
+  const endpoint=req.body.endpoint;
+ const kilometer=req.body.kilometer;
+ const co2emission=req.body.co2emission;
+  const owner= req.user._id;
 
   Route.create({
     startpoint, 
     endpoint, 
     kilometer, 
     co2emission,
-    owner:ownerId
+    owner
   })
     .then(route => {
       return Route.findByIdAndUpdate(ownerId, {
         $push: { routes: route._id }
       }).then(() => {
         res.status(201).json({
-          message: `Task with id ${route._id} was successfully added to project with id ${ownerId}`
+          message: `Task with id ${route._id} was successfully added to project with id ${owner}`
         });
       });
     })
