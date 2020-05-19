@@ -41,6 +41,7 @@ export default class RoutesDetails extends Component {
     const id = this.props.match.params.id;
     axios.delete(`/api/routes/${id}`)
       .then(() => {
+        this.props.getData();
         this.props.history.push('/routes');
       }).catch(err => {
         console.log(err);
