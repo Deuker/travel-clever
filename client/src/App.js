@@ -1,8 +1,10 @@
 import React from "react";
-
+import FooterPage from "./components/Footer";
 import ReactMapGL from "react-map-gl";
 import MapboxDirections, { WAYPOINTS } from "@mapbox/mapbox-gl-directions/dist/mapbox-gl-directions";
 import mapboxgl from "mapbox-gl";
+
+// 
 
 import "./App.css";
 import Signup from "./components/Signup";
@@ -262,6 +264,7 @@ for (var j = 0; j < l; j++) {
             </Switch>
           </div>
         </div>
+        <FooterPage />
       </div>
     );
   }
