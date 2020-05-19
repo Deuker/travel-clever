@@ -1,6 +1,5 @@
 import React, { Component } from "react";
-
-// import axios from "axios";
+import axios from "axios";
 
 import RoutesList from "./RoutesList";
 // import Dashboard from "./Dashboard";
@@ -49,13 +48,6 @@ export default class Routes extends Component {
   // };
 
   render() {
-    return (
-      <div>
-        <RoutesList routes={this.props.routes} />
-
-        {/* <Dashboard /> */}
-        {/* <ProfilePage getData={this.getData} /> */}
-      </div>
-    );
+    return <RoutesList routes={this.props.routes} />;
   }
 }

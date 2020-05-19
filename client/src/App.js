@@ -8,10 +8,12 @@ import "./App.css";
 import Signup from "./components/Signup";
 import Navbar from "./components/Navbar";
 import Login from "./components/Login";
+
 // import { Image } from 'react-native';
 import axios from "axios";
 import tree from './tree.jpg';
 import treetwo from './treetwo.jpg';
+
 import { Route, Switch } from "react-router-dom";
 import ProtectedRoute from "./components/ProtectedRoute";
 import Routes from "./components/Routes";
@@ -37,9 +39,7 @@ class App extends React.Component {
   };
 
   componentDidMount = () => {
-
-  this.getData()
-
+    this.getData();
     const map = new mapboxgl.Map({
       container: "map",
       style: "mapbox://styles/mapbox/streets-v11",
@@ -62,7 +62,7 @@ class App extends React.Component {
       const routeEle = document.querySelector(
         ".mapbox-directions-route-summary > h1"
       );
-      if (routeEle && !this.state.showButton) {
+      if (routeEle && !this.state.showButton && !this.state.buttonClick) {
         this.setState({
           showButton: true,
         });
@@ -79,25 +79,18 @@ class App extends React.Component {
     const kilometer = document.querySelector(
       ".mapbox-directions-route-summary > h1"
     ).innerHTML;
-    console.log("distance: ", kilometer);
-
     const fromToEle = document.getElementsByClassName("mapboxgl-ctrl-geocoder");
     const startpoint = fromToEle[0].querySelector("input").value;
-    console.log("from: ", startpoint);
     const endpoint = fromToEle[1].querySelector("input").value;
-    console.log("to: ", endpoint);
 
     this.setState({
       startpoint: startpoint,
       endpoint: endpoint,
       kilometer: kilometer,
+      showButton: false,
+      buttonClick: true,
     });
-    console.log(
-      "Hello",
-      this.state.startpoint,
-      this.state.endpoint,
-      this.state.kilometer
-    );
+
     this.showRouteInfo();
   };
 
@@ -111,26 +104,40 @@ class App extends React.Component {
     });
   };
 
+  getData = () => {
+    axios
+      .get("/api/routes")
+      .then((response) => {
+        console.log("the routes", response);
+        const fromToEle = document.getElementsByClassName(
+          "geocoder-icon-close"
+        );
+        console.log("hello", fromToEle);
+        fromToEle[0].click();
+        fromToEle[1].click();
 
+        this.setState({
+          routes: response.data,
+          buttonClick: false,
+          startpoint: "",
+          endpoint: "",
+          kilometer: "",
+        });
+        this.drawTrees();
+        console.log("routes:", this.state.routes);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
 
+  // drawTrees=()=>{
+  //  let treesToPlant= this.state.routes.reduce((acc, route)=>{
 
-getData = () => {
-        axios
-          .get('/api/routes')
-          .then(response => {
-            console.log('the routes', response);
-          
-           
-            this.setState({
-              routes: response.data
-            })
-          this.drawTrees();
-            console.log('routes:', this.state.routes)
-          })
-          .catch(err => {
-            console.log(err);
-          })
-      }
+  //      return acc+(parseInt(route.co2emission)/23.2).toFixed(1);
+  //   },0)
+  // var img=document.createElement('img');
+  // img.src='./public/baum.jpg';
 
 
 drawTrees=()=>{
@@ -154,12 +161,12 @@ for (var j = 0; j < l; j++) {
 
   var img= new Image(50, 50);
   img.src = tree;
-    document.body.appendChild(img);
+    document.getElementById('drawTrees').appendChild(img);
 }  
   if (parseInt(splitted[1])>=50){
       var img2 = new Image(25, 50);
           img2.src = treetwo;
-            document.body.appendChild(img2)
+            document.getElementById('drawTrees').appendChild(img2)
       }
 }
 // let image=new Image();
@@ -170,40 +177,27 @@ for (var j = 0; j < l; j++) {
 
 
   render() {
+
     console.log("Heeeiiiii", this.state.user);
+
     return (
       <div className="App">
         <Navbar user={this.state.user} setUser={this.setUser} />
-        <button onClick={this.drawTrees}>your saved trees</button>
-        <div id='trees'></div>
+        {/* <button onClick={this.drawTrees}>your saved trees</button> */}
+        <div id="trees"></div>
         <div className="pageContent">
           <div
+            id="map"
             className="map"
             style={this.state.user ? {} : { display: "none" }}
           >
-            {/* <div
-
-        <Navbar user={this.state.user} setUser={this.setUser}  />
-      <div className="pageContent">
-   
-         <div className="map" style={this.state.user? {}:{display:'none'}}>
-          {/* <div
-
-
-              ref={(el) => (this.mapContainer = el)}
-              className="mapContainer"
-            /> */}
-            <div id="map"></div>
-
-            <div>
-              <ReactMapGL
-                {...this.state.viewport}
-                onViewportChange={(viewport) => this.setState(viewport)}
-                mapboxApiAccessToken="pk.eyJ1IjoidmljdG9yaWF0b3JpYSIsImEiOiJja2EzbHVrMnowMzBzM2tyd2VsNnI2YnFiIn0.rZpPyrN5hdNxsnVtAWWCOQ"
-              ></ReactMapGL>
-            </div>
+            <ReactMapGL
+              {...this.state.viewport}
+              onViewportChange={(viewport) => this.setState(viewport)}
+              mapboxApiAccessToken="pk.eyJ1IjoidmljdG9yaWF0b3JpYSIsImEiOiJja2EzbHVrMnowMzBzM2tyd2VsNnI2YnFiIn0.rZpPyrN5hdNxsnVtAWWCOQ"
+            ></ReactMapGL>
           </div>
-          <div className="layout">
+          <div className="layout" >
             <ProfilePage
               startpoint={this.state.startpoint}
               endpoint={this.state.endpoint}
@@ -211,9 +205,12 @@ for (var j = 0; j < l; j++) {
               getData={this.getData}
               showRouteInfo={this.state.showRouteInfo}
               closeShowRouteInfo={this.closeShowRouteInfo}
+              drawTrees={this.drawTrees}
             />
             {this.state.showButton ? (
-              <button onClick={this.getRoute}>
+              <button onClick={this.getRoute} style={{
+                marginRight:'200px'
+              }} >
                 Calculate CO2 for this route
               </button>
             ) : (

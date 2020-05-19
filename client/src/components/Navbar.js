@@ -2,6 +2,7 @@
 import { Link } from 'react-router-dom';
 import React from 'react';
 import { Navbar as Nav } from 'react-bootstrap';
+import './Navbar.css';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { logout } from '../services/auth.js';
@@ -15,33 +16,26 @@ const handleLogout = props => {
 
 const Navbar = props => {
   return (
-//     <Nav bg="light" expand="lg">
-//   <Nav.Brand href="/">Home</Nav.Brand>
-//  <Nav.Toggle aria-controls="basic-navbar-nav" />
-//   <Nav.Collapse id="basic-navbar-nav">
-//     <Nav className="mr-auto">
-//       <Nav.Link href="#home">Home</Nav.Link>
-//       <Nav.Link href="#link">Link</Nav.Link>
-//     </Nav>
-
-//   </Nav.Collapse>
-// </Nav>
-
-    <Nav className='nav justify-content-end' bg="light" expand="lg">
-      {props.user && <Nav.Brand>Welcome, {props.user.username}</Nav.Brand>}
+    <Nav  bg="light" variant="light" >
+          <Nav.Toggle aria-controls="basic-navbar-nav" />
+  <Nav.Collapse id="basic-navbar-nav">
+  <Nav className="mr-auto">
+      {props.user && <Nav.Brand style={{
+        color:'grey'
+      }}>Welcome, {props.user.username}</Nav.Brand>}
       <Nav.Brand>
-        <Link to='/'>Home</Link>
+        <Link to='/' class='link'>Home</Link>
       </Nav.Brand>
       <Nav.Toggle aria-controls="basic-navbar-nav" />
       {props.user ? (
         <>
-
+   
           <Nav.Brand>
-            <Link to='/' onClick={() => handleLogout(props)}>
+            <Link to='/'  class='link' onClick={() => handleLogout(props)}>
               Logout</Link>
            </Nav.Brand>
             <Nav.Brand>
-            <Link to='/routes' >
+            <Link to='/routes'  class='link'>
               My saved routes
             </Link>
           </Nav.Brand>
@@ -49,13 +43,15 @@ const Navbar = props => {
       ) : (
           <>
             <Nav.Brand>
-              <Link to='/signup'>Signup</Link>
+              <Link to='/signup'  class='link'>Signup</Link>
             </Nav.Brand>
             <Nav.Brand>
-              <Link to='/login'>Login</Link>
+              <Link to='/login' class='link' >Login</Link>
             </Nav.Brand>
           </>
         )}
+        </Nav>
+        </Nav.Collapse>
     </Nav>
   )
 }
