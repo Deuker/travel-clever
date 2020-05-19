@@ -1,8 +1,12 @@
 import React from "react";
 
 import ReactMapGL from "react-map-gl";
-import MapboxDirections, { WAYPOINTS } from "@mapbox/mapbox-gl-directions/dist/mapbox-gl-directions";
+import MapboxDirections, {
+  WAYPOINTS,
+} from "@mapbox/mapbox-gl-directions/dist/mapbox-gl-directions";
 import mapboxgl from "mapbox-gl";
+
+//
 
 import "./App.css";
 import Signup from "./components/Signup";
@@ -11,8 +15,8 @@ import Login from "./components/Login";
 
 // import { Image } from 'react-native';
 import axios from "axios";
-import tree from './tree.jpg';
-import treetwo from './treetwo.jpg';
+import tree from "./tree.jpg";
+import treetwo from "./treetwo.jpg";
 
 import { Route, Switch } from "react-router-dom";
 import ProtectedRoute from "./components/ProtectedRoute";
@@ -139,23 +143,22 @@ class App extends React.Component {
   // var img=document.createElement('img');
   // img.src='./public/baum.jpg';
 
+  drawTrees = () => {
+    let treesToPlant = this.state.routes
+      .reduce((acc, route) => {
+        console.log(parseInt(route.co2emission));
+        return acc + parseInt(route.co2emission) / 23.2;
+      }, 0)
+      .toFixed(2);
+    let splitted = treesToPlant.split(".");
+    console.log(splitted);
+    console.log("trees:", treesToPlant);
 
-drawTrees=()=>{
-
-  let treesToPlant= this.state.routes.reduce((acc, route)=>{
-    console.log(parseInt(route.co2emission))
-       return acc+((parseInt(route.co2emission)/23.2));
-    },0).toFixed(2);
-   let splitted= treesToPlant.split('.');
-   console.log(splitted)
-  console.log('trees:',treesToPlant)
-
-  var images = document.getElementsByTagName('img');
-var l = images.length;
-for (var j = 0; j < l; j++) {
-    images[0].parentNode.removeChild(images[0]);
-}
-
+    var images = document.getElementsByTagName("img");
+    var l = images.length;
+    for (var j = 0; j < l; j++) {
+      images[0].parentNode.removeChild(images[0]);
+    }
 
     for (var i = 1; i <= parseInt(splitted[0]); i++) {
 
@@ -176,8 +179,9 @@ for (var j = 0; j < l; j++) {
   // console.log('Trees:',treesToPlant)
 
 
-  render() {
+  // console.log('Trees:',treesToPlant)
 
+  render() {
     console.log("Heeeiiiii", this.state.user);
 
     return (
@@ -189,6 +193,7 @@ for (var j = 0; j < l; j++) {
           <div
             id="map"
             className="map"
+            borderStyle="double"
             style={this.state.user ? {} : { display: "none" }}
           >
             <ReactMapGL
@@ -197,16 +202,20 @@ for (var j = 0; j < l; j++) {
               mapboxApiAccessToken="pk.eyJ1IjoidmljdG9yaWF0b3JpYSIsImEiOiJja2EzbHVrMnowMzBzM2tyd2VsNnI2YnFiIn0.rZpPyrN5hdNxsnVtAWWCOQ"
             ></ReactMapGL>
           </div>
-          <div className="layout" >
-            <ProfilePage
+
+          <div className="layout">
+             <ProfilePage
+
               startpoint={this.state.startpoint}
               endpoint={this.state.endpoint}
               kilometer={this.state.kilometer}
               getData={this.getData}
               showRouteInfo={this.state.showRouteInfo}
               closeShowRouteInfo={this.closeShowRouteInfo}
+
               drawTrees={this.drawTrees}
             />
+
             {this.state.showButton ? (
               <button onClick={this.getRoute} style={{
                 marginRight:'200px'
@@ -261,11 +270,18 @@ for (var j = 0; j < l; j++) {
                     endpoint={this.state.endpoint}
                     kilometer={this.state.kilometer}
                     getData={this.getData}
-                  /> */}
+                    showRouteInfo={this.state.showRouteInfo}
+                    closeShowRouteInfo={this.closeShowRouteInfo}
+                    
+                  />
+                )}
+              /> */}
             </Switch>
           </div>
         </div>
+       
       </div>
+      
     );
   }
 }
