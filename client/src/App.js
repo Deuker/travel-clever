@@ -36,9 +36,7 @@ class App extends React.Component {
   };
 
   componentDidMount = () => {
-
-  this.getData()
-
+    this.getData();
     const map = new mapboxgl.Map({
       container: "map",
       style: "mapbox://styles/mapbox/streets-v11",
@@ -61,7 +59,7 @@ class App extends React.Component {
       const routeEle = document.querySelector(
         ".mapbox-directions-route-summary > h1"
       );
-      if (routeEle && !this.state.showButton) {
+      if (routeEle && !this.state.showButton && !this.state.buttonClick) {
         this.setState({
           showButton: true,
         });
@@ -78,25 +76,18 @@ class App extends React.Component {
     const kilometer = document.querySelector(
       ".mapbox-directions-route-summary > h1"
     ).innerHTML;
-    console.log("distance: ", kilometer);
-
     const fromToEle = document.getElementsByClassName("mapboxgl-ctrl-geocoder");
     const startpoint = fromToEle[0].querySelector("input").value;
-    console.log("from: ", startpoint);
     const endpoint = fromToEle[1].querySelector("input").value;
-    console.log("to: ", endpoint);
 
     this.setState({
       startpoint: startpoint,
       endpoint: endpoint,
       kilometer: kilometer,
+      showButton: false,
+      buttonClick: true,
     });
-    console.log(
-      "Hello",
-      this.state.startpoint,
-      this.state.endpoint,
-      this.state.kilometer
-    );
+
     this.showRouteInfo();
   };
 
@@ -110,75 +101,64 @@ class App extends React.Component {
     });
   };
 
+  getData = () => {
+    axios
+      .get("/api/routes")
+      .then((response) => {
+        console.log("the routes", response);
+        const fromToEle = document.getElementsByClassName(
+          "geocoder-icon-close"
+        );
+        console.log("hello", fromToEle);
+        fromToEle[0].click();
+        fromToEle[1].click();
 
+        this.setState({
+          routes: response.data,
+          buttonClick: false,
+          startpoint: "",
+          endpoint: "",
+          kilometer: "",
+        });
+        this.drawTrees();
+        console.log("routes:", this.state.routes);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
 
+  // drawTrees=()=>{
+  //  let treesToPlant= this.state.routes.reduce((acc, route)=>{
 
-getData = () => {
-        axios
-          .get('/api/routes')
-          .then(response => {
-            console.log('the routes', response);
-          
-           
-            this.setState({
-              routes: response.data
-            })
-          this.drawTrees();
-            console.log('routes:', this.state.routes)
-          })
-          .catch(err => {
-            console.log(err);
-          })
-      }
+  //      return acc+(parseInt(route.co2emission)/23.2).toFixed(1);
+  //   },0)
+  // var img=document.createElement('img');
+  // img.src='./public/baum.jpg';
 
+  // ''
+  // document.getElementById('trees')
 
-// drawTrees=()=>{
-//  let treesToPlant= this.state.routes.reduce((acc, route)=>{
-  
-//      return acc+(parseInt(route.co2emission)/23.2).toFixed(1);
-//   },0)
-// var img=document.createElement('img');
-// img.src='./public/baum.jpg';
-
-// ''
-// document.getElementById('trees')
-  
-//   console.log('Trees:',treesToPlant)
-// }
+  //   console.log('Trees:',treesToPlant)
+  // }
 
   render() {
-    console.log("Heeeiiiii", this.state.user);
     return (
       <div className="App">
         <Navbar user={this.state.user} setUser={this.setUser} />
         <button onClick={this.drawTrees}>your saved trees</button>
-        <div id='trees'></div>
+        <div id="trees"></div>
         <div className="pageContent">
           <div
+            id="map"
             className="map"
             style={this.state.user ? {} : { display: "none" }}
           >
-            {/* <div
-
-        <Navbar user={this.state.user} setUser={this.setUser}  />
-      <div className="pageContent">
-   
-         <div className="map" style={this.state.user? {}:{display:'none'}}>
-          {/* <div
-
-
-              ref={(el) => (this.mapContainer = el)}
-              className="mapContainer"
-            /> */}
-            <div id="map"></div>
-
-            <div>
-              <ReactMapGL
-                {...this.state.viewport}
-                onViewportChange={(viewport) => this.setState(viewport)}
-                mapboxApiAccessToken="pk.eyJ1IjoidmljdG9yaWF0b3JpYSIsImEiOiJja2EzbHVrMnowMzBzM2tyd2VsNnI2YnFiIn0.rZpPyrN5hdNxsnVtAWWCOQ"
-              ></ReactMapGL>
-            </div>
+            <ReactMapGL
+              {...this.state.viewport}
+              onViewportChange={(viewport) => this.setState(viewport)}
+              mapboxApiAccessToken="pk.eyJ1IjoidmljdG9yaWF0b3JpYSIsImEiOiJja2EzbHVrMnowMzBzM2tyd2VsNnI2YnFiIn0.rZpPyrN5hdNxsnVtAWWCOQ"
+            ></ReactMapGL>
           </div>
           <div className="layout">
             <ProfilePage

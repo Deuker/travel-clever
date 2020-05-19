@@ -2,9 +2,7 @@ import React, {
   // useState, setState,
   Component,
 } from "react";
-
 import { Button } from "react-bootstrap";
-
 import WelcomePage from "./WelcomePage";
 import Dashboard from "./Dashboard";
 import axios from "axios";
@@ -12,19 +10,6 @@ import axios from "axios";
 class ProfilePage extends Component {
   //state here for saving the information and sending it to the Backend
 
-  state = {
-    //startpoint: this.props.startpoint,
-    // endpoint: this.props.endpoint,
-    // kilometer: this.props.kilometer,
-
-    //
-    // showRouteInfo: false,
-
-    co2emission: "",
-  };
-  // componentDidMount = () => {
-  //   this.props.getData();
-  // }
   static getDerivedStateFromProps(nextProps) {
     return {
       startpoint: nextProps.startpoint,
@@ -33,9 +18,7 @@ class ProfilePage extends Component {
       co2emission: parseFloat(
         (parseInt(nextProps.kilometer) * 203.182) / 1000
       ).toFixed(2),
-
       showRouteInfo: nextProps.showRouteInfo,
-
     };
   }
 
@@ -70,6 +53,7 @@ class ProfilePage extends Component {
         //this.props.getData();
         console.log("CO2 Data:", this.state.co2emission);
         this.props.getData();
+        
         // this.setState({
         //   startpoint: "",
         //   endpoint: "",
@@ -98,20 +82,20 @@ class ProfilePage extends Component {
   render() {
     console.log("Banana", this.state);
     return (
-      <div>
-        <h1>This is my Profile Page</h1>
+      <div className="layout">
         <WelcomePage />
         <Dashboard />
-        <h3>Your Search Route details:</h3>
+
         <div>
           {this.state.showRouteInfo ? (
             <div>
+              <h3>Your Search Route details:</h3>
               <div>From: {this.state.startpoint}</div>
               <div>To: {this.state.endpoint}</div>
               <div>Distance: {this.state.kilometer}</div>
               <div>CO2: {this.state.co2emission}kg</div>
               <Button onClick={this.handleSubmit} type="button">
-                Save
+                Save this Route
               </Button>
             </div>
           ) : (
