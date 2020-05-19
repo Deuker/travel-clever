@@ -18,7 +18,7 @@ class ProfilePage extends Component {
     // endpoint: this.props.endpoint,
     // kilometer: this.props.kilometer,
     // 
-    // showInfo: false,
+    showInfo: false,
     co2emission: "",
    
   };
@@ -33,7 +33,7 @@ class ProfilePage extends Component {
       co2emission: parseFloat(
         (parseInt(nextProps.kilometer) * 203.182) / 1000
       ).toFixed(2),
-      showInfo: false,
+      showInfo: true,
     };
   }
 
