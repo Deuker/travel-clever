@@ -3,10 +3,16 @@
   display: flex;
   flex-direction: column;
 }
+html {
+  height: 100%;
+}
+body {
+  min-height: 100%;
+}
 
 .pageContent {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
 }
 #map {
   display: flex;
@@ -57,10 +63,4 @@
   to {
     transform: rotate(360deg);
   }
-}
-
-
-.layout {
-  display: flex;
-  flex-direction: row;
 }
