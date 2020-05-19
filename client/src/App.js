@@ -161,19 +161,23 @@ class App extends React.Component {
     }
 
     for (var i = 1; i <= parseInt(splitted[0]); i++) {
-      var img = new Image(50, 50);
-      img.src = tree;
-      document.body.appendChild(img);
-    }
-    if (parseInt(splitted[1]) >= 50) {
+
+  var img= new Image(50, 50);
+  img.src = tree;
+    document.getElementById('drawTrees').appendChild(img);
+}  
+  if (parseInt(splitted[1])>=50){
       var img2 = new Image(25, 50);
-      img2.src = treetwo;
-      document.body.appendChild(img2);
-    }
-  };
-  // let image=new Image();
-  // image.src='./public/baum.jpg';
-  //  document.getElementsByClassName('trees').appenChild(imgage)};
+          img2.src = treetwo;
+            document.getElementById('drawTrees').appendChild(img2)
+      }
+}
+// let image=new Image();
+// image.src='./public/baum.jpg';
+//  document.getElementsByClassName('trees').appenChild(imgage)};
+  
+  // console.log('Trees:',treesToPlant)
+
 
   // console.log('Trees:',treesToPlant)
 
@@ -183,7 +187,7 @@ class App extends React.Component {
     return (
       <div className="App">
         <Navbar user={this.state.user} setUser={this.setUser} />
-        <button onClick={this.drawTrees}>your saved trees</button>
+        {/* <button onClick={this.drawTrees}>your saved trees</button> */}
         <div id="trees"></div>
         <div className="pageContent">
           <div
@@ -198,17 +202,24 @@ class App extends React.Component {
               mapboxApiAccessToken="pk.eyJ1IjoidmljdG9yaWF0b3JpYSIsImEiOiJja2EzbHVrMnowMzBzM2tyd2VsNnI2YnFiIn0.rZpPyrN5hdNxsnVtAWWCOQ"
             ></ReactMapGL>
           </div>
+
           <div className="layout">
              <ProfilePage
+
               startpoint={this.state.startpoint}
               endpoint={this.state.endpoint}
               kilometer={this.state.kilometer}
               getData={this.getData}
               showRouteInfo={this.state.showRouteInfo}
               closeShowRouteInfo={this.closeShowRouteInfo}
-            /> 
+
+              drawTrees={this.drawTrees}
+            />
+
             {this.state.showButton ? (
-              <button onClick={this.getRoute}>
+              <button onClick={this.getRoute} style={{
+                marginRight:'200px'
+              }} >
                 Calculate CO2 for this route
               </button>
             ) : (

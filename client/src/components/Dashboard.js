@@ -1,19 +1,3 @@
-// import React, { Component } from "react";
-// import RouteDetails from "./RouteDetails";
-// import axios from "axios";
-
-// class Dashboard extends Component {
-//   state = {
-//     totalKilometer: "",
-//     totalCo2Saved: "",
-//     totalTreeCapacitySaved: "",
-//   };
-
-  // componentDidMount() {
-  //   axios
-  //     .get("api/routes")
-  //     .then((response) => {
-  //       let totalKilometer = 0;
   //       let totalCo2Saved = 0;
   //       let totalTreeCapacitySaved = 0;
         

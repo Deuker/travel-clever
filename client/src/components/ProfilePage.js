@@ -24,9 +24,11 @@ class ProfilePage extends Component {
 
   componentDidMount() {
     this.refreshDasboardAfterSaving();
+    this.props.drawTrees();
   }
 
   refreshDasboardAfterSaving() {
+
     axios
       .get("api/routes")
       .then((response) => {
@@ -53,6 +55,7 @@ class ProfilePage extends Component {
           totalKilometer,
           totalCo2Saved,
           totalTreeCapacitySaved,
+
         });
       })
 
@@ -104,6 +107,14 @@ class ProfilePage extends Component {
         console.log("CO2 Data:", this.state.co2emission);
         this.props.getData();
 
+        this.drawTrees();
+        
+        // this.setState({
+        //   startpoint: "",
+        //   endpoint: "",
+        //   kilometer: "",
+        // });
+
         this.props.closeShowRouteInfo();
       })
       .catch((err) => {
@@ -134,6 +145,9 @@ class ProfilePage extends Component {
             ""
           )}
         </div>
+
+
+
         <div
           style={{
             display: "flex",
@@ -150,6 +164,7 @@ class ProfilePage extends Component {
           <p>
             Amount of trees saved: {this.state.totalTreeCapacitySaved} trees
           </p>
+    <div id='drawTrees' onLoad={this.props.drawTrees()}></div>
         </div>
       </div>
     );
