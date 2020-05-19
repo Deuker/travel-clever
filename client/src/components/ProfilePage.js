@@ -16,8 +16,10 @@ class ProfilePage extends Component {
     //startpoint: this.props.startpoint,
     // endpoint: this.props.endpoint,
     // kilometer: this.props.kilometer,
+
     //
     // showRouteInfo: false,
+
     co2emission: "",
   };
   // componentDidMount = () => {
@@ -31,7 +33,9 @@ class ProfilePage extends Component {
       co2emission: parseFloat(
         (parseInt(nextProps.kilometer) * 203.182) / 1000
       ).toFixed(2),
+
       showRouteInfo: nextProps.showRouteInfo,
+
     };
   }
 
