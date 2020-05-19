@@ -8,10 +8,12 @@ import "./App.css";
 import Signup from "./components/Signup";
 import Navbar from "./components/Navbar";
 import Login from "./components/Login";
+
 // import { Image } from 'react-native';
 import axios from "axios";
 import tree from './tree.jpg';
 import treetwo from './treetwo.jpg';
+
 import { Route, Switch } from "react-router-dom";
 import ProtectedRoute from "./components/ProtectedRoute";
 import Routes from "./components/Routes";
@@ -175,6 +177,9 @@ for (var j = 0; j < l; j++) {
 
 
   render() {
+
+    console.log("Heeeiiiii", this.state.user);
+
     return (
       <div className="App">
         <Navbar user={this.state.user} setUser={this.setUser} />

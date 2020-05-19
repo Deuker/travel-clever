@@ -4,9 +4,9 @@ import axios from 'axios';
 
 export default class RoutesDetails extends Component {
 
-  state = {
-route:null,
-startpoint:'',
+    state = {
+    route:null,
+    startpoint:'',
     endpoint:'',
     kilometer: '',
     co2emission:'',
@@ -22,11 +22,12 @@ startpoint:'',
       .get(`/api/routes/${routeId}`)
       .then(response => {
         const route=response.data;
-       const startpoint= response.data.startpoint;
-      const  endpoint= response.data.endpoint;
-      const kilometer=response.data.kilometer;
-       const co2emission=response.data.co2emission;
-      const owner=response.data.owner;
+        const startpoint= response.data.startpoint;
+        const endpoint= response.data.endpoint;
+        const kilometer=response.data.kilometer;
+        console.log(kilometer);
+        const co2emission=response.data.co2emission;
+        const owner=response.data.owner;
         
         this.setState({ route, startpoint, endpoint, kilometer, co2emission, owner });
       })
