@@ -8,7 +8,10 @@ import "./App.css";
 import Signup from "./components/Signup";
 import Navbar from "./components/Navbar";
 import Login from "./components/Login";
+
+
 import axios from 'axios';
+
 
 
 import { Route, Switch } from "react-router-dom";
@@ -29,6 +32,10 @@ class App extends React.Component {
     kilometer: "",
     routes:[],
   };
+
+  // showRouteInfo = () => {
+  //   this.setState({ showInfo: true });
+  // };
 
   componentDidMount = () => {
    this.getData()
@@ -122,17 +129,27 @@ getData = () => {
     console.log("Heeeiiiii", this.state.user);
     return (
       <div className="App">
+
+        <Navbar user={this.state.user} setUser={this.setUser} />
+        <div className="pageContent">
+          <div
+            className="map"
+            style={this.state.user ? {} : { display: "none" }}
+          >
+            {/* <div
+
         <Navbar user={this.state.user} setUser={this.setUser}  />
       <div className="pageContent">
    
          <div className="map" style={this.state.user? {}:{display:'none'}}>
           {/* <div
 
+
               ref={(el) => (this.mapContainer = el)}
               className="mapContainer"
             /> */}
-            <div id='map' ></div>
-            <div >
+            <div id="map"></div>
+            <div>
               <ReactMapGL
                 {...this.state.viewport}
                 onViewportChange={(viewport) => this.setState(viewport)}
@@ -168,11 +185,8 @@ getData = () => {
                 component={Routes}
               />
 
-             
+              ;
 
-
-           
-          
               <ProtectedRoute
                 exact
                 path="/routes/:id"

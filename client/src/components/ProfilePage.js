@@ -17,7 +17,8 @@ class ProfilePage extends Component {
     //startpoint: this.props.startpoint,
     // endpoint: this.props.endpoint,
     // kilometer: this.props.kilometer,
-    showInfo: true,
+    // 
+    // showInfo: false,
     co2emission: "",
    
   };
@@ -29,9 +30,13 @@ class ProfilePage extends Component {
       startpoint: nextProps.startpoint,
       endpoint: nextProps.endpoint,
       kilometer: nextProps.kilometer,
-      co2emission: (parseInt(nextProps.kilometer) * 203.182) / 1000,
+      co2emission: parseFloat(
+        (parseInt(nextProps.kilometer) * 203.182) / 1000
+      ).toFixed(2),
+      showInfo: false,
     };
   }
+
 
 
 
@@ -64,6 +69,14 @@ class ProfilePage extends Component {
     }
   };
 
+
+  // routeInfo = (event) => {
+  //   if (this.state.startpoint && this.state.endpoint && this.state.kilometer) {
+  //     this.setState({ showInfo: true });
+  //   } else {
+  //     this.setState({ showInfo: false });
+  //   }
+  // };
 
   handleSubmit = (event) => {
     event.preventDefault();
@@ -123,7 +136,7 @@ this.props.getData();
               <div>From: {this.state.startpoint}</div>
               <div>To: {this.state.endpoint}</div>
               <div>Distance: {this.state.kilometer}</div>
-              <div>CO2:{this.state.co2emission}kg</div>
+              <div>CO2: {this.state.co2emission}kg</div>
               <Button onClick={this.handleSubmit} type="submit">
                 Save
               </Button>
