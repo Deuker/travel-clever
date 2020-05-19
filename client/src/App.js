@@ -8,9 +8,9 @@ import "./App.css";
 import Signup from "./components/Signup";
 import Navbar from "./components/Navbar";
 import Login from "./components/Login";
-
+// import { Image } from 'react-native';
 import axios from "axios";
-
+import tree from './tree.jpg';
 import { Route, Switch } from "react-router-dom";
 import ProtectedRoute from "./components/ProtectedRoute";
 import Routes from "./components/Routes";
@@ -132,19 +132,32 @@ getData = () => {
       }
 
 
-// drawTrees=()=>{
-//  let treesToPlant= this.state.routes.reduce((acc, route)=>{
+drawTrees=()=>{
+  var images = document.getElementsByTagName('img');
+var l = images.length;
+for (var j = 0; j < l; j++) {
+    images[0].parentNode.removeChild(images[0]);
+}
+ let treesToPlant= this.state.routes.reduce((acc, route)=>{
   
-//      return acc+(parseInt(route.co2emission)/23.2).toFixed(1);
-//   },0)
-// var img=document.createElement('img');
-// img.src='./public/baum.jpg';
+     return acc+(parseInt(route.co2emission)/23.2).toFixed(1);
+  },0)
+console.log(treesToPlant)
+ 
+    for (var i = 1; i <= treesToPlant; i++) {
 
-// ''
-// document.getElementById('trees')
+      var img = new Image();
+      img.src = tree;
+        document.body.appendChild(img)
+    }
+ 
+  }
+// let image=new Image();
+// image.src='./public/baum.jpg';
+//  document.getElementsByClassName('trees').appenChild(imgage)};
   
-//   console.log('Trees:',treesToPlant)
-// }
+  // console.log('Trees:',treesToPlant)
+
 
   render() {
     console.log("Heeeiiiii", this.state.user);
