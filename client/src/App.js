@@ -146,7 +146,7 @@ console.log(treesToPlant)
  
     for (var i = 1; i <= treesToPlant; i++) {
 
-      var img = new Image();
+      var img = new Image(50, 50);
       img.src = tree;
         document.body.appendChild(img)
     }
