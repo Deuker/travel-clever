@@ -1,8 +1,10 @@
 import React from "react";
-
+import FooterPage from "./components/Footer";
 import ReactMapGL from "react-map-gl";
 import MapboxDirections from "@mapbox/mapbox-gl-directions/dist/mapbox-gl-directions";
 import mapboxgl from "mapbox-gl";
+
+// 
 
 import "./App.css";
 import Signup from "./components/Signup";
@@ -225,6 +227,7 @@ class App extends React.Component {
             </Switch>
           </div>
         </div>
+        <FooterPage />
       </div>
     );
   }
