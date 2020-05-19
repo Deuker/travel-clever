@@ -37,9 +37,11 @@ class ProfilePage extends Component {
           
             for (let i=0; i<response.data.length; i++){
               let singleKilometer = parseFloat(response.data[i].kilometer.split("km"))
+              let singleCo2 = parseFloat(response.data[i].co2emission)
               console.log(singleKilometer);
               totalKilometer += singleKilometer;
-              totalCo2Saved += response.data[i].co2emission;
+              totalCo2Saved += singleCo2;
+              totalTreeCapacitySaved = totalKilometer*203.182/1000
               console.log(totalCo2Saved);
             }
           console.log(totalKilometer);
@@ -140,7 +142,7 @@ class ProfilePage extends Component {
     return (
       <div className="layout">
         <WelcomePage />
-        <Dashboard />
+        {/* <Dashboard /> */}
 
         <div>
           {this.state.showRouteInfo ? (
@@ -195,8 +197,8 @@ class ProfilePage extends Component {
         <h3>Here we will show the Dashboard</h3>
         <p>Total kilometers rode is {this.state.totalKilometer}</p>
         <p>{}</p>
-        <p>Total CO2 saved</p>
-        <p>tree capacity saved</p>
+        <p>Total CO2 saved {this.state.totalCo2Saved}</p>
+        <p>tree capacity saved {this.state.totalTreeCapacitySaved}</p>
 
       </div>
     );
