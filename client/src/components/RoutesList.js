@@ -1,13 +1,13 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const RoutesList = props => {
+const RoutesList = (props) => {
   return (
     <div>
-  <h1>hi</h1>
+  <h1>hi</h1> 
    {props.routes.length > 0 && <h2>Routes:</h2>}
-
-      {props.routes.map(routes => {
+   
+      {props.routes.reverse().map(routes => {
         return (
           <div key={routes._id}>
             <h3>
@@ -15,9 +15,7 @@ const RoutesList = props => {
             </h3> 
             </div>
         );
-      })} 
-      
-   
+      })}  
 </div>
   );
 };

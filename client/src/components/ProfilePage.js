@@ -9,17 +9,21 @@ import WelcomePage from "./WelcomePage";
 import Dashboard from "./Dashboard";
 import axios from "axios";
 
+
 class ProfilePage extends Component {
   //state here for saving the information and sending it to the Backend
 
   state = {
-    // startpoint: this.props.startpoint,
+    //startpoint: this.props.startpoint,
     // endpoint: this.props.endpoint,
     // kilometer: this.props.kilometer,
     showInfo: true,
     co2emission: "",
+   
   };
-
+  // componentDidMount = () => {
+  //   this.props.getData();
+  // }
   static getDerivedStateFromProps(nextProps) {
     return {
       startpoint: nextProps.startpoint,
@@ -29,12 +33,28 @@ class ProfilePage extends Component {
     };
   }
 
-  calculate = () => {
-    const str = this.state.kilometer;
+
+
+// getData = () => {
+//     axios
+//       .get('/api/routes')
+//       .then(response => {
+//         console.log('the routes', response);
+//         this.setState({
+//           routes: response.data
+//         })
+//       })
+//       .catch(err => {
+//         console.log(err);
+//       })
+//   }
+
+
+   calculate = () => {
+     const str = this.state.kilometer;
     const sliced = parseFloat(str.split("km"));
     console.log("Co2 logic", sliced);
   };
-
 
   routeInfo = (event) => {
     if (this.state.startpoint && this.state.endpoint && this.state.kilometer) {
@@ -59,13 +79,15 @@ class ProfilePage extends Component {
         co2emission: this.state.co2emission,
       })
       .then(() => {
+        //this.props.getData();
         console.log("CO2 Data:", this.state.co2emission);
+this.props.getData();
         // this.setState({
         //   startpoint: "",
         //   endpoint: "",
         //   kilometer: "",
         // });
-        // this.props.getData();
+         
       })
       .catch((err) => {
         console.log(err);
@@ -92,9 +114,12 @@ class ProfilePage extends Component {
         <h1>This represents the Profile Page</h1>
         <WelcomePage />
         <h3>Search Route:</h3>
-        <div>
+        <div style={{
+              display:'flex',
+              justifycontent:'flex-start'
+            }}>
           {this.state.showInfo ? (
-            <div>
+            <div >
               <div>From: {this.state.startpoint}</div>
               <div>To: {this.state.endpoint}</div>
               <div>Distance: {this.state.kilometer}</div>
@@ -102,6 +127,7 @@ class ProfilePage extends Component {
               <Button onClick={this.handleSubmit} type="submit">
                 Save
               </Button>
+             
             </div>
           ) : (
             ""

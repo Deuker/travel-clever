@@ -26,7 +26,7 @@ const Navbar = props => {
             </Link>
             </Nav.Brand>
             <Nav.Brand>
-            <Link to='/routes'>
+            <Link to='/routes' >
               My saved routes
             </Link>
           </Nav.Brand>
