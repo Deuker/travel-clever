@@ -1,7 +1,7 @@
 import React from "react";
 import FooterPage from "./components/Footer";
 import ReactMapGL from "react-map-gl";
-import MapboxDirections from "@mapbox/mapbox-gl-directions/dist/mapbox-gl-directions";
+import MapboxDirections, { WAYPOINTS } from "@mapbox/mapbox-gl-directions/dist/mapbox-gl-directions";
 import mapboxgl from "mapbox-gl";
 
 // 
@@ -10,9 +10,10 @@ import "./App.css";
 import Signup from "./components/Signup";
 import Navbar from "./components/Navbar";
 import Login from "./components/Login";
-
+// import { Image } from 'react-native';
 import axios from "axios";
-
+import tree from './tree.jpg';
+import treetwo from './treetwo.jpg';
 import { Route, Switch } from "react-router-dom";
 import ProtectedRoute from "./components/ProtectedRoute";
 import Routes from "./components/Routes";
@@ -138,11 +139,42 @@ class App extends React.Component {
   // var img=document.createElement('img');
   // img.src='./public/baum.jpg';
 
-  // ''
-  // document.getElementById('trees')
 
-  //   console.log('Trees:',treesToPlant)
-  // }
+drawTrees=()=>{
+
+  let treesToPlant= this.state.routes.reduce((acc, route)=>{
+    console.log(parseInt(route.co2emission))
+       return acc+((parseInt(route.co2emission)/23.2));
+    },0).toFixed(2);
+   let splitted= treesToPlant.split('.');
+   console.log(splitted)
+  console.log('trees:',treesToPlant)
+
+  var images = document.getElementsByTagName('img');
+var l = images.length;
+for (var j = 0; j < l; j++) {
+    images[0].parentNode.removeChild(images[0]);
+}
+
+
+    for (var i = 1; i <= parseInt(splitted[0]); i++) {
+
+  var img= new Image(50, 50);
+  img.src = tree;
+    document.body.appendChild(img);
+}  
+  if (parseInt(splitted[1])>=50){
+      var img2 = new Image(25, 50);
+          img2.src = treetwo;
+            document.body.appendChild(img2)
+      }
+}
+// let image=new Image();
+// image.src='./public/baum.jpg';
+//  document.getElementsByClassName('trees').appenChild(imgage)};
+  
+  // console.log('Trees:',treesToPlant)
+
 
   render() {
     return (
