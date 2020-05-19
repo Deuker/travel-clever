@@ -8,7 +8,7 @@ import "./App.css";
 import Signup from "./components/Signup";
 import Navbar from "./components/Navbar";
 import Login from "./components/Login";
-
+import axios from 'axios';
 
 
 import { Route, Switch } from "react-router-dom";
@@ -27,15 +27,18 @@ class App extends React.Component {
     lng: 13.405,
     zoom: 13,
     kilometer: "",
+    routes:[],
   };
 
   componentDidMount = () => {
+   this.getData()
     const map = new mapboxgl.Map({
       container: "map",
       style: "mapbox://styles/mapbox/streets-v11",
       center: [-79.4512, 43.6568],
       zoom: 13,
     });
+
 
     map.addControl(
       new MapboxDirections({
@@ -62,9 +65,12 @@ class App extends React.Component {
         });
       }
     }, 500);
+
+
+   
   };
 
-
+  
 
   getRoute = (event) => {
     event.preventDefault();
@@ -98,11 +104,25 @@ class App extends React.Component {
     });
   };
 
+getData = () => {
+        axios
+          .get('/api/routes')
+          .then(response => {
+            console.log('the routes', response);
+            this.setState({
+              routes: response.data
+            })
+          })
+          .catch(err => {
+            console.log(err);
+          })
+      }
+
   render() {
     console.log("Heeeiiiii", this.state.user);
     return (
       <div className="App">
-        <Navbar user={this.state.user} setUser={this.setUser} />
+        <Navbar user={this.state.user} setUser={this.setUser}  />
       <div className="pageContent">
    
          <div className="map" style={this.state.user? {}:{display:'none'}}>
@@ -130,7 +150,9 @@ class App extends React.Component {
               startpoint={this.state.startpoint}
               endpoint={this.state.endpoint}
               kilometer={this.state.kilometer}
-            ></ProfilePage>
+              getData={this.getData}
+
+            />
             <Switch>
               <Route
                 // this is an additional prop that is taken care of with ...rest
@@ -142,10 +164,15 @@ class App extends React.Component {
                 exact
                 path="/routes"
                 user={this.state.user}
+                routes={this.state.routes}
                 component={Routes}
               />
-              ;
 
+             
+
+
+           
+          
               <ProtectedRoute
                 exact
                 path="/routes/:id"
@@ -163,7 +190,7 @@ class App extends React.Component {
                 path="/login"
                 render={(props) => <Login setUser={this.setUser} {...props} />}
               />
-              <ProtectedRoute
+              {/* <ProtectedRoute
                 // add protection of routes here
                 exact
                 path="/dashboard"
@@ -174,9 +201,9 @@ class App extends React.Component {
                     startpoint={this.state.startpoint}
                     endpoint={this.state.endpoint}
                     kilometer={this.state.kilometer}
-                  />
-                )}
-              />
+                    getData={this.getData}
+                  /> */}
+              
             </Switch>
           </div>
         </div>
