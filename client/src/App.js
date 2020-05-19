@@ -9,10 +9,7 @@ import Signup from "./components/Signup";
 import Navbar from "./components/Navbar";
 import Login from "./components/Login";
 
-
-import axios from 'axios';
-
-
+import axios from "axios";
 
 import { Route, Switch } from "react-router-dom";
 import ProtectedRoute from "./components/ProtectedRoute";
@@ -30,22 +27,24 @@ class App extends React.Component {
     lng: 13.405,
     zoom: 13,
     kilometer: "",
-    routes:[],
+    routes: [],
+    showRouteInfo: false,
   };
 
-  // showRouteInfo = () => {
-  //   this.setState({ showInfo: true });
-  // };
+  showRouteInfo = () => {
+    this.setState({ showRouteInfo: true });
+  };
 
   componentDidMount = () => {
+
   this.getData()
+
     const map = new mapboxgl.Map({
       container: "map",
       style: "mapbox://styles/mapbox/streets-v11",
       center: [-79.4512, 43.6568],
       zoom: 13,
     });
-
 
     map.addControl(
       new MapboxDirections({
@@ -72,12 +71,7 @@ class App extends React.Component {
         });
       }
     }, 500);
-
-
-   
   };
-
-  
 
   getRoute = (event) => {
     event.preventDefault();
@@ -103,6 +97,11 @@ class App extends React.Component {
       this.state.endpoint,
       this.state.kilometer
     );
+    this.showRouteInfo();
+  };
+
+  closeShowRouteInfo = () => {
+    this.setState({ showRouteInfo: false });
   };
 
   setUser = (user) => {
@@ -110,6 +109,7 @@ class App extends React.Component {
       user: user,
     });
   };
+
 
 
 
@@ -131,6 +131,7 @@ getData = () => {
           })
       }
 
+
 // drawTrees=()=>{
 //  let treesToPlant= this.state.routes.reduce((acc, route)=>{
   
@@ -149,7 +150,6 @@ getData = () => {
     console.log("Heeeiiiii", this.state.user);
     return (
       <div className="App">
-
         <Navbar user={this.state.user} setUser={this.setUser} />
         <button onClick={this.drawTrees}>your saved trees</button>
         <div id='trees'></div>
@@ -171,6 +171,7 @@ getData = () => {
               className="mapContainer"
             /> */}
             <div id="map"></div>
+
             <div>
               <ReactMapGL
                 {...this.state.viewport}
@@ -178,11 +179,6 @@ getData = () => {
                 mapboxApiAccessToken="pk.eyJ1IjoidmljdG9yaWF0b3JpYSIsImEiOiJja2EzbHVrMnowMzBzM2tyd2VsNnI2YnFiIn0.rZpPyrN5hdNxsnVtAWWCOQ"
               ></ReactMapGL>
             </div>
-            {this.state.showButton ? (
-              <button onClick={this.getRoute}>BUTTON</button>
-            ) : (
-              ""
-            )}
           </div>
           <div className="layout">
             <ProfilePage
@@ -190,8 +186,16 @@ getData = () => {
               endpoint={this.state.endpoint}
               kilometer={this.state.kilometer}
               getData={this.getData}
-
+              showRouteInfo={this.state.showRouteInfo}
+              closeShowRouteInfo={this.closeShowRouteInfo}
             />
+            {this.state.showButton ? (
+              <button onClick={this.getRoute}>
+                Calculate CO2 for this route
+              </button>
+            ) : (
+              ""
+            )}
             <Switch>
               <Route
                 // this is an additional prop that is taken care of with ...rest
@@ -206,9 +210,7 @@ getData = () => {
                 routes={this.state.routes}
                 component={Routes}
               />
-
               ;
-
               <ProtectedRoute
                 exact
                 path="/routes/:id"
@@ -240,7 +242,6 @@ getData = () => {
                     kilometer={this.state.kilometer}
                     getData={this.getData}
                   /> */}
-              
             </Switch>
           </div>
         </div>

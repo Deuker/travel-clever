@@ -9,7 +9,6 @@ import WelcomePage from "./WelcomePage";
 import Dashboard from "./Dashboard";
 import axios from "axios";
 
-
 class ProfilePage extends Component {
   //state here for saving the information and sending it to the Backend
 
@@ -17,10 +16,11 @@ class ProfilePage extends Component {
     //startpoint: this.props.startpoint,
     // endpoint: this.props.endpoint,
     // kilometer: this.props.kilometer,
-    // 
-    showInfo: false,
+
+    //
+    // showRouteInfo: false,
+
     co2emission: "",
-   
   };
   // componentDidMount = () => {
   //   this.props.getData();
@@ -33,48 +33,23 @@ class ProfilePage extends Component {
       co2emission: parseFloat(
         (parseInt(nextProps.kilometer) * 203.182) / 1000
       ).toFixed(2),
-      showInfo: true,
+
+      showRouteInfo: nextProps.showRouteInfo,
+
     };
   }
 
-
-
-
-// getData = () => {
-//     axios
-//       .get('/api/routes')
-//       .then(response => {
-//         console.log('the routes', response);
-//         this.setState({
-//           routes: response.data
-//         })
-//       })
-//       .catch(err => {
-//         console.log(err);
-//       })
-//   }
-
-
-   calculate = () => {
-     const str = this.state.kilometer;
+  calculate = () => {
+    const str = this.state.kilometer;
     const sliced = parseFloat(str.split("km"));
     console.log("Co2 logic", sliced);
   };
 
-  routeInfo = (event) => {
-    if (this.state.startpoint && this.state.endpoint && this.state.kilometer) {
-      this.setState({ showInfo: true });
-    } else {
-      this.setState({ showInfo: false });
-    }
-  };
-
-
   // routeInfo = (event) => {
   //   if (this.state.startpoint && this.state.endpoint && this.state.kilometer) {
-  //     this.setState({ showInfo: true });
+  //     this.setState({ showRouteInfo: true });
   //   } else {
-  //     this.setState({ showInfo: false });
+  //     this.setState({ showRouteInfo: false });
   //   }
   // };
 
@@ -94,13 +69,13 @@ class ProfilePage extends Component {
       .then(() => {
         //this.props.getData();
         console.log("CO2 Data:", this.state.co2emission);
-this.props.getData();
+        this.props.getData();
         // this.setState({
         //   startpoint: "",
         //   endpoint: "",
         //   kilometer: "",
         // });
-         
+        this.props.closeShowRouteInfo();
       })
       .catch((err) => {
         console.log(err);
@@ -124,23 +99,20 @@ this.props.getData();
     console.log("Banana", this.state);
     return (
       <div>
-        <h1>This represents the Profile Page</h1>
+        <h1>This is my Profile Page</h1>
         <WelcomePage />
-        <h3>Search Route:</h3>
-        <div style={{
-              display:'flex',
-              justifycontent:'flex-start'
-            }}>
-          {this.state.showInfo ? (
-            <div >
+        <Dashboard />
+        <h3>Your Search Route details:</h3>
+        <div>
+          {this.state.showRouteInfo ? (
+            <div>
               <div>From: {this.state.startpoint}</div>
               <div>To: {this.state.endpoint}</div>
               <div>Distance: {this.state.kilometer}</div>
               <div>CO2: {this.state.co2emission}kg</div>
-              <Button onClick={this.handleSubmit} type="submit">
+              <Button onClick={this.handleSubmit} type="button">
                 Save
               </Button>
-             
             </div>
           ) : (
             ""
@@ -180,7 +152,6 @@ this.props.getData();
           </Form.Group> */}
         {/* <Button type="submit">Save</Button> */}
         {/* </Form> */}
-        <Dashboard />
       </div>
     );
   }
