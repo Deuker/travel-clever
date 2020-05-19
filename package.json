@@ -8,11 +8,8 @@
     "dev-windows": "nodemon ./bin/www"
   },
   "dependencies": {
-
     "@mapbox/mapbox-gl-draw": "^1.1.2",
-
     "axios": "^0.19.2",
-
     "bcrypt": "^4.0.1",
     "body-parser": "^1.18.3",
     "connect-mongo": "^3.2.0",
@@ -21,12 +18,10 @@
     "express": "^4.16.3",
     "express-session": "^1.17.1",
     "hbs": "^4.0.1",
-
     "mapbox": "^1.0.0-beta10",
     "mongo-connect": "0.0.6",
     "mapbox-gl": "^1.10.0",
     "mongoose": "^5.9.14",
-
     "morgan": "^1.9.0",
     "node-sass-middleware": "^0.11.0",
     "passport": "^0.4.1",

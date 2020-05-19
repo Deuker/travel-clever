@@ -14,14 +14,52 @@ class ProfilePage extends Component {
   //state here for saving the information and sending it to the Backend
 
   state = {
+    totalKilometer: "",
+    totalCo2Saved: "",
+    totalTreeCapacitySaved: "",
     //startpoint: this.props.startpoint,
     // endpoint: this.props.endpoint,
     // kilometer: this.props.kilometer,
     // 
-    // showInfo: false,
+    //showInfo: false,
     co2emission: "",
    
   };
+
+  componentDidMount() {
+    this.refreshDasboardAfterSaving();
+  }
+
+  refreshDasboardAfterSaving() {
+      axios
+        .get("api/routes")
+        .then((response) => {
+          let totalKilometer = 0;
+          let totalCo2Saved = 0;
+          let totalTreeCapacitySaved = 0;
+          
+            for (let i=0; i<response.data.length; i++){
+              let singleKilometer = parseFloat(response.data[i].kilometer.split("km"))
+              console.log(singleKilometer);
+              totalKilometer += singleKilometer;
+              totalCo2Saved += response.data[i].co2emission;
+              console.log(totalCo2Saved);
+            }
+          console.log(totalKilometer);
+          console.log(response.data);
+          console.log(response.data[0].kilometer);
+
+          this.setState({totalKilometer, totalCo2Saved, totalTreeCapacitySaved});
+        })
+        
+
+        .catch((error) => {
+          console.log(error);
+        });
+      }
+    
+
+
   // componentDidMount = () => {
   //   this.props.getData();
   // }
@@ -33,7 +71,7 @@ class ProfilePage extends Component {
       co2emission: parseFloat(
         (parseInt(nextProps.kilometer) * 203.182) / 1000
       ).toFixed(2),
-      showInfo: false,
+      showInfo: true,
     };
   }
 
@@ -93,6 +131,7 @@ class ProfilePage extends Component {
       })
       .then(() => {
         //this.props.getData();
+        this.refreshDasboardAfterSaving();
         console.log("CO2 Data:", this.state.co2emission);
 this.props.getData();
         // this.setState({
@@ -121,7 +160,7 @@ this.props.getData();
   // };
 
   render() {
-    console.log("Banana", this.state);
+    //console.log("Banana", this.state);
     return (
       <div>
         <h1>This represents the Profile Page</h1>
@@ -180,7 +219,11 @@ this.props.getData();
           </Form.Group> */}
         {/* <Button type="submit">Save</Button> */}
         {/* </Form> */}
-        <Dashboard />
+        <h3>Here we will show the Dashboard</h3>
+        <p>Total kilometers rode is {this.state.totalKilometer}</p>
+        <p>{}</p>
+        <p>Total CO2 saved</p>
+        <p>tree capacity saved</p>
       </div>
     );
   }

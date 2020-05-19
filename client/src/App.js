@@ -8,12 +8,7 @@ import "./App.css";
 import Signup from "./components/Signup";
 import Navbar from "./components/Navbar";
 import Login from "./components/Login";
-
-
 import axios from 'axios';
-
-
-
 import { Route, Switch } from "react-router-dom";
 import ProtectedRoute from "./components/ProtectedRoute";
 import Routes from "./components/Routes";
@@ -126,7 +121,7 @@ getData = () => {
       }
 
   render() {
-    console.log("Heeeiiiii", this.state.user);
+    //console.log("Heeeiiiii", this.state.user);
     return (
       <div className="App">
 
