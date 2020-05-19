@@ -38,7 +38,7 @@ class App extends React.Component {
   // };
 
   componentDidMount = () => {
-   this.getData()
+  this.getData()
     const map = new mapboxgl.Map({
       container: "map",
       style: "mapbox://styles/mapbox/streets-v11",
@@ -111,19 +111,39 @@ class App extends React.Component {
     });
   };
 
+
+
 getData = () => {
         axios
           .get('/api/routes')
           .then(response => {
             console.log('the routes', response);
+          
+           
             this.setState({
               routes: response.data
             })
+          this.drawTrees();
+            console.log('routes:', this.state.routes)
           })
           .catch(err => {
             console.log(err);
           })
       }
+
+// drawTrees=()=>{
+//  let treesToPlant= this.state.routes.reduce((acc, route)=>{
+  
+//      return acc+(parseInt(route.co2emission)/23.2).toFixed(1);
+//   },0)
+// var img=document.createElement('img');
+// img.src='./public/baum.jpg';
+
+// ''
+// document.getElementById('trees')
+  
+//   console.log('Trees:',treesToPlant)
+// }
 
   render() {
     console.log("Heeeiiiii", this.state.user);
@@ -131,6 +151,8 @@ getData = () => {
       <div className="App">
 
         <Navbar user={this.state.user} setUser={this.setUser} />
+        <button onClick={this.drawTrees}>your saved trees</button>
+        <div id='trees'></div>
         <div className="pageContent">
           <div
             className="map"
@@ -191,6 +213,7 @@ getData = () => {
                 exact
                 path="/routes/:id"
                 user={this.state.user}
+                getData={this.getData}
                 component={RouteDetails}
               />
               ;
