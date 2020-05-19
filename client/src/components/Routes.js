@@ -1,10 +1,8 @@
-
 import React, { Component } from "react";
 import axios from "axios";
 import RoutesList from "./RoutesList";
 // import Dashboard from "./Dashboard";
 // import ProfilePage from "./ProfilePage";
-
 
 export default class Routes extends Component {
   state = {
@@ -20,8 +18,9 @@ export default class Routes extends Component {
       .get("/api/routes")
       .then((response) => {
         console.log(response);
+        let revercedResponse = response.reverce();
         this.setState({
-          routes: response.data,
+          routes: revercedResponse.data,
         });
       })
       .catch((err) => {
@@ -36,7 +35,6 @@ export default class Routes extends Component {
 
         {/* <Dashboard /> */}
         {/* <ProfilePage getData={this.getData} /> */}
-
       </div>
     );
   }
