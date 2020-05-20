@@ -17,7 +17,7 @@ export default class RoutesDetails extends Component {
   componentDidMount() {
     const routeId = this.props.match.params.id;
 
-    return axios
+    axios
       .get(`/api/routes/${routeId}`)
       .then((response) => {
         const route = response.data;

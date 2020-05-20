@@ -34,7 +34,7 @@ fullTrees.push(i);
 <div>
 
     {fullTreesImages}
-    {splitted[1]>=50? <img src={require('./treetwo.jpg')} alt='' width='5%'key='halftree'/> : <> </>}
+    {splitted[1]>=5? <img src={require('./treetwo.jpg')} alt='' width='5%'key='halftree'/> : <> </>}
 
 </div>
         )

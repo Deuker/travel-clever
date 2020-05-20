@@ -15,6 +15,7 @@ router.get("/", (req, res) => {
     });
 });
 
+
 router.get("/:id", (req, res) => {
   const id = req.params.id;
 
@@ -34,6 +35,8 @@ router.post("/", (req, res) => {
   const kilometer = req.body.kilometer;
   const co2emission = req.body.co2emission;
   const owner = req.user._id;
+  const oneWay=req.body.oneWay;
+  const returning=req.body.returning;
 
   Route.create({
     startpoint,
@@ -41,6 +44,8 @@ router.post("/", (req, res) => {
     kilometer,
     co2emission,
     owner,
+    oneWay,
+    returning
   })
     .then((route) => {
       return User.findByIdAndUpdate(owner, {
@@ -62,7 +67,7 @@ router.put("/:id", (req, res) => {
 
   Route.findByIdAndUpdate(
     id,
-    { startpoint, endpoint, kilometer, co2emission, ownerId },
+    { startpoint, endpoint, kilometer, co2emission, owner, oneWay, returning },
     { new: true }
   )
     .then((route) => {

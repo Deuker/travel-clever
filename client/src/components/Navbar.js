@@ -30,15 +30,16 @@ const Navbar = props => {
       {props.user ? (
         <>
    
-          <Nav.Brand>
-            <Link to='/'  class='link' onClick={() => handleLogout(props)}>
-              Logout</Link>
-           </Nav.Brand>
+   
             <Nav.Brand>
             <Link to='/routes'  class='link'>
               My saved routes
             </Link>
           </Nav.Brand>
+          <Nav.Brand>
+            <Link to='/'  class='link' onClick={() => handleLogout(props)}>
+              Logout</Link>
+           </Nav.Brand>
         </>
       ) : (
           <>

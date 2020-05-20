@@ -119,7 +119,7 @@ class App extends React.Component {
         fromToEle[1].click();
 
         this.setState({
-          routes: response.data,
+          routes: response.data.reverse(),
           buttonClick: false,
           startpoint: "",
           endpoint: "",
@@ -141,34 +141,34 @@ class App extends React.Component {
   // var img=document.createElement('img');
   // img.src='./public/baum.jpg';
 
-  drawTrees = () => {
-    let treesToPlant = this.state.routes
-      .reduce((acc, route) => {
-        console.log(parseInt(route.co2emission));
-        return acc + parseInt(route.co2emission) / 23.2;
-      }, 0)
-      .toFixed(2);
-    let splitted = treesToPlant.split(".");
-    console.log(splitted);
-    console.log("trees:", treesToPlant);
+  // drawTrees = () => {
+  //   let treesToPlant = this.state.routes
+  //     .reduce((acc, route) => {
+  //       console.log(parseInt(route.co2emission));
+  //       return acc + parseInt(route.co2emission) / 23.2;
+  //     }, 0)
+  //     .toFixed(2);
+  //   let splitted = treesToPlant.split(".");
+  //   console.log(splitted);
+  //   console.log("trees:", treesToPlant);
 
-    var images = document.getElementsByTagName("img");
-    var l = images.length;
-    for (var j = 0; j < l; j++) {
-      images[0].parentNode.removeChild(images[0]);
-    }
+  //   var images = document.getElementsByTagName("img");
+  //   var l = images.length;
+  //   for (var j = 0; j < l; j++) {
+  //     images[0].parentNode.removeChild(images[0]);
+  //   }
 
-    for (var i = 1; i <= parseInt(splitted[0]); i++) {
-      var img = new Image(50, 50);
-      img.src = tree;
-      document.getElementById("drawTrees").appendChild(img);
-    }
-    if (parseInt(splitted[1]) >= 50) {
-      var img2 = new Image(25, 50);
-      img2.src = treetwo;
-      document.getElementById("drawTrees").appendChild(img2);
-    }
-  };
+  //   for (var i = 1; i <= parseInt(splitted[0]); i++) {
+  //     var img = new Image(50, 50);
+  //     img.src = tree;
+  //     document.getElementById("drawTrees").appendChild(img);
+  //   }
+  //   if (parseInt(splitted[1]) >= 50) {
+  //     var img2 = new Image(25, 50);
+  //     img2.src = treetwo;
+  //     document.getElementById("drawTrees").appendChild(img2);
+  //   }
+  // };
   // let image=new Image();
   // image.src='./public/baum.jpg';
   //  document.getElementsByClassName('trees').appenChild(imgage)};
@@ -213,7 +213,7 @@ class App extends React.Component {
   
            
 
-          <ProtectedRoute
+          {/* <ProtectedRoute
              user={this.state.user}
 
               startpoint={this.state.startpoint}
@@ -229,9 +229,9 @@ class App extends React.Component {
               // drawTrees={this.drawTrees}
               component={ProfilePage}
 
-            />
+            /> */}
 
-            <Switch>
+            {/* <Switch> */}
       
 
     
@@ -285,8 +285,8 @@ class App extends React.Component {
                 path="/login"
                 render={(props) => <Login setUser={this.setUser} {...props} />}
               />
-
-            </Switch>
+           
+            {/* </Switch> */}
 
               {/* <ProtectedRoute
                 // add protection of routes here
