@@ -24,6 +24,7 @@ class ProfilePage extends Component {
 
   componentDidMount() {
     this.refreshDasboardAfterSaving();
+    this.props.getData();
   }
 
   refreshDasboardAfterSaving() {
@@ -56,6 +57,7 @@ class ProfilePage extends Component {
           totalTreeCapacitySaved,
 
         });
+        this.props.getData();
       })
 
       .catch((error) => {
@@ -155,7 +157,7 @@ class ProfilePage extends Component {
           }}
         >
           <h3>Your travel Dashboard</h3>
-          <p>Total kilometers cycled {this.state.totalKilometer}</p>
+          <p>Total kilometers cycled {this.state.totalKilometer}km</p>
           <p>{}</p>
           <p>Total CO2 saved: {this.state.totalCo2Saved} kg</p>
           <p>

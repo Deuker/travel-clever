@@ -156,7 +156,26 @@ class App extends React.Component {
           </div>
 
           <div className="layout">
-          <ProtectedRoute
+    
+
+            {this.state.showButton ? (
+              <button onClick={this.getRoute} style={{
+                marginRight:'200px'
+              }} >
+                Calculate CO2 for this route
+              </button>
+            ) : (
+              ""
+            )}
+            <Route
+                // this is an additional prop that is taken care of with ...rest
+                exact
+                path="/"
+                user={this.state.user}
+              />
+            {/* <Switch> */}
+        
+             <ProtectedRoute
              user={this.state.user}
               startpoint={this.state.startpoint}
               endpoint={this.state.endpoint}
@@ -168,31 +187,15 @@ class App extends React.Component {
               // drawTrees={this.drawTrees}
               component={ProfilePage}
             />
-
-            {this.state.showButton ? (
-              <button onClick={this.getRoute} style={{
-                marginRight:'200px'
-              }} >
-                Calculate CO2 for this route
-              </button>
-            ) : (
-              ""
-            )}
-            <Switch>
-              <Route
-                // this is an additional prop that is taken care of with ...rest
-                exact
-                path="/"
-                user={this.state.user}
-              />
               <ProtectedRoute
                 exact
                 path="/routes"
                 user={this.state.user}
                 routes={this.state.routes}
+                // getData={this.getData}
                 component={Routes}
               />
-              ;
+              
               <ProtectedRoute
                 exact
                 path="/routes/:id"
@@ -200,7 +203,7 @@ class App extends React.Component {
                 getData={this.getData}
                 component={RouteDetails}
               />
-              ;
+              
               <Route
                 exact
                 path="/signup"
@@ -229,7 +232,7 @@ class App extends React.Component {
                   />
                 )}
               /> */}
-            </Switch>
+            {/* </Switch> */}
           </div>
         </div>
        

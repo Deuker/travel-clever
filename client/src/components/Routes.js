@@ -48,6 +48,6 @@ export default class Routes extends Component {
   // };
 
   render() {
-    return <RoutesList routes={this.props.routes} />;
+    return <RoutesList  routes={this.props.routes} />;
   }
 }
