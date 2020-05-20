@@ -202,7 +202,7 @@ class App extends React.Component {
               user={this.state.user}
             /> */}
             {/* <Switch>  */}
-            {this.state.showButton ? (
+            {/* {this.state.showButton ? (
               <button
                 onClick={this.getRoute}
                 style={{
@@ -213,7 +213,7 @@ class App extends React.Component {
               </button>
             ) : (
               ""
-            )}
+            )} */}
             {/* <Switch> */}
             {/* <Route
                 // this is an additional prop that is taken care of with ...rest
@@ -229,7 +229,7 @@ class App extends React.Component {
               routes={this.state.routes}
               component={Routes}
             />
-            ;
+
             <ProtectedRoute
               exact
               path="/routes/:id"
@@ -237,7 +237,7 @@ class App extends React.Component {
               getData={this.getData}
               component={RouteDetails}
             />
-            ;
+
             <Route
               exact
               path="/signup"
