@@ -1,6 +1,6 @@
 import React from "react";
 import "./LandingPage.css";
-import navimage from "../images/cycle_now.png";
+// import navimage from "../images/cycle_now.png";
 
 const LandingPage = () => {
   return (

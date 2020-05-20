@@ -13,7 +13,7 @@
 } */
 
 .bg-img {
-  background-image: url("../images/main_cyclenow.jpeg");
+  /* background-image: url("../images/main_cyclenow.jpeg"); */
   min-height: 380px;
   background-position: center;
   background-repeat: no-repeat;
