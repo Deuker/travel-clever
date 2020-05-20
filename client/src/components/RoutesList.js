@@ -7,7 +7,7 @@ const RoutesList = (props) => {
     <div className="routesList">
       {props.routes.length > 0 && <h3>Routes:</h3>}
 
-      {props.routes.reverse().map((routes) => {
+      {props.routes.map((routes) => {
         return (
           <div key={routes._id}>
             <p>

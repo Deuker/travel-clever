@@ -7,7 +7,48 @@ body {
   -moz-osx-font-smoothing: grayscale;
   height: 100%;
   margin: 0;
+
+  background: linear-gradient(204deg, #dfc11a, #b2a1a8, #bfb8a1);
+  background-size: 600% 600%;
+
+  -webkit-animation: AnimationName 53s ease infinite;
+  -moz-animation: AnimationName 53s ease infinite;
+  animation: AnimationName 53s ease infinite;
 }
+
+/* @-webkit-keyframes AnimationName {
+  0% {
+    background-position: 0% 72%;
+  }
+  50% {
+    background-position: 100% 29%;
+  }
+  100% {
+    background-position: 0% 72%;
+  }
+}
+@-moz-keyframes AnimationName {
+  0% {
+    background-position: 0% 72%;
+  }
+  50% {
+    background-position: 100% 29%;
+  }
+  100% {
+    background-position: 0% 72%;
+  }
+}
+@keyframes AnimationName {
+  0% {
+    background-position: 0% 72%;
+  }
+  50% {
+    background-position: 100% 29%;
+  }
+  100% {
+    background-position: 0% 72%;
+  }
+} */
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
