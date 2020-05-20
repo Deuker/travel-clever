@@ -13,8 +13,8 @@ import Login from "./components/Login";
 
 // import { Image } from 'react-native';
 import axios from "axios";
-import tree from "./tree.jpg";
-import treetwo from "./treetwo.jpg";
+
+
 
 import { Route, Switch } from "react-router-dom";
 import ProtectedRoute from "./components/ProtectedRoute";
@@ -125,13 +125,13 @@ class App extends React.Component {
           endpoint: "",
           kilometer: "",
         });
-        this.drawTrees();
         console.log("routes:", this.state.routes);
       })
       .catch((err) => {
         console.log(err);
       });
   };
+
 
   // drawTrees=()=>{
   //  let treesToPlant= this.state.routes.reduce((acc, route)=>{
@@ -177,14 +177,13 @@ class App extends React.Component {
 
   // console.log('Trees:',treesToPlant)
 
+
   render() {
     console.log("Heeeiiiii", this.state.user);
 
     return (
       <div className="App">
         <Navbar user={this.state.user} setUser={this.setUser} />
-        {/* <button onClick={this.drawTrees}>your saved trees</button> */}
-        <div id="trees"></div>
         <div className="pageContent">
           <div
             id="map"
@@ -200,6 +199,7 @@ class App extends React.Component {
           </div>
 
           <div className="layout">
+
             {this.state.showButton ? (
               <button className="calculateCO2"
                 onClick={this.getRoute}
@@ -209,14 +209,25 @@ class App extends React.Component {
             ) : (
               ""
             )}
-            <ProfilePage
+  
+           
+
+          <ProtectedRoute
+             user={this.state.user}
+
               startpoint={this.state.startpoint}
               endpoint={this.state.endpoint}
               kilometer={this.state.kilometer}
               getData={this.getData}
               showRouteInfo={this.state.showRouteInfo}
               closeShowRouteInfo={this.closeShowRouteInfo}
-              drawTrees={this.drawTrees}
+
+     
+
+              routes={this.state.routes}
+              // drawTrees={this.drawTrees}
+              component={ProfilePage}
+
             />
 
             <Switch>
