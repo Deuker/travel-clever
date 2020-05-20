@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 
-
-
 class Trees extends Component{
     render(){
         console.log('routes:',this.props.routes)
@@ -20,7 +18,7 @@ fullTrees.push(i);
 
    const fullTreesImages=fullTrees.map(tree=>{
        return <img
-            src={require("./tree.jpg")}
+            src={require('./tree.jpg')}
             alt=''
             width='10%'
             key={tree}

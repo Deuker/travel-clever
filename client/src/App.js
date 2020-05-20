@@ -200,6 +200,7 @@ class App extends React.Component {
 
           <div className="layout">
 
+
             {this.state.showButton ? (
               <button className="calculateCO2"
                 onClick={this.getRoute}
@@ -231,20 +232,41 @@ class App extends React.Component {
             />
 
             <Switch>
-              <Route
+      
+
+    
+
+           
+            <Route
+
                 // this is an additional prop that is taken care of with ...rest
                 exact
                 path="/"
                 user={this.state.user}
               />
+            {/* <Switch> */}
+        
+             <ProtectedRoute
+             user={this.state.user}
+              startpoint={this.state.startpoint}
+              endpoint={this.state.endpoint}
+              kilometer={this.state.kilometer}
+              getData={this.getData}
+              showRouteInfo={this.state.showRouteInfo}
+              closeShowRouteInfo={this.closeShowRouteInfo}
+              routes={this.state.routes}
+              // drawTrees={this.drawTrees}
+              component={ProfilePage}
+            />
               <ProtectedRoute
                 exact
                 path="/routes"
                 user={this.state.user}
                 routes={this.state.routes}
+                // getData={this.getData}
                 component={Routes}
               />
-              ;
+              
               <ProtectedRoute
                 exact
                 path="/routes/:id"
@@ -252,7 +274,7 @@ class App extends React.Component {
                 getData={this.getData}
                 component={RouteDetails}
               />
-              ;
+              
               <Route
                 exact
                 path="/signup"
@@ -263,7 +285,29 @@ class App extends React.Component {
                 path="/login"
                 render={(props) => <Login setUser={this.setUser} {...props} />}
               />
+
             </Switch>
+
+              {/* <ProtectedRoute
+                // add protection of routes here
+                exact
+                path="/dashboard"
+                component={ProfilePage}
+                render={(props) => (
+                  <ProfilePage
+                    {...props}
+                    startpoint={this.state.startpoint}
+                    endpoint={this.state.endpoint}
+                    kilometer={this.state.kilometer}
+                    getData={this.getData}
+                    showRouteInfo={this.state.showRouteInfo}
+                    closeShowRouteInfo={this.closeShowRouteInfo}
+                    
+                  />
+                )}
+              /> */}
+            {/* </Switch> */}
+
           </div>
         </div>
       </div>
