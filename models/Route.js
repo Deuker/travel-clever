@@ -9,7 +9,9 @@ const routeSchema = new Schema({
     owner:{
         type:Schema.Types.ObjectId,
         ref:'User'
-    }
+    },
+    oneWay:Boolean,
+    returning:Boolean
 });
 
 const Route = mongoose.model('Route', routeSchema);

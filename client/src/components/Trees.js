@@ -24,6 +24,8 @@ class Trees extends Component {
     console.log(fullTrees);
     console.log("trees:", treesToPlant);
 
+
+
     return (
       <div>
         {fullTreesImages}
@@ -40,6 +42,7 @@ class Trees extends Component {
       </div>
     );
   }
+
 }
 
 export default Trees;

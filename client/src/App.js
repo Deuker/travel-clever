@@ -130,6 +130,7 @@ class App extends React.Component {
       });
   };
 
+
   // let image=new Image();
   // image.src='./public/baum.jpg';
   //  document.getElementsByClassName('trees').appenChild(imgage)};
@@ -171,7 +172,9 @@ class App extends React.Component {
               ""
             )}
 
+
             {/* <ProtectedRoute
+
              user={this.state.user}
 
               startpoint={this.state.startpoint}
@@ -209,6 +212,7 @@ class App extends React.Component {
               // drawTrees={this.drawTrees}
               component={ProfilePage}
             />
+
             <ProtectedRoute
               exact
               path="/routes"
@@ -225,6 +229,7 @@ class App extends React.Component {
               getData={this.getData}
               component={RouteDetails}
             />
+
 
             <Route
               exact

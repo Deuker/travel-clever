@@ -18,6 +18,7 @@ const Navbar = (props) => {
   return (
     <Nav bg="bg-custom">
       <Nav.Toggle aria-controls="basic-navbar-nav" />
+
       <Nav.Collapse id="basic-navbar-nav">
         <Nav className="mr-auto">
           {props.user && <Nav.Brand>Welcome, {props.user.username}</Nav.Brand>}
@@ -54,6 +55,7 @@ const Navbar = (props) => {
               </Nav.Brand>
             </>
           )}
+
         </Nav>
       </Nav.Collapse>
     </Nav>
