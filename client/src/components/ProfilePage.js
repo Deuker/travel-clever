@@ -4,8 +4,8 @@ import React, {
 } from "react";
 import { Button } from "react-bootstrap";
 import WelcomePage from "./WelcomePage";
-import Dashboard from "./Dashboard";
 import axios from "axios";
+import Trees from './Trees';
 
 class ProfilePage extends Component {
   //state here for saving the information and sending it to the Backend
@@ -24,7 +24,6 @@ class ProfilePage extends Component {
 
   componentDidMount() {
     this.refreshDasboardAfterSaving();
-    this.props.drawTrees();
   }
 
   refreshDasboardAfterSaving() {
@@ -44,7 +43,7 @@ class ProfilePage extends Component {
           console.log(singleKilometer);
           totalKilometer += singleKilometer;
           totalCo2Saved += singleCo2;
-          totalTreeCapacitySaved = (totalKilometer * 203.182) / 1000;
+          totalTreeCapacitySaved = (totalCo2Saved / 23.2).toFixed(1);
           console.log(totalCo2Saved);
         }
         console.log(totalKilometer);
@@ -102,12 +101,10 @@ class ProfilePage extends Component {
         co2emission: this.state.co2emission,
       })
       .then(() => {
-        //this.props.getData();
         this.refreshDasboardAfterSaving();
         console.log("CO2 Data:", this.state.co2emission);
         this.props.getData();
 
-        this.drawTrees();
         
         // this.setState({
         //   startpoint: "",
@@ -164,7 +161,7 @@ class ProfilePage extends Component {
           <p>
             Amount of trees saved: {this.state.totalTreeCapacitySaved} trees
           </p>
-    <div id='drawTrees' onLoad={this.props.drawTrees()}></div>
+          <Trees routes={this.props.routes}/>
         </div>
       </div>
     );
