@@ -24,8 +24,8 @@ class ProfilePage extends Component {
     //
     //showInfo: false,
     co2emission: "",
-    oneWay:true,
-    returning:false
+    oneWay: true,
+    returning: false,
   };
 
   componentDidMount() {
@@ -94,34 +94,27 @@ class ProfilePage extends Component {
   };
 
   handleSubmit = (event) => {
-    console.log(this.state.oneWay)
+    console.log(this.state.oneWay);
     event.preventDefault();
     const data = this.props;
     console.log("Final data is: ", data);
     //axios request goes here
- 
+
     axios
       .post("/api/routes", {
         startpoint: this.state.startpoint,
         endpoint: this.state.endpoint,
-        kilometer: this.state.returning?(parseFloat(this.state.kilometer.split('km'))*2)+'km':this.state.kilometer,
+        kilometer: this.state.returning
+          ? parseFloat(this.state.kilometer.split("km")) * 2 + "km"
+          : this.state.kilometer,
         co2emission: this.state.co2emission,
-        oneWay:this.state.oneWay,
-        returning:this.state.returning,
+        oneWay: this.state.oneWay,
+        returning: this.state.returning,
       })
       .then(() => {
         this.refreshDasboardAfterSaving();
         console.log("CO2 Data:", this.state.co2emission);
         this.props.getData();
-
-        this.props.closeShowRouteInfo();
-
-        // this.setState({
-
-        //   startpoint: "",
-        //   endpoint: "",
-        //   kilometer: "",
-        // });
 
         this.props.closeShowRouteInfo();
       })
@@ -130,80 +123,91 @@ class ProfilePage extends Component {
       });
   };
 
-  handleCheckboxOneChange=(event)=>{
+  handleCheckboxOneChange = (event) => {
     // console.log(this.state.oneWay)
-//  if(this.state.oneWay){
-//   document.getElementById("oneWay").disabled = true;
-//  }else if(this.state.oneWay===false){
-//   document.getElementById("oneWay").disabled = false;
-//  }
+    //  if(this.state.oneWay){
+    //   document.getElementById("oneWay").disabled = true;
+    //  }else if(this.state.oneWay===false){
+    //   document.getElementById("oneWay").disabled = false;
+    //  }
 
-if(this.state.oneWay){
-  this.setState({
-    oneWay:false,
-    returning:true,
-  })
-}else{
-    this.setState({
-       oneWay:event.target.checked,
-       returning:false
-   })
-  //  this.uncheck()
-  }
-  }
-  handleCheckboxTwoChange=(event)=>{
-  // if(this.state.return){
-  //   document.getElementById("return").disabled = true;
-  // }else if(this.state.return===false){
-  //   document.getElementById("return").disabled = false;
-  //  }
-  if(this.state.returning){
-    this.setState({
-      oneWay:true,
-      returning:false
-    })
-  } else{
-    this.setState({
-      oneWay:false,
-      returning:event.target.checked,
-
-   });
-  }
-  //  this.uncheck()
-  }
-
- uncheck=()=>{
-  if(this.state.oneWay){
-    this.setState({
-      returning:false,
-    })}else if(this.state.returning){
+    if (this.state.oneWay) {
       this.setState({
-        oneWay:false
-      })
+        oneWay: false,
+        returning: true,
+      });
+    } else {
+      this.setState({
+        oneWay: event.target.checked,
+        returning: false,
+      });
+      //  this.uncheck()
     }
-  }
+  };
+  handleCheckboxTwoChange = (event) => {
+    // if(this.state.return){
+    //   document.getElementById("return").disabled = true;
+    // }else if(this.state.return===false){
+    //   document.getElementById("return").disabled = false;
+    //  }
+    if (this.state.returning) {
+      this.setState({
+        oneWay: true,
+        returning: false,
+      });
+    } else {
+      this.setState({
+        oneWay: false,
+        returning: event.target.checked,
+      });
+    }
+    //  this.uncheck()
+  };
 
+  uncheck = () => {
+    if (this.state.oneWay) {
+      this.setState({
+        returning: false,
+      });
+    } else if (this.state.returning) {
+      this.setState({
+        oneWay: false,
+      });
+    }
+  };
 
   render() {
     //console.log("Banana", this.state);
     return (
-
-      <div>
-
+      <React.Fragment>
         {/* <Dashboard /> */}
 
         {this.state.showRouteInfo ? (
           <div className="routeDetails">
             <h3>Your Search Route details:</h3>
             <label>one way</label>
-            <input type='checkbox' onChange={this.handleCheckboxOneChange} id='oneWay' checked={this.state.oneWay}/> 
-             <label>return</label>
-            <input type='checkbox' onChange={this.handleCheckboxTwoChange} id='return' checked={this.state.returning}/>
+            <input
+              type="checkbox"
+              onChange={this.handleCheckboxOneChange}
+              id="oneWay"
+              checked={this.state.oneWay}
+            />
+            <label>return</label>
+            <input
+              type="checkbox"
+              onChange={this.handleCheckboxTwoChange}
+              id="return"
+              checked={this.state.returning}
+            />
             <div>From: {this.state.startpoint}</div>
             <div>To: {this.state.endpoint}</div>
             <div>Distance: {this.state.kilometer}</div>
             <div>CO2: {this.state.co2emission}kg</div>
-            <button className="saveRouteBtn" onClick={this.handleSubmit} type="button">
+            <button
+              className="saveRouteBtn"
+              onClick={this.handleSubmit}
+              type="button"
+            >
               Save this Route
             </button>
           </div>
@@ -222,7 +226,7 @@ if(this.state.oneWay){
 
           <Trees routes={this.props.routes} />
         </div>
-      </div>
+      </React.Fragment>
     );
   }
 }
