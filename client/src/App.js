@@ -10,6 +10,7 @@ import "./App.css";
 import Signup from "./components/Signup";
 import Navbar from "./components/Navbar";
 import Login from "./components/Login";
+import LandingPage from "./components/LandingPage";
 
 // import { Image } from 'react-native';
 import axios from "axios";
@@ -135,6 +136,7 @@ class App extends React.Component {
   // image.src='./public/baum.jpg';
   //  document.getElementsByClassName('trees').appenChild(imgage)};
 
+
   // console.log('Trees:',treesToPlant)
 
   // console.log('Trees:',treesToPlant)
@@ -159,8 +161,21 @@ class App extends React.Component {
               mapboxApiAccessToken="pk.eyJ1IjoidmljdG9yaWF0b3JpYSIsImEiOiJja2EzbHVrMnowMzBzM2tyd2VsNnI2YnFiIn0.rZpPyrN5hdNxsnVtAWWCOQ"
             ></ReactMapGL>
           </div>
-
+          {/* <div className="landingpage">
+            {/* {!this.state.user && <LandingPage />} */}
+          {/* <h2>cycle today!</h2>
+            <p>get a better understanding of your cycling impact</p>
+            <p>track your bicyle activity...</p>
+            <p>...and understand your impact</p>
+            <h4>did you actually know?</h4>
+            <p>...how much co2 a tree compensates per year?</p>
+            <p>...how much calories you burn via cycling?</p>
+            <p>...how much kilometers bike you ride per year?</p>
+            <p>get answers</p>
+            <h3>become cyclist of the week</h3> */}
+          {/* </div> */}
           <div className="layout">
+
             {this.state.showButton ? (
               <button
                 className="calculateCO2 animate__animated animate__bounceln"
@@ -184,6 +199,7 @@ class App extends React.Component {
               showRouteInfo={this.state.showRouteInfo}
               closeShowRouteInfo={this.closeShowRouteInfo}
 
+
      
 
               routes={this.state.routes}
@@ -197,8 +213,65 @@ class App extends React.Component {
               exact
               path="/"
               user={this.state.user}
+
             />
             {/* <Switch>  */}
+
+            {this.state.showButton ? (
+              <button
+                onClick={this.getRoute}
+                style={{
+                  marginRight: "200px",
+                }}
+              >
+                Calculate CO2 for this route
+              </button>
+            ) : (
+              ""
+            )}
+            <Switch>
+              {/* <Route
+                // this is an additional prop that is taken care of with ...rest
+              //   exact
+              //   path="/"
+              //   user={this.state.user}
+              //   component={LandingPage}
+              // /> */}
+              <Route
+                exact
+                path="/"
+                render={(props) => (
+                  <LandingPage user={this.state.user} {...props} />
+                )}
+              />
+              <ProtectedRoute
+                exact
+                path="/routes"
+                user={this.state.user}
+                routes={this.state.routes}
+                component={Routes}
+              />
+              ;
+              <ProtectedRoute
+                exact
+                path="/routes/:id"
+                user={this.state.user}
+                getData={this.getData}
+                component={RouteDetails}
+              />
+              ;
+              <Route
+                exact
+                path="/signup"
+                render={(props) => <Signup setUser={this.setUser} {...props} />}
+              />
+              <Route
+                exact
+                path="/login"
+                render={(props) => <Login setUser={this.setUser} {...props} />}
+              />
+              {/* <ProtectedRoute
+                //add protection of routes here
 
             <ProtectedRoute
               user={this.state.user}
@@ -246,6 +319,7 @@ class App extends React.Component {
 
             {/* <ProtectedRoute
                 // add protection of routes here
+
                 exact
                 path="/dashboard"
                 component={ProfilePage}
