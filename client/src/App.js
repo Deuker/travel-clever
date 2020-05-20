@@ -15,8 +15,8 @@ import Login from "./components/Login";
 
 // import { Image } from 'react-native';
 import axios from "axios";
-import tree from "./tree.jpg";
-import treetwo from "./treetwo.jpg";
+
+
 
 import { Route, Switch } from "react-router-dom";
 import ProtectedRoute from "./components/ProtectedRoute";
@@ -127,7 +127,6 @@ class App extends React.Component {
           endpoint: "",
           kilometer: "",
         });
-        this.drawTrees();
         console.log("routes:", this.state.routes);
       })
       .catch((err) => {
@@ -135,60 +134,13 @@ class App extends React.Component {
       });
   };
 
-  // drawTrees=()=>{
-  //  let treesToPlant= this.state.routes.reduce((acc, route)=>{
-
-  //      return acc+(parseInt(route.co2emission)/23.2).toFixed(1);
-  //   },0)
-  // var img=document.createElement('img');
-  // img.src='./public/baum.jpg';
-
-  drawTrees = () => {
-    let treesToPlant = this.state.routes
-      .reduce((acc, route) => {
-        console.log(parseInt(route.co2emission));
-        return acc + parseInt(route.co2emission) / 23.2;
-      }, 0)
-      .toFixed(2);
-    let splitted = treesToPlant.split(".");
-    console.log(splitted);
-    console.log("trees:", treesToPlant);
-
-    var images = document.getElementsByTagName("img");
-    var l = images.length;
-    for (var j = 0; j < l; j++) {
-      images[0].parentNode.removeChild(images[0]);
-    }
-
-    for (var i = 1; i <= parseInt(splitted[0]); i++) {
-
-  var img= new Image(50, 50);
-  img.src = tree;
-    document.getElementById('drawTrees').appendChild(img);
-}  
-  if (parseInt(splitted[1])>=50){
-      var img2 = new Image(25, 50);
-          img2.src = treetwo;
-            document.getElementById('drawTrees').appendChild(img2)
-      }
-}
-// let image=new Image();
-// image.src='./public/baum.jpg';
-//  document.getElementsByClassName('trees').appenChild(imgage)};
   
-  // console.log('Trees:',treesToPlant)
-
-
-  // console.log('Trees:',treesToPlant)
-
   render() {
     console.log("Heeeiiiii", this.state.user);
 
     return (
       <div className="App">
         <Navbar user={this.state.user} setUser={this.setUser} />
-        {/* <button onClick={this.drawTrees}>your saved trees</button> */}
-        <div id="trees"></div>
         <div className="pageContent">
           <div
             id="map"
@@ -204,16 +156,17 @@ class App extends React.Component {
           </div>
 
           <div className="layout">
-             <ProfilePage
-
+          <ProtectedRoute
+             user={this.state.user}
               startpoint={this.state.startpoint}
               endpoint={this.state.endpoint}
               kilometer={this.state.kilometer}
               getData={this.getData}
               showRouteInfo={this.state.showRouteInfo}
               closeShowRouteInfo={this.closeShowRouteInfo}
-
-              drawTrees={this.drawTrees}
+              routes={this.state.routes}
+              // drawTrees={this.drawTrees}
+              component={ProfilePage}
             />
 
             {this.state.showButton ? (
