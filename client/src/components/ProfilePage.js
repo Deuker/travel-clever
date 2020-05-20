@@ -3,9 +3,10 @@ import React, {
   Component,
 } from "react";
 import { Button } from "react-bootstrap";
-import WelcomePage from "./WelcomePage";
-import Dashboard from "./Dashboard";
+// import WelcomePage from "./WelcomePage";
+// import Dashboard from "./Dashboard";
 import axios from "axios";
+import "./ProfilePage.css";
 
 class ProfilePage extends Component {
   //state here for saving the information and sending it to the Backend
@@ -28,7 +29,6 @@ class ProfilePage extends Component {
   }
 
   refreshDasboardAfterSaving() {
-
     axios
       .get("api/routes")
       .then((response) => {
@@ -55,7 +55,6 @@ class ProfilePage extends Component {
           totalKilometer,
           totalCo2Saved,
           totalTreeCapacitySaved,
-
         });
       })
 
@@ -102,14 +101,14 @@ class ProfilePage extends Component {
         co2emission: this.state.co2emission,
       })
       .then(() => {
-        //this.props.getData();
         this.refreshDasboardAfterSaving();
         console.log("CO2 Data:", this.state.co2emission);
         this.props.getData();
-
+        this.props.closeShowRouteInfo();
         this.drawTrees();
-        
+
         // this.setState({
+
         //   startpoint: "",
         //   endpoint: "",
         //   kilometer: "",
@@ -125,38 +124,25 @@ class ProfilePage extends Component {
   render() {
     //console.log("Banana", this.state);
     return (
-      <div className="layout">
-        <WelcomePage />
+      <div>
         {/* <Dashboard /> */}
 
-        <div>
-          {this.state.showRouteInfo ? (
-            <div>
-              <h3>Your Search Route details:</h3>
-              <div>From: {this.state.startpoint}</div>
-              <div>To: {this.state.endpoint}</div>
-              <div>Distance: {this.state.kilometer}</div>
-              <div>CO2: {this.state.co2emission}kg</div>
-              <Button onClick={this.handleSubmit} type="button">
-                Save this Route
-              </Button>
-            </div>
-          ) : (
-            ""
-          )}
-        </div>
+        {this.state.showRouteInfo ? (
+          <div className="routeDetails">
+            <h3>Your Search Route details:</h3>
+            <div>From: {this.state.startpoint}</div>
+            <div>To: {this.state.endpoint}</div>
+            <div>Distance: {this.state.kilometer}</div>
+            <div>CO2: {this.state.co2emission}kg</div>
+            <Button onClick={this.handleSubmit} type="button">
+              Save this Route
+            </Button>
+          </div>
+        ) : (
+          ""
+        )}
 
-
-
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            marginRight: "20%",
-            marginLeft: "5%",
-            borderStyle: "solid",
-          }}
-        >
+        <div className="dashboard">
           <h3>Your travel Dashboard</h3>
           <p>Total kilometers cycled {this.state.totalKilometer}</p>
           <p>{}</p>
@@ -164,7 +150,7 @@ class ProfilePage extends Component {
           <p>
             Amount of trees saved: {this.state.totalTreeCapacitySaved} trees
           </p>
-    <div id='drawTrees' onLoad={this.props.drawTrees()}></div>
+          <div id="drawTrees" onLoad={this.props.drawTrees()}></div>
         </div>
       </div>
     );

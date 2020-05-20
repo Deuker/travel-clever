@@ -1,9 +1,7 @@
 import React from "react";
 
 import ReactMapGL from "react-map-gl";
-import MapboxDirections, {
-  WAYPOINTS,
-} from "@mapbox/mapbox-gl-directions/dist/mapbox-gl-directions";
+import MapboxDirections from "@mapbox/mapbox-gl-directions/dist/mapbox-gl-directions";
 import mapboxgl from "mapbox-gl";
 
 //
@@ -161,23 +159,21 @@ class App extends React.Component {
     }
 
     for (var i = 1; i <= parseInt(splitted[0]); i++) {
-
-  var img= new Image(50, 50);
-  img.src = tree;
-    document.getElementById('drawTrees').appendChild(img);
-}  
-  if (parseInt(splitted[1])>=50){
+      var img = new Image(50, 50);
+      img.src = tree;
+      document.getElementById("drawTrees").appendChild(img);
+    }
+    if (parseInt(splitted[1]) >= 50) {
       var img2 = new Image(25, 50);
-          img2.src = treetwo;
-            document.getElementById('drawTrees').appendChild(img2)
-      }
-}
-// let image=new Image();
-// image.src='./public/baum.jpg';
-//  document.getElementsByClassName('trees').appenChild(imgage)};
-  
-  // console.log('Trees:',treesToPlant)
+      img2.src = treetwo;
+      document.getElementById("drawTrees").appendChild(img2);
+    }
+  };
+  // let image=new Image();
+  // image.src='./public/baum.jpg';
+  //  document.getElementsByClassName('trees').appenChild(imgage)};
 
+  // console.log('Trees:',treesToPlant)
 
   // console.log('Trees:',treesToPlant)
 
@@ -204,27 +200,25 @@ class App extends React.Component {
           </div>
 
           <div className="layout">
-             <ProfilePage
-
+            {this.state.showButton ? (
+              <button className="calculateCO2"
+                onClick={this.getRoute}
+              >
+                Calculate CO2 for this route
+              </button>
+            ) : (
+              ""
+            )}
+            <ProfilePage
               startpoint={this.state.startpoint}
               endpoint={this.state.endpoint}
               kilometer={this.state.kilometer}
               getData={this.getData}
               showRouteInfo={this.state.showRouteInfo}
               closeShowRouteInfo={this.closeShowRouteInfo}
-
               drawTrees={this.drawTrees}
             />
 
-            {this.state.showButton ? (
-              <button onClick={this.getRoute} style={{
-                marginRight:'200px'
-              }} >
-                Calculate CO2 for this route
-              </button>
-            ) : (
-              ""
-            )}
             <Switch>
               <Route
                 // this is an additional prop that is taken care of with ...rest
@@ -258,30 +252,10 @@ class App extends React.Component {
                 path="/login"
                 render={(props) => <Login setUser={this.setUser} {...props} />}
               />
-              {/* <ProtectedRoute
-                // add protection of routes here
-                exact
-                path="/dashboard"
-                component={ProfilePage}
-                render={(props) => (
-                  <ProfilePage
-                    {...props}
-                    startpoint={this.state.startpoint}
-                    endpoint={this.state.endpoint}
-                    kilometer={this.state.kilometer}
-                    getData={this.getData}
-                    showRouteInfo={this.state.showRouteInfo}
-                    closeShowRouteInfo={this.closeShowRouteInfo}
-                    
-                  />
-                )}
-              /> */}
             </Switch>
           </div>
         </div>
-       
       </div>
-      
     );
   }
 }

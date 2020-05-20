@@ -1,0 +1,28 @@
+.dashboard {
+  background-color: lightgray;
+  box-shadow: 10px 10px grey;
+  display: flex;
+  flex-direction: column;
+  margin-right: 30%;
+  margin-left: 5%;
+  border-style: solid;
+}
+
+h3 {
+  color: gray;
+
+  margin: 2% 2%;
+}
+.travelInfo {
+  border-style: dotted;
+}
+
+.routeDetails {
+  background-color: lightgray;
+  box-shadow: 10px 10px grey;
+  display: flex;
+  flex-direction: column;
+  margin-right: 30%;
+  margin-left: 5%;
+  border-style: solid;
+}
