@@ -2,6 +2,7 @@
   text-align: center;
   display: flex;
   flex-direction: column;
+  margin: 2%;
 }
 html {
   height: 100%;
@@ -14,6 +15,53 @@ body {
   display: flex;
   flex-direction: column;
 }
+
+#map {
+  display: flex;
+  flex-direction: column;
+  margin-top: 3%;
+}
+.mapboxgl-canvas {
+  display: flex;
+  flex-direction: column;
+  background-color: lightgray;
+  box-shadow: 10px 10px grey;
+  border-radius: 10px;
+  box-shadow: 10px 10px grey;
+}
+.calculateCO2 {
+  display: inline-block;
+  margin-bottom: 5%;
+  box-sizing: border-box;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  color: black;
+  text-align: center;
+  transition: all 0.15s;
+  border-radius: 10px;
+
+  padding: 10px;
+  width: 500px;
+}
+
+.calculateCO2 :hover {
+  color: #dddddd;
+  border-color: #dddddd;
+}
+.calculateCO2:active {
+  color: #bbbbbb;
+  border-color: #bbbbbb;
+}
+
+.layout {
+  display: flex;
+  flex-direction: column;
+  margin-top: 2%;
+  margin-right: 20%;
+}
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;
@@ -48,4 +96,3 @@ body {
     transform: rotate(360deg);
   }
 }
-

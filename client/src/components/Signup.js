@@ -31,7 +31,7 @@ export default class Signup extends Component {
         });
       } else {
         this.props.setUser(data);
-        this.props.history.push('/routes');
+        this.props.history.push('/');
       }
     });
   };
