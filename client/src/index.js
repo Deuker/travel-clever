@@ -13,24 +13,12 @@ axios
     ReactDOM.render(
       <Router>
         <App user={response.data} />
-        {/* <StickyFooter
-          bottomThreshold={50}
-          normalStyles={{
-            backgroundColor: "#999999",
-            padding: "2rem",
-          }}
-          stickyStyles={{
-            backgroundColor: "rgba(255,255,255,.8)",
-            padding: "2rem",
-          }}
-        /> */}
-        <React.Fragment>
+
+        {/* <React.Fragment>
           <footer>
             <ul className="footer-options">
               <li className="footer-link">
-                <a href="#" className="footer-linktext">
-                  Legal
-                </a>
+                <a href="#" className="footer-linktext"></a>
               </li>
               <li className="footer-link">
                 <a href="#" className="footer-linktext">
@@ -42,7 +30,7 @@ axios
               © 2021 Developed by Travel-Clever Team. All Rights Reserved.
             </span>
           </footer>
-        </React.Fragment>
+        </React.Fragment> */}
       </Router>,
       document.getElementById("root")
     );

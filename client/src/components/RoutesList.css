@@ -1,5 +1,14 @@
 .routesList {
   display: flex;
   flex-direction: column;
-  margin-right: 20%;
+  margin-right: 30%;
+  margin-left: 5%;
+  border-style: solid;
+  background-color: lightgray;
+  box-shadow: 10px 10px grey;
+  height: 350px;
+  overflow-y: scroll;
+}
+link {
+  size: 14px;
 }
