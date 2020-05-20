@@ -2,15 +2,14 @@ import React, {
   // useState, setState,
   Component,
 } from "react";
-import { Button } from "react-bootstrap";
+// import { Button } from "react-bootstrap";
 
 // import WelcomePage from "./WelcomePage";
 // import Dashboard from "./Dashboard";
 import axios from "axios";
 import "./ProfilePage.css";
 
-import Trees from './Trees';
-
+import Trees from "./Trees";
 
 class ProfilePage extends Component {
   //state here for saving the information and sending it to the Backend
@@ -116,8 +115,6 @@ class ProfilePage extends Component {
         this.props.getData();
 
         this.props.closeShowRouteInfo();
-     
-
 
         // this.setState({
 
@@ -204,9 +201,9 @@ if(this.state.oneWay){
             <div>To: {this.state.endpoint}</div>
             <div>Distance: {this.state.kilometer}</div>
             <div>CO2: {this.state.co2emission}kg</div>
-            <Button onClick={this.handleSubmit} type="button">
+            <button className="saveRouteBtn" onClick={this.handleSubmit} type="button">
               Save this Route
-            </Button>
+            </button>
           </div>
         ) : (
           ""
@@ -221,10 +218,7 @@ if(this.state.oneWay){
             Amount of trees saved: {this.state.totalTreeCapacitySaved} trees
           </p>
 
-        
-
-          <Trees routes={this.props.routes}/>
-
+          <Trees routes={this.props.routes} />
         </div>
       </div>
     );

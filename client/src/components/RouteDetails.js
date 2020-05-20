@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Button } from "react-bootstrap";
+
 import axios from "axios";
 import "./RouteDetails.css";
 
@@ -70,9 +70,13 @@ export default class RoutesDetails extends Component {
           {this.state.kilometer} km, CO2 impact:{this.state.co2emission} kg
         </h3>
         {allowedToDelete && (
-          <Button variant="danger" onClick={this.deleteRoute}>
+          <button
+            class="saveRouteBtn"
+            variant="danger"
+            onClick={this.deleteRoute}
+          >
             Delete this route
-          </Button>
+          </button>
         )}
       </div>
     );
