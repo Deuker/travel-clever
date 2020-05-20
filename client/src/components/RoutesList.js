@@ -9,9 +9,9 @@ const RoutesList = (props) => {
         flexDirection: "column",
         marginRight: "20%",
         marginLeft: "5%",
+        borderStyle: "solid",
       }}
     >
-      <h1>hi</h1>
       {props.routes.length > 0 && <h2>Routes:</h2>}
 
       {props.routes.reverse().map((routes) => {

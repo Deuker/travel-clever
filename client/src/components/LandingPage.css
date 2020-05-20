@@ -1,0 +1,75 @@
+/* https://www.w3schools.com/howto/howto_css_navbar_image.asp */
+
+/* .Banner {
+  color: red;
+  background-image: url("../images/main_cyclenow.jpeg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 50vw;
+  display: flex;
+  justify-content: center;
+  position: relative;
+} */
+
+.bg-img {
+  background-image: url("../images/main_cyclenow.jpeg");
+  min-height: 380px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+}
+
+.containerforHeader {
+  position: absolute;
+  margin: 20px;
+  width: 100%;
+}
+
+.topnavHeader {
+  overflow: hidden;
+  background-color: transparent;
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+}
+.menuforHeader img {
+  float: left;
+}
+
+.menuforHeader a {
+  float: left;
+  color: white;
+  text-align: center;
+  padding: 15px 18px;
+  text-decoration: none;
+  font-size: 18px;
+}
+
+.menuforHeader a:hover {
+  background-color: white;
+  color: black;
+}
+
+.Banner p {
+  color: yellow;
+  font-size: 1.2em;
+  width: 100%;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.Banner h2 {
+  color: white;
+  font-size: 1.2em;
+  width: 50%;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
