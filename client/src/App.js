@@ -14,8 +14,6 @@ import Login from "./components/Login";
 // import { Image } from 'react-native';
 import axios from "axios";
 
-
-
 import { Route, Switch } from "react-router-dom";
 import ProtectedRoute from "./components/ProtectedRoute";
 import Routes from "./components/Routes";
@@ -119,7 +117,7 @@ class App extends React.Component {
         fromToEle[1].click();
 
         this.setState({
-          routes: response.data,
+          routes: response.data.reverse(),
           buttonClick: false,
           startpoint: "",
           endpoint: "",
@@ -132,43 +130,6 @@ class App extends React.Component {
       });
   };
 
-
-  // drawTrees=()=>{
-  //  let treesToPlant= this.state.routes.reduce((acc, route)=>{
-
-  //      return acc+(parseInt(route.co2emission)/23.2).toFixed(1);
-  //   },0)
-  // var img=document.createElement('img');
-  // img.src='./public/baum.jpg';
-
-  drawTrees = () => {
-    let treesToPlant = this.state.routes
-      .reduce((acc, route) => {
-        console.log(parseInt(route.co2emission));
-        return acc + parseInt(route.co2emission) / 23.2;
-      }, 0)
-      .toFixed(2);
-    let splitted = treesToPlant.split(".");
-    console.log(splitted);
-    console.log("trees:", treesToPlant);
-
-    var images = document.getElementsByTagName("img");
-    var l = images.length;
-    for (var j = 0; j < l; j++) {
-      images[0].parentNode.removeChild(images[0]);
-    }
-
-    for (var i = 1; i <= parseInt(splitted[0]); i++) {
-      var img = new Image(50, 50);
-      img.src = tree;
-      document.getElementById("drawTrees").appendChild(img);
-    }
-    if (parseInt(splitted[1]) >= 50) {
-      var img2 = new Image(25, 50);
-      img2.src = treetwo;
-      document.getElementById("drawTrees").appendChild(img2);
-    }
-  };
   // let image=new Image();
   // image.src='./public/baum.jpg';
   //  document.getElementsByClassName('trees').appenChild(imgage)};
@@ -177,13 +138,13 @@ class App extends React.Component {
 
   // console.log('Trees:',treesToPlant)
 
-
   render() {
     console.log("Heeeiiiii", this.state.user);
 
     return (
       <div className="App">
         <Navbar user={this.state.user} setUser={this.setUser} />
+
         <div className="pageContent">
           <div
             id="map"
@@ -199,10 +160,9 @@ class App extends React.Component {
           </div>
 
           <div className="layout">
-
-
             {this.state.showButton ? (
-              <button className="calculateCO2"
+              <button
+                className="calculateCO2 animate__animated animate__bounceln"
                 onClick={this.getRoute}
               >
                 Calculate CO2 for this route
@@ -210,10 +170,8 @@ class App extends React.Component {
             ) : (
               ""
             )}
-  
-           
 
-          <ProtectedRoute
+            {/* <ProtectedRoute
              user={this.state.user}
 
               startpoint={this.state.startpoint}
@@ -229,25 +187,18 @@ class App extends React.Component {
               // drawTrees={this.drawTrees}
               component={ProfilePage}
 
-            />
+            /> */}
 
-            <Switch>
-      
-
-    
-
-           
             <Route
+              // this is an additional prop that is taken care of with ...rest
+              exact
+              path="/"
+              user={this.state.user}
+            />
+            {/* <Switch>  */}
 
-                // this is an additional prop that is taken care of with ...rest
-                exact
-                path="/"
-                user={this.state.user}
-              />
-            {/* <Switch> */}
-        
-             <ProtectedRoute
-             user={this.state.user}
+            <ProtectedRoute
+              user={this.state.user}
               startpoint={this.state.startpoint}
               endpoint={this.state.endpoint}
               kilometer={this.state.kilometer}
@@ -258,37 +209,37 @@ class App extends React.Component {
               // drawTrees={this.drawTrees}
               component={ProfilePage}
             />
-              <ProtectedRoute
-                exact
-                path="/routes"
-                user={this.state.user}
-                routes={this.state.routes}
-                // getData={this.getData}
-                component={Routes}
-              />
-              
-              <ProtectedRoute
-                exact
-                path="/routes/:id"
-                user={this.state.user}
-                getData={this.getData}
-                component={RouteDetails}
-              />
-              
-              <Route
-                exact
-                path="/signup"
-                render={(props) => <Signup setUser={this.setUser} {...props} />}
-              />
-              <Route
-                exact
-                path="/login"
-                render={(props) => <Login setUser={this.setUser} {...props} />}
-              />
+            <ProtectedRoute
+              exact
+              path="/routes"
+              user={this.state.user}
+              routes={this.state.routes}
+              // getData={this.getData}
+              component={Routes}
+            />
 
-            </Switch>
+            <ProtectedRoute
+              exact
+              path="/routes/:id"
+              user={this.state.user}
+              getData={this.getData}
+              component={RouteDetails}
+            />
 
-              {/* <ProtectedRoute
+            <Route
+              exact
+              path="/signup"
+              render={(props) => <Signup setUser={this.setUser} {...props} />}
+            />
+            <Route
+              exact
+              path="/login"
+              render={(props) => <Login setUser={this.setUser} {...props} />}
+            />
+
+            {/* </Switch> */}
+
+            {/* <ProtectedRoute
                 // add protection of routes here
                 exact
                 path="/dashboard"
@@ -306,8 +257,7 @@ class App extends React.Component {
                   />
                 )}
               /> */}
-            {/* </Switch> */}
-
+            {/* </Switch>  */}
           </div>
         </div>
       </div>
