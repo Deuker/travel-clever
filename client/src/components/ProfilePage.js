@@ -109,7 +109,6 @@ class ProfilePage extends Component {
         this.refreshDasboardAfterSaving();
         console.log("CO2 Data:", this.state.co2emission);
         this.props.getData();
-
         this.props.closeShowRouteInfo();
       })
       .catch((err) => {
