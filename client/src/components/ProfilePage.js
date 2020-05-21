@@ -147,9 +147,7 @@ class ProfilePage extends Component {
   render() {
     //console.log("Banana", this.state);
     return (
-
       <React.Fragment>
-
         {/* <Dashboard /> */}
 
         {this.state.showRouteInfo ? (
@@ -188,9 +186,7 @@ class ProfilePage extends Component {
             <div>Distance: {this.state.kilometer}</div>
             <div>CO2: {this.state.co2emission}kg</div>
             <button
-
               className="saveRouteBtn animate__animated animate__bounce"
-
               onClick={this.handleSubmit}
               type="button"
             >
@@ -204,15 +200,18 @@ class ProfilePage extends Component {
         <div className="dashboard">
           <h3>Your travel Dashboard</h3>
           <p>
-            <b>Total kilometers cycled:</b> {this.state.totalKilometer}km
+            <b>Total kilometers cycled:</b>{" "}
+            <span className="numbers">{this.state.totalKilometer}</span> km
           </p>
 
           <p>
-            <b>Total CO2 saved:</b> {this.state.totalCo2Saved} kg
+            <b>Total CO2 saved:</b>{" "}
+            <span className="numbers">{this.state.totalCo2Saved}</span> kg
           </p>
           <p>
             <b>Trees to plant to offset CO2 footprint:</b>{" "}
-            {this.state.totalTreeCapacitySaved}
+            <span className="numbers">{this.state.totalTreeCapacitySaved}</span>{" "}
+            trees
           </p>
 
           <Trees routes={this.props.routes} />
