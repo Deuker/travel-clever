@@ -29,8 +29,6 @@ class ProfilePage extends Component {
   }
 
   refreshDasboardAfterSaving() {
-
-
     axios
       .get("api/routes")
       .then((response) => {
@@ -38,8 +36,7 @@ class ProfilePage extends Component {
         let totalCo2Saved = 0;
         let totalTreeCapacitySaved = 0;
 
-        for (let i = 0; i < response.data.length; i++)
-         {
+        for (let i = 0; i < response.data.length; i++) {
           let singleKilometer = parseFloat(
             response.data[i].kilometer.split("km")
           );
@@ -65,7 +62,7 @@ class ProfilePage extends Component {
       .catch((error) => {
         console.log(error);
       });
-    }
+  }
 
   static getDerivedStateFromProps(nextProps) {
     return {
@@ -118,7 +115,6 @@ class ProfilePage extends Component {
   };
 
   handleCheckboxOneChange = (event) => {
-
     if (this.state.oneWay) {
       this.setState({
         oneWay: false,
@@ -132,7 +128,6 @@ class ProfilePage extends Component {
     }
   };
   handleCheckboxTwoChange = (event) => {
-    
     if (this.state.returning) {
       this.setState({
         oneWay: true,
@@ -146,7 +141,6 @@ class ProfilePage extends Component {
     }
   };
 
-
   render() {
     //console.log("Banana", this.state);
     return (
@@ -156,33 +150,34 @@ class ProfilePage extends Component {
         {this.state.showRouteInfo ? (
           <div className="routeDetails">
             <h3>Your Search Route details:</h3>
-            <div className='checkboxContainer'>
-             
-           <div className='container'>
-           <label for='oneWay'>one way<input
-              type="checkbox"
-              onChange={this.handleCheckboxOneChange}
-              id="oneWay"
-              name='oneWay'
-              checked={this.state.oneWay}
-            />
-            <span className='checkmark'></span>
+            <div className="checkboxContainer">
+              <div className="container">
+                <label for="oneWay">
+                  one way
+                  <input
+                    type="checkbox"
+                    onChange={this.handleCheckboxOneChange}
+                    id="oneWay"
+                    name="oneWay"
+                    checked={this.state.oneWay}
+                  />
+                  <span className="checkmark"></span>
                 </label>
-            </div>
+              </div>
 
-            <div className='container'>
-            <label for='return'>return
-            <input
-              type="checkbox"
-              onChange={this.handleCheckboxTwoChange}
-              id="return"
-              name="return"
-              checked={this.state.returning}
-            />
-            <span className='checkmark'></span>
-             </label>
-            </div>
-
+              <div className="container">
+                <label for="return">
+                  return
+                  <input
+                    type="checkbox"
+                    onChange={this.handleCheckboxTwoChange}
+                    id="return"
+                    name="return"
+                    checked={this.state.returning}
+                  />
+                  <span className="checkmark"></span>
+                </label>
+              </div>
             </div>
             <div>From: {this.state.startpoint}</div>
             <div>To: {this.state.endpoint}</div>
@@ -204,16 +199,24 @@ class ProfilePage extends Component {
           <h3>Your travel Dashboard</h3>
           <p>
             <b>Total kilometers cycled:</b>{" "}
-            <span className="numbers">{this.state.totalKilometer}</span> km
+            <span className="numbers">
+              {parseFloat(this.state.totalKilometer).toFixed(2)}
+            </span>{" "}
+            km
           </p>
 
           <p>
             <b>Total CO2 saved:</b>{" "}
-            <span className="numbers">{this.state.totalCo2Saved}</span> kg
+            <span className="numbers">
+              {parseFloat(this.state.totalCo2Saved).toFixed(2)}
+            </span>{" "}
+            kg
           </p>
           <p>
             <b>Trees to plant to offset CO2 footprint:</b>{" "}
-            <span className="numbers">{this.state.totalTreeCapacitySaved}</span>{" "}
+            <span className="numbers">
+              {parseFloat(this.state.totalTreeCapacitySaved).toFixed(2)}
+            </span>{" "}
             trees
           </p>
 
