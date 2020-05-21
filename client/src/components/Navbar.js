@@ -16,48 +16,50 @@ const handleLogout = (props) => {
 
 const Navbar = (props) => {
   return (
-    <Nav bg="bg-custom">
-      <Nav.Toggle aria-controls="basic-navbar-nav" />
+    <Nav
+      style={{
+        justifyContent: "flex-end",
+      }}
+      bg="bg-custom"
+    >
+      {props.user && (
+        <Nav.Brand>
+          <b>Welcome, {props.user.username}</b>
+        </Nav.Brand>
+      )}
+      <Nav.Brand>
+        <Link to="/" class="link">
+          Home
+        </Link>
+      </Nav.Brand>
 
-      <Nav.Collapse id="basic-navbar-nav">
-        <Nav className="mr-auto">
-          {props.user && <Nav.Brand>Welcome, {props.user.username}</Nav.Brand>}
+      {props.user ? (
+        <>
           <Nav.Brand>
-            <Link to="/" class="link">
-              Home
+            <Link to="/routes" class="link">
+              My saved routes
             </Link>
           </Nav.Brand>
-          <Nav.Toggle aria-controls="basic-navbar-nav" />
-          {props.user ? (
-            <>
-              <Nav.Brand>
-                <Link to="/" class="link" onClick={() => handleLogout(props)}>
-                  Logout
-                </Link>
-              </Nav.Brand>
-              <Nav.Brand>
-                <Link to="/routes" class="link">
-                  My saved routes
-                </Link>
-              </Nav.Brand>
-            </>
-          ) : (
-            <>
-              <Nav.Brand>
-                <Link to="/signup" class="link">
-                  Signup
-                </Link>
-              </Nav.Brand>
-              <Nav.Brand>
-                <Link to="/login" class="link">
-                  Login
-                </Link>
-              </Nav.Brand>
-            </>
-          )}
-
-        </Nav>
-      </Nav.Collapse>
+          <Nav.Brand>
+            <Link to="/" class="link" onClick={() => handleLogout(props)}>
+              Logout
+            </Link>
+          </Nav.Brand>
+        </>
+      ) : (
+        <>
+          <Nav.Brand>
+            <Link to="/signup" class="link">
+              Signup
+            </Link>
+          </Nav.Brand>
+          <Nav.Brand>
+            <Link to="/login" class="link">
+              Login
+            </Link>
+          </Nav.Brand>
+        </>
+      )}
     </Nav>
   );
 };

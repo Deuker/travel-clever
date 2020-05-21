@@ -204,7 +204,7 @@ class ProfilePage extends Component {
             <div>Distance: {this.state.kilometer}</div>
             <div>CO2: {this.state.co2emission}kg</div>
             <button
-              className="saveRouteBtn"
+              className="saveRouteBtn animate__animated animate__bounce"
               onClick={this.handleSubmit}
               type="button"
             >
@@ -217,11 +217,16 @@ class ProfilePage extends Component {
 
         <div className="dashboard">
           <h3>Your travel Dashboard</h3>
-          <p>Total kilometers cycled {this.state.totalKilometer}km</p>
-          <p>{}</p>
-          <p>Total CO2 saved: {this.state.totalCo2Saved} kg</p>
           <p>
-            Amount of trees saved: {this.state.totalTreeCapacitySaved} trees
+            <b>Total kilometers cycled:</b> {this.state.totalKilometer}km
+          </p>
+
+          <p>
+            <b>Total CO2 saved:</b> {this.state.totalCo2Saved} kg
+          </p>
+          <p>
+            <b>Trees to plant to offset CO2 footprint:</b>{" "}
+            {this.state.totalTreeCapacitySaved}
           </p>
 
           <Trees routes={this.props.routes} />

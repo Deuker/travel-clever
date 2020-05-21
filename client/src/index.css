@@ -83,12 +83,11 @@ footer {
   justify-content: flex-start;
 }
 
-footer span {
+footer div {
   width: 50vw;
   display: flex;
-  justify-content: flex-end;
+
   padding: 0 20px;
-  align-items: center;
 }
 
 @media (max-width: 600px) {
