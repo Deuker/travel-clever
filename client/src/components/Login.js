@@ -42,8 +42,9 @@ export default class Login extends Component {
   render() {
     return (
       <>
-        <h2>Login</h2>
+        
         <div className="LoginStyle">
+        <h2>Login</h2>
           <div className="LoginForm">
             <Form onSubmit={this.handleSubmit}>
               <Form.Group>
