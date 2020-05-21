@@ -8,7 +8,7 @@ const LandingPage = () => {
       <nav>
         <div className="containerforHeader">
           <div className="Banner">
-            <h2>cycle now!</h2>
+            <h2>Cycle now!</h2>
             <p>get a better understanding of your cycling impact</p>
           </div>
         </div>
@@ -19,6 +19,7 @@ const LandingPage = () => {
       <div className="CycleInfo">
         <img src="images/new_cycle_now_graph.png" alt="cycleinfo"></img>
       </div>
+
       <h1>Do you actually know...</h1>
       <div className="DoYouKnow">
         <div className="DoYouKnowText">
