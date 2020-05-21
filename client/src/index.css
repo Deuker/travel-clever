@@ -16,21 +16,39 @@ body {
   animation: AnimationName 60s ease infinite;
 }
 
-/* @-webkit-keyframes AnimationName {
-  0%{background-position:0% 72%}
-  50%{background-position:100% 29%}
-  100%{background-position:0% 72%}
+@-webkit-keyframes AnimationName {
+  0% {
+    background-position: 0% 72%;
+  }
+  50% {
+    background-position: 100% 29%;
+  }
+  100% {
+    background-position: 0% 72%;
+  }
 }
 @-moz-keyframes AnimationName {
-  0%{background-position:0% 72%}
-  50%{background-position:100% 29%}
-  100%{background-position:0% 72%}
+  0% {
+    background-position: 0% 72%;
+  }
+  50% {
+    background-position: 100% 29%;
+  }
+  100% {
+    background-position: 0% 72%;
+  }
 }
 @keyframes AnimationName {
-  0%{background-position:0% 72%}
-  50%{background-position:100% 29%}
-  100%{background-position:0% 72%}
-} */
+  0% {
+    background-position: 0% 72%;
+  }
+  50% {
+    background-position: 100% 29%;
+  }
+  100% {
+    background-position: 0% 72%;
+  }
+}
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",

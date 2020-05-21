@@ -29,7 +29,12 @@
   margin-left: 41vw;
   width: 96vw;
   border-radius: 10px;
+
+   justify-content: center;
+  align-items: center;
+
   box-shadow: 10px 10px grey;
+
 }
 
 .Banner {

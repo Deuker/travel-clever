@@ -8,8 +8,10 @@ const LandingPage = () => {
       <nav>
         <div className="containerforHeader">
           <div className="Banner">
-            <h2>cycle now!</h2>
-            <p>get a better understanding of your cycling impact</p>
+            
+              <h2>cycle now!</h2>
+              <p>get a better understanding of your cycling impact</p>
+         
           </div>
         </div>
       </nav>
