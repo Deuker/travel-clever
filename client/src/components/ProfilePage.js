@@ -10,8 +10,8 @@ class ProfilePage extends Component {
   //state here for saving the information and sending it to the Backend
 
   state = {
-    totalKilometer: "",
-    totalCo2Saved: "",
+    totalKilometer: "0",
+    totalCo2Saved: "0",
     totalTreeCapacitySaved: "",
     //startpoint: this.props.startpoint,
     // endpoint: this.props.endpoint,
