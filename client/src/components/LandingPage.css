@@ -131,11 +131,14 @@ h1 {
   flex-direction: row;
   justify-content: space-around;
   align-items: center;
+  margin-left: 41vw;
+  width: 96vw;
 }
 
 .DoYouKnow img {
   height: 80vh;
   width: 60vh;
+  box-shadow: 10px 10px grey;
   border-radius: 10px;
 }
 
