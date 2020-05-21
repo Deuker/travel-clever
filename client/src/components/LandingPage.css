@@ -1,8 +1,8 @@
-body {
+/* body {
   background-color: white;
   margin: 0px;
   padding: 0px;
-}
+} */
 
 /* https://www.w3schools.com/howto/howto_css_navbar_image.asp */
 
@@ -20,7 +20,7 @@ body {
 
 .containerforHeader {
   background-image: url("/images/main_cyclenow.jpeg");
-  min-height: 60vh;
+  min-height: 80vh;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -28,6 +28,7 @@ body {
   margin: 20px;
   width: -100%;
   border-radius: 10px;
+  box-shadow: 10px 10px grey;
 }
 
 .Banner {
@@ -111,13 +112,12 @@ body {
 } */
 
 .CycleInfo img {
-  width: 80vw;
+  width: 100vw;
   /* height: 100px; */
   display: flex;
-  flex-direction: column;
+  /* flex-direction: column; */
   justify-content: center;
   align-items: center;
-  border-radius: 10px;
 }
 
 h1 {
