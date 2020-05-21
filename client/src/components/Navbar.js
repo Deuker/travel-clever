@@ -16,50 +16,56 @@ const handleLogout = (props) => {
 
 const Navbar = (props) => {
   return (
-    <Nav
-      style={{
-        justifyContent: "flex-end",
-      }}
-      bg="bg-custom"
-    >
-      {props.user && (
-        <Nav.Brand>
-          <b>Welcome, {props.user.username}</b>
-        </Nav.Brand>
-      )}
+    <Nav style={{ justifyContent: "space-between" }}>
       <Nav.Brand>
-        <Link to="/" class="link">
-          Home
-        </Link>
+        <div className="bike">
+          <img
+            src={require("./black_bike_transparent.png")}
+            alt=""
+            width="35%"
+          />
+        </div>
       </Nav.Brand>
+      <div style={{ display: "flex", justifyContent: "flexEnd" }}>
+        {props.user && (
+          <Nav.Brand>
+            <b>Welcome, {props.user.username}</b>
+          </Nav.Brand>
+        )}
+        <Nav.Brand>
+          <Link to="/" class="link">
+            Home
+          </Link>
+        </Nav.Brand>
 
-      {props.user ? (
-        <>
-          <Nav.Brand>
-            <Link to="/routes" class="link">
-              My saved routes
-            </Link>
-          </Nav.Brand>
-          <Nav.Brand>
-            <Link to="/" class="link" onClick={() => handleLogout(props)}>
-              Logout
-            </Link>
-          </Nav.Brand>
-        </>
-      ) : (
-        <>
-          <Nav.Brand>
-            <Link to="/signup" class="link">
-              Signup
-            </Link>
-          </Nav.Brand>
-          <Nav.Brand>
-            <Link to="/login" class="link">
-              Login
-            </Link>
-          </Nav.Brand>
-        </>
-      )}
+        {props.user ? (
+          <>
+            <Nav.Brand>
+              <Link to="/routes" class="link">
+                My saved routes
+              </Link>
+            </Nav.Brand>
+            <Nav.Brand>
+              <Link to="/" class="link" onClick={() => handleLogout(props)}>
+                Logout
+              </Link>
+            </Nav.Brand>
+          </>
+        ) : (
+          <>
+            <Nav.Brand>
+              <Link to="/signup" class="link">
+                Signup
+              </Link>
+            </Nav.Brand>
+            <Nav.Brand>
+              <Link to="/login" class="link">
+                Login
+              </Link>
+            </Nav.Brand>
+          </>
+        )}
+      </div>
     </Nav>
   );
 };

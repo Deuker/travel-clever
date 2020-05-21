@@ -73,7 +73,7 @@ export default class Login extends Component {
             </Form>
           </div>
           <div className="LoginPic">
-            <img src="images/bikeforlogin.jpg"></img>
+            <img src="images/bikeforlogin.jpg" alt=""></img>
           </div>
         </div>
       </>

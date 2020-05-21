@@ -22,7 +22,7 @@ body {
 #map {
   display: flex;
   flex-direction: column;
-  margin-top: 2%;
+  margin-top: 3%;
 }
 .mapboxgl-canvas {
   display: flex;
@@ -38,7 +38,7 @@ body {
   box-sizing: border-box;
 
   text-transform: uppercase;
-  font-family: "Roboto", sans-serif;
+
   font-weight: 400;
   color: black;
   text-align: center;
@@ -54,7 +54,7 @@ body {
   flex-direction: column;
   margin-top: 2%;
   align-items: center;
-  /* width: 58%; */
+  width: 58%;
 }
 
 .App-logo {

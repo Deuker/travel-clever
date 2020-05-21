@@ -1,11 +1,6 @@
-import React, {
-  // useState, setState,
-  Component,
-} from "react";
+import React, { Component } from "react";
 // import { Button } from "react-bootstrap";
-
 // import WelcomePage from "./WelcomePage";
-// import Dashboard from "./Dashboard";
 import axios from "axios";
 import "./ProfilePage.css";
 
@@ -72,10 +67,6 @@ class ProfilePage extends Component {
       });
     }
 
-  // componentDidMount = () => {
-  //   this.props.getData();
-  // }
-
   static getDerivedStateFromProps(nextProps) {
     return {
       startpoint: nextProps.startpoint,
@@ -127,12 +118,6 @@ class ProfilePage extends Component {
   };
 
   handleCheckboxOneChange = (event) => {
-    // console.log(this.state.oneWay)
-    //  if(this.state.oneWay){
-    //   document.getElementById("oneWay").disabled = true;
-    //  }else if(this.state.oneWay===false){
-    //   document.getElementById("oneWay").disabled = false;
-    //  }
 
     if (this.state.oneWay) {
       this.setState({
@@ -144,15 +129,10 @@ class ProfilePage extends Component {
         oneWay: event.target.checked,
         returning: false,
       });
-      //  this.uncheck()
     }
   };
   handleCheckboxTwoChange = (event) => {
-    // if(this.state.return){
-    //   document.getElementById("return").disabled = true;
-    // }else if(this.state.return===false){
-    //   document.getElementById("return").disabled = false;
-    //  }
+    
     if (this.state.returning) {
       this.setState({
         oneWay: true,
@@ -164,54 +144,52 @@ class ProfilePage extends Component {
         returning: event.target.checked,
       });
     }
-    //  this.uncheck()
   };
 
-  uncheck = () => {
-    if (this.state.oneWay) {
-      this.setState({
-        returning: false,
-      });
-    } else if (this.state.returning) {
-      this.setState({
-        oneWay: false,
-      });
-    }
-  };
 
   render() {
     //console.log("Banana", this.state);
     return (
-
       <React.Fragment>
-
         {/* <Dashboard /> */}
 
         {this.state.showRouteInfo ? (
           <div className="routeDetails">
             <h3>Your Search Route details:</h3>
-            <label>one way</label>
-            <input
+            <div className='checkboxContainer'>
+             
+           <div className='container'>
+           <label for='oneWay'>one way<input
               type="checkbox"
               onChange={this.handleCheckboxOneChange}
               id="oneWay"
+              name='oneWay'
               checked={this.state.oneWay}
             />
-            <label>return</label>
+            <span className='checkmark'></span>
+                </label>
+            </div>
+
+            <div className='container'>
+            <label for='return'>return
             <input
               type="checkbox"
               onChange={this.handleCheckboxTwoChange}
               id="return"
+              name="return"
               checked={this.state.returning}
             />
+            <span className='checkmark'></span>
+             </label>
+            </div>
+
+            </div>
             <div>From: {this.state.startpoint}</div>
             <div>To: {this.state.endpoint}</div>
             <div>Distance: {this.state.kilometer}</div>
             <div>CO2: {this.state.co2emission}kg</div>
             <button
-
               className="saveRouteBtn animate__animated animate__bounce"
-
               onClick={this.handleSubmit}
               type="button"
             >
@@ -225,15 +203,18 @@ class ProfilePage extends Component {
         <div className="dashboard">
           <h3>Your travel Dashboard</h3>
           <p>
-            <b>Total kilometers cycled:</b> {this.state.totalKilometer}km
+            <b>Total kilometers cycled:</b>{" "}
+            <span className="numbers">{this.state.totalKilometer}</span> km
           </p>
 
           <p>
-            <b>Total CO2 saved:</b> {this.state.totalCo2Saved} kg
+            <b>Total CO2 saved:</b>{" "}
+            <span className="numbers">{this.state.totalCo2Saved}</span> kg
           </p>
           <p>
             <b>Trees to plant to offset CO2 footprint:</b>{" "}
-            {this.state.totalTreeCapacitySaved}
+            <span className="numbers">{this.state.totalTreeCapacitySaved}</span>{" "}
+            trees
           </p>
 
           <Trees routes={this.props.routes} />

@@ -7,23 +7,9 @@ const LandingPage = () => {
     <div className="Landingpage">
       <nav>
         <div className="containerforHeader">
-          <div className="topnavHeader">
-            <div className="menuforHeader">
-              <img
-                src="images/white_bike_transparent.png"
-                href="#"
-                width="70"
-                height="50"
-                alt="cam"
-              />
-              <a href="/login">Login</a>
-              <a href="/signup">Signup</a>
-              <a href="#">About</a>
-              <div className="Banner">
-                <h2>cycle now!</h2>
-                <p>get a better understanding of your cycling impact</p>
-              </div>
-            </div>
+          <div className="Banner">
+            <h2>cycle now!</h2>
+            <p>get a better understanding of your cycling impact</p>
           </div>
         </div>
       </nav>
@@ -31,17 +17,23 @@ const LandingPage = () => {
       {/* <header></header> */}
 
       <div className="CycleInfo">
-        <img src="images/cycle_today_transparent_new.png" alt="cycleinfo"></img>
+        <img src="images/new_cycle_now_graph.png" alt="cycleinfo"></img>
       </div>
       <h1>Do you actually know...</h1>
       <div className="DoYouKnow">
-        <img src="images/doyouactuallyknow.jpg"></img>
         <div className="DoYouKnowText">
+          <img src="images/icontreetoco2.png" alt="treetoco2"></img>
           <p>...how much co2 a tree compensates per year?</p>
+          <img
+            src="images/iconhowmanykilometers.png"
+            alt="howmanykilometers"
+          ></img>
           <p>...how much kilometers bike you ride per year?</p>
+          <img src="/images/iconcartobike.png" alt="carttobike"></img>
           <p>...how much co2 you save while cycling compared to driving?</p>
-          <a href="/signup">Get Answers</a>
+          {/* <a href="/signup">Get Answers</a> */}
         </div>
+        <img src="images/doyouactuallyknow?.jpg"></img>
       </div>
     </div>
   );
