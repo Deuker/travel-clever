@@ -15,8 +15,20 @@ export default class RoutesDetails extends Component {
   };
 
   componentDidMount() {
-    const routeId = this.props.match.params.id;
+    this.newRoute();
+  }
 
+  componentWillReceiveProps(nextProps) {
+    console.log(nextProps);
+    if (nextProps.match.params?.id !== this.state.routeId) {
+      this.newRoute(nextProps.match.params.id);
+    }
+  }
+
+  newRoute = (newId) => {
+    const routeId = newId ? newId : this.props.match.params.id;
+
+    console.log("heeeey", this.props.match.params.id, this.state.routeId);
     axios
       .get(`/api/routes/${routeId}`)
       .then((response) => {
@@ -35,12 +47,13 @@ export default class RoutesDetails extends Component {
           kilometer,
           co2emission,
           owner,
+          routeId,
         });
       })
       .catch((err) => {
         console.log(err);
       });
-  }
+  };
 
   deleteRoute = () => {
     const id = this.props.match.params.id;
