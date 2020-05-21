@@ -20,7 +20,7 @@ const RoutesList = (props) => {
         return (
           <div key={routes._id}>
             <p>
-              <Link to={`/routes/${routes._id}`}>
+              <Link class="routesLink" to={`/routes/${routes._id}`}>
                 {routes.startpoint} - {routes.endpoint}
               </Link>
             </p>
