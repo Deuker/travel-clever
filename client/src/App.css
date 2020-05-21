@@ -2,6 +2,8 @@
   text-align: center;
   display: flex;
   flex-direction: column;
+  /* margin: 0px; */
+  /* Who needs margin of 2%? */
   margin: 2%;
 }
 html {
@@ -59,7 +61,8 @@ body {
   display: flex;
   flex-direction: column;
   margin-top: 2%;
-  margin-right: 20%;
+  /* Who needs margin of 20%? */
+  /* margin-right: 20%; */
 }
 
 .App-logo {
