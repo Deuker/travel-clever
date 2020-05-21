@@ -83,12 +83,11 @@ footer {
   justify-content: flex-start;
 }
 
-footer span {
+footer div {
   width: 50vw;
   display: flex;
-  justify-content: flex-end;
+
   padding: 0 20px;
-  align-items: center;
 }
 
 @media (max-width: 600px) {
@@ -100,15 +99,16 @@ footer span {
   .footer-options {
     width: 100vw;
     flex-direction: row;
-    justify-content: center;
+
     padding-inline-start: 0;
     align-items: center;
   }
 
   footer span {
-    width: 100vw;
-    flex-direction: column;
-    text-align: center;
-    align-self: flex-start;
+    width: 50vw;
+    display: flex;
+    justify-content: flex-start;
+    padding: 0 20px;
+    align-items: center;
   }
 }

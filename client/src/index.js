@@ -5,7 +5,7 @@ import "./index.css";
 import App from "./App";
 import * as serviceWorker from "./serviceWorker";
 import axios from "axios";
-// import StickyFooter from "react-sticky-footer";
+
 axios
   .get("/api/auth/loggedin")
   .then((response) => {
@@ -14,23 +14,21 @@ axios
       <Router>
         <App user={response.data} />
 
-        {/* <React.Fragment>
+        <React.Fragment>
           <footer>
             <ul className="footer-options">
               <li className="footer-link">
                 <a href="#" className="footer-linktext"></a>
               </li>
               <li className="footer-link">
-                <a href="#" className="footer-linktext">
-                  Contact Us
-                </a>
+                <a href="#" className="footer-linktext"></a>
               </li>
             </ul>
-            <span>
+            <div>
               © 2021 Developed by Travel-Clever Team. All Rights Reserved.
-            </span>
+            </div>
           </footer>
-        </React.Fragment> */}
+        </React.Fragment>
       </Router>,
       document.getElementById("root")
     );

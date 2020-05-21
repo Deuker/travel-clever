@@ -163,7 +163,7 @@ class App extends React.Component {
           <div className="layout">
             {this.state.showButton ? (
               <button
-                className="calculateCO2 animate__animated animate__bounceln"
+                className="calculateCO2 animate__animated animate__bounce"
                 onClick={this.getRoute}
               >
                 Calculate CO2 for this route
@@ -195,33 +195,7 @@ class App extends React.Component {
                 )}
               />
             )}
-            {/* <Route
-              // this is an additional prop that is taken care of with ...rest
-              exact
-              path="/"
-              user={this.state.user}
-            /> */}
-            {/* <Switch>  */}
-            {this.state.showButton ? (
-              <button
-                onClick={this.getRoute}
-                style={{
-                  marginRight: "200px",
-                }}
-              >
-                Calculate CO2 for this route
-              </button>
-            ) : (
-              ""
-            )}
-            {/* <Switch> */}
-            {/* <Route
-                // this is an additional prop that is taken care of with ...rest
-              //   exact
-              //   path="/"
-              //   user={this.state.user}
-              //   component={LandingPage}
-              // /> */}
+
             <ProtectedRoute
               exact
               path="/routes"
@@ -229,7 +203,7 @@ class App extends React.Component {
               routes={this.state.routes}
               component={Routes}
             />
-            ;
+
             <ProtectedRoute
               exact
               path="/routes/:id"
@@ -237,7 +211,7 @@ class App extends React.Component {
               getData={this.getData}
               component={RouteDetails}
             />
-            ;
+
             <Route
               exact
               path="/signup"

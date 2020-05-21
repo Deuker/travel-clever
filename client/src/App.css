@@ -16,12 +16,13 @@ body {
 .pageContent {
   display: flex;
   flex-direction: column;
+  margin-bottom: 5%;
 }
 
 #map {
   display: flex;
   flex-direction: column;
-  margin-top: 3%;
+  margin-top: 2%;
 }
 .mapboxgl-canvas {
   display: flex;
@@ -33,36 +34,27 @@ body {
 }
 .calculateCO2 {
   display: inline-block;
-  margin-bottom: 5%;
+  margin-bottom: 3%;
   box-sizing: border-box;
-  text-decoration: none;
+
   text-transform: uppercase;
   font-family: "Roboto", sans-serif;
   font-weight: 400;
   color: black;
   text-align: center;
-  transition: all 0.15s;
-  border-radius: 10px;
+  background-color: lightgreen;
 
+  border-radius: 10px;
   padding: 10px;
   width: 500px;
-}
-
-.calculateCO2 :hover {
-  color: #dddddd;
-  border-color: #dddddd;
-}
-.calculateCO2:active {
-  color: #bbbbbb;
-  border-color: #bbbbbb;
 }
 
 .layout {
   display: flex;
   flex-direction: column;
   margin-top: 2%;
-  /* Who needs margin of 20%? */
-  /* margin-right: 20%; */
+  align-items: center;
+  width: 58%;
 }
 
 .App-logo {
