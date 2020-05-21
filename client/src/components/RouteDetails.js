@@ -71,7 +71,7 @@ export default class RoutesDetails extends Component {
         </h3>
         {allowedToDelete && (
           <button
-            class="saveRouteBtn"
+            class="deleteRouteBtn animate__animated animate__bounce"
             variant="danger"
             onClick={this.deleteRoute}
           >

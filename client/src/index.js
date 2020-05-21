@@ -24,9 +24,9 @@ axios
                 <a href="#" className="footer-linktext"></a>
               </li>
             </ul>
-            <span>
+            <div>
               © 2021 Developed by Travel-Clever Team. All Rights Reserved.
-            </span>
+            </div>
           </footer>
         </React.Fragment>
       </Router>,
