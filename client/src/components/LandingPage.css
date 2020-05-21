@@ -25,8 +25,9 @@
   background-repeat: no-repeat;
   background-size: cover;
   /* position: absolute; */
-  margin: 20px;
-  width: -100%;
+  /* margin: 20px; */
+  margin-left: 41vw;
+  width: 96vw;
   border-radius: 10px;
   box-shadow: 10px 10px grey;
 }
@@ -112,9 +113,10 @@
 } */
 
 .CycleInfo img {
-  width: 100vw;
   /* height: 100px; */
   display: flex;
+  margin-left: 42vw;
+  width: 96vw;
   /* flex-direction: column; */
   justify-content: center;
   align-items: center;
