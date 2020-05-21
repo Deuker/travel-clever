@@ -71,7 +71,7 @@ export default class Signup extends Component {
             </Form>
           </div>
           <div className="SignUpPic">
-            <img src="images/main_becomecyclistoftheweek.jpg"></img>
+            <img src="images/main_becomecyclistoftheweek.jpg" alt=''></img>
           </div>
         </div>
       </>
