@@ -1,8 +1,8 @@
-body {
+/* body {
   background-color: white;
   margin: 0px;
   padding: 0px;
-}
+} */
 
 /* https://www.w3schools.com/howto/howto_css_navbar_image.asp */
 
@@ -20,16 +20,21 @@ body {
 
 .containerforHeader {
   background-image: url("/images/main_cyclenow.jpeg");
-  min-height: 60vh;
+  min-height: 80vh;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
   /* position: absolute; */
-  margin: 20px;
-  width: -100%;
+  /* margin: 20px; */
+  margin-left: 41vw;
+  width: 96vw;
   border-radius: 10px;
+
    justify-content: center;
   align-items: center;
+
+  box-shadow: 10px 10px grey;
+
 }
 
 .Banner {
@@ -113,13 +118,13 @@ body {
 } */
 
 .CycleInfo img {
-  width: 80vw;
   /* height: 100px; */
   display: flex;
-  flex-direction: column;
+  margin-left: 42vw;
+  width: 96vw;
+  /* flex-direction: column; */
   justify-content: center;
   align-items: center;
-  border-radius: 10px;
 }
 
 h1 {
@@ -131,11 +136,14 @@ h1 {
   flex-direction: row;
   justify-content: space-around;
   align-items: center;
+  margin-left: 41vw;
+  width: 96vw;
 }
 
 .DoYouKnow img {
   height: 80vh;
   width: 60vh;
+  box-shadow: 10px 10px grey;
   border-radius: 10px;
 }
 
