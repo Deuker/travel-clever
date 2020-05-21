@@ -179,7 +179,9 @@ class ProfilePage extends Component {
   render() {
     //console.log("Banana", this.state);
     return (
+
       <React.Fragment>
+
         {/* <Dashboard /> */}
 
         {this.state.showRouteInfo ? (
@@ -204,7 +206,9 @@ class ProfilePage extends Component {
             <div>Distance: {this.state.kilometer}</div>
             <div>CO2: {this.state.co2emission}kg</div>
             <button
+
               className="saveRouteBtn animate__animated animate__bounce"
+
               onClick={this.handleSubmit}
               type="button"
             >

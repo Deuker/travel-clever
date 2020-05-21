@@ -6,38 +6,41 @@ const LandingPage = () => {
   return (
     <div className="Landingpage">
       <nav>
-        <div className="bg-img">
-          <div className="containerforHeader">
-            <div className="topnavHeader">
-              <div className="menuforHeader">
-                <a href="#">Login</a>
-                <a href="#">Signup</a>
-                <a href="#">About</a>
+        <div className="containerforHeader">
+          <div className="topnavHeader">
+            <div className="menuforHeader">
+              <img
+                src="images/white_bike_transparent.png"
+                width="70"
+                height="50"
+                alt="cam"
+              />
+              <a href="#">Login</a>
+              <a href="#">Signup</a>
+              <a href="#">About</a>
+              <div className="Banner">
+                <h2>cycle now!</h2>
+                <p>get a better understanding of your cycling impact</p>
               </div>
             </div>
           </div>
-          <div className="Banner">
-            <h2>cycle now!</h2>
-            <p>get a better understanding of your cycling impact</p>
-          </div>
         </div>
       </nav>
-
       <header></header>
-      <img src="images/whitebike.png" width="70" height="50" alt="cam" />
+      {/* <header></header> */}
 
       <div className="CycleInfo">
-        <img src="/cycle_now.png" alt="cycleinfo"></img>
+        <img src="images/cycle_today_transparent.png" alt="cycleinfo"></img>
       </div>
+      <h4>Do you actually know...</h4>
       <div className="DoYouKnow">
-        <h4>Do you actually know...</h4>
-        <p>...how much co2 a tree compensates per year?</p>
-        <p>...how much kilometers bike you ride per year?</p>
-        <p>...how much co2 you save while cycling?</p>
+        <img src="images/doyouactuallyknow_.png"></img>
+        <div className="DoYouKnowText">
+          <p>...how much co2 a tree compensates per year?</p>
+          <p>...how much kilometers bike you ride per year?</p>
+          <p>...how much co2 you save while cycling compared to driving?</p>
+        </div>
         <p>get answers</p>
-      </div>
-      <div className="Cyclist of the week">
-        <h3>become cyclist of the week</h3>
       </div>
     </div>
   );

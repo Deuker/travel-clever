@@ -1,3 +1,9 @@
+body {
+  background-color: white;
+  margin: 0px;
+  padding: 0px;
+}
+
 /* https://www.w3schools.com/howto/howto_css_navbar_image.asp */
 
 /* .Banner {
@@ -12,19 +18,16 @@
   position: relative;
 } */
 
-.bg-img {
-  /* background-image: url("../images/main_cyclenow.jpeg"); */
-  min-height: 380px;
+.containerforHeader {
+  background-image: url("/images/main_cyclenow.jpeg");
+  min-height: 60vh;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  position: relative;
-}
-
-.containerforHeader {
-  position: absolute;
+  /* position: absolute; */
   margin: 20px;
-  width: 100%;
+  width: -100%;
+  border-radius: 10px;
 }
 
 .topnavHeader {
@@ -36,6 +39,7 @@
 }
 .menuforHeader img {
   float: left;
+  justify-content: flex-start;
 }
 
 .menuforHeader a {
@@ -45,6 +49,7 @@
   padding: 15px 18px;
   text-decoration: none;
   font-size: 18px;
+  border-radius: 10px;
 }
 
 .menuforHeader a:hover {
@@ -52,24 +57,54 @@
   color: black;
 }
 
-.Banner p {
+.menuforHeader p {
   color: yellow;
   font-size: 1.2em;
-  width: 100%;
+  /* width: 100%; */
   text-align: center;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  flex-direction: column;
 }
 
 .Banner h2 {
   color: white;
   font-size: 1.2em;
-  width: 50%;
+  /* width: 50%; */
   text-align: center;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+.CycleInfo img {
+  width: 100vw;
+  /* height: 100px; */
+  display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+}
+
+.DoYouKnow {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.DoYouKnow img {
+  height: 50vh;
+  width: 50vh;
+  border-radius: 10px;
+}
+
+.DoYouKnowText {
+  display: flex;
+  flex-direction: column;
+  /* align-items: center;
+  justify-content: center; */
 }
