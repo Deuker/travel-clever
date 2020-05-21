@@ -1,11 +1,6 @@
-import React, {
-  // useState, setState,
-  Component,
-} from "react";
+import React, { Component } from "react";
 // import { Button } from "react-bootstrap";
-
 // import WelcomePage from "./WelcomePage";
-// import Dashboard from "./Dashboard";
 import axios from "axios";
 import "./ProfilePage.css";
 
@@ -69,10 +64,6 @@ class ProfilePage extends Component {
       });
   }
 
-  // componentDidMount = () => {
-  //   this.props.getData();
-  // }
-
   static getDerivedStateFromProps(nextProps) {
     return {
       startpoint: nextProps.startpoint,
@@ -124,12 +115,6 @@ class ProfilePage extends Component {
   };
 
   handleCheckboxOneChange = (event) => {
-    // console.log(this.state.oneWay)
-    //  if(this.state.oneWay){
-    //   document.getElementById("oneWay").disabled = true;
-    //  }else if(this.state.oneWay===false){
-    //   document.getElementById("oneWay").disabled = false;
-    //  }
 
     if (this.state.oneWay) {
       this.setState({
@@ -141,15 +126,10 @@ class ProfilePage extends Component {
         oneWay: event.target.checked,
         returning: false,
       });
-      //  this.uncheck()
     }
   };
   handleCheckboxTwoChange = (event) => {
-    // if(this.state.return){
-    //   document.getElementById("return").disabled = true;
-    // }else if(this.state.return===false){
-    //   document.getElementById("return").disabled = false;
-    //  }
+    
     if (this.state.returning) {
       this.setState({
         oneWay: true,
@@ -161,20 +141,8 @@ class ProfilePage extends Component {
         returning: event.target.checked,
       });
     }
-    //  this.uncheck()
   };
 
-  uncheck = () => {
-    if (this.state.oneWay) {
-      this.setState({
-        returning: false,
-      });
-    } else if (this.state.returning) {
-      this.setState({
-        oneWay: false,
-      });
-    }
-  };
 
   render() {
     //console.log("Banana", this.state);
@@ -187,20 +155,34 @@ class ProfilePage extends Component {
         {this.state.showRouteInfo ? (
           <div className="routeDetails">
             <h3>Your Search Route details:</h3>
-            <label>one way</label>
-            <input
+            <div className='checkboxContainer'>
+             
+           <div className='container'>
+           <label for='oneWay'>one way<input
               type="checkbox"
               onChange={this.handleCheckboxOneChange}
               id="oneWay"
+              name='oneWay'
               checked={this.state.oneWay}
             />
-            <label>return</label>
+            <span className='checkmark'></span>
+                </label>
+            </div>
+
+            <div className='container'>
+            <label for='return'>return
             <input
               type="checkbox"
               onChange={this.handleCheckboxTwoChange}
               id="return"
+              name="return"
               checked={this.state.returning}
             />
+            <span className='checkmark'></span>
+             </label>
+            </div>
+
+            </div>
             <div>From: {this.state.startpoint}</div>
             <div>To: {this.state.endpoint}</div>
             <div>Distance: {this.state.kilometer}</div>
