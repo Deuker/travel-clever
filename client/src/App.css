@@ -54,7 +54,7 @@ body {
   flex-direction: column;
   margin-top: 2%;
   align-items: center;
-  width: 58%;
+  /* width: 58%; */
 }
 
 .App-logo {

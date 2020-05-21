@@ -1,0 +1,26 @@
+h2 {
+  margin-bottom: 5vh;
+  margin-top: 5vh;
+}
+
+.LoginForm {
+  display: flex;
+  flex-direction: column;
+}
+
+.LoginStyle {
+  display: flex;
+  flex-direction: row;
+  /* margin-top: 25vh; */
+  justify-content: space-around;
+  align-items: center;
+}
+
+.LoginStyle img {
+  width: 50vw;
+  /* height: 50vh; */
+  border-radius: 10px;
+  border-style: bold;
+  border-color: grey;
+  margin-left: 10vh;
+}
