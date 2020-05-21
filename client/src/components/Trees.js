@@ -27,7 +27,7 @@ class Trees extends Component {
     return (
       <div>
         {fullTreesImages}
-        {splitted[1] >= 5 ? (
+        {splitted[1] >= 50 ? (
           <img
             src={require("./treetwo.jpg")}
             alt=""
