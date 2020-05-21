@@ -22,7 +22,7 @@ body {
 #map {
   display: flex;
   flex-direction: column;
-  margin-top: 2%;
+  margin-top: 3%;
 }
 .mapboxgl-canvas {
   display: flex;

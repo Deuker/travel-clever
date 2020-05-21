@@ -5,22 +5,13 @@ import "./RoutesList.css";
 const RoutesList = (props) => {
   return (
     <div className="routesList">
-      {props.routes.length > 0 && (
-        <h3>
-          <img
-            src={require("./black_bike_transparent.png")}
-            alt=""
-            width="10%"
-          />
-          Routes:
-        </h3>
-      )}
+      {props.routes.length > 0 && <h3>Routes:</h3>}
 
       {props.routes.map((routes) => {
         return (
           <div key={routes._id}>
             <p>
-              <Link to={`/routes/${routes._id}`}>
+              <Link className="routeLink" to={`/routes/${routes._id}`}>
                 {routes.startpoint} - {routes.endpoint}
               </Link>
             </p>

@@ -7,6 +7,10 @@
   width: 96%;
   border-radius: 10px;
 }
+.numbers {
+  font-size: 25px;
+  font-weight: bolder;
+}
 .saveRouteBtn {
   display: inline-block;
   margin-top: 1%;
