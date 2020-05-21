@@ -30,57 +30,88 @@ body {
   border-radius: 10px;
 }
 
-.topnavHeader {
+.Banner {
+  color: yellow;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  /* font-size: 1.2em; 
+   width: 100%; 
+  text-align: center;
+  display: flex;
+  flex-direction: column; 
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  border-style: solid;
+  */
+}
+
+.Banner h2 {
+  color: white;
+  border-style: solid;
+  border-color: white;
+  border-radius: 10px;
+}
+
+/* .topnavHeader {
   overflow: hidden;
   background-color: transparent;
   width: 100%;
   display: flex;
   justify-content: flex-end;
-}
-.menuforHeader img {
+} */
+/* .menuforHeader img {
   float: left;
   justify-content: flex-start;
-}
-
+} */
+/* 
 .menuforHeader a {
   float: left;
   color: white;
   text-align: center;
   padding: 15px 18px;
   text-decoration: none;
+  justify-content: flex-end;
   font-size: 18px;
   border-radius: 10px;
-}
+} */
 
-.menuforHeader a:hover {
+/* .menuforHeader a:hover {
   background-color: white;
   color: black;
-}
+} */
 
-.menuforHeader p {
+/* .Banner p {
   color: yellow;
   font-size: 1.2em;
   /* width: 100%; */
-  text-align: center;
+/* text-align: center;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-}
+  border-radius: 10px;
+  border-style: solid;
+}  */
 
-.Banner h2 {
+/* .Banner {
   color: white;
   font-size: 1.2em;
-  /* width: 50%; */
+  width: 50%; 
   text-align: center;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-}
+  border-radius: 10px;
+  border-style: solid;
+} */
 
 .CycleInfo img {
-  width: 100vw;
+  width: 80vw;
   /* height: 100px; */
   display: flex;
   flex-direction: column;
@@ -121,4 +152,9 @@ h1 {
   color: white;
   text-decoration: none;
   border: 2px;
+}
+
+.DoYouKnowText img {
+  height: 15vh;
+  width: 40vw;
 }
