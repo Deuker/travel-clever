@@ -10,8 +10,8 @@ class ProfilePage extends Component {
   //state here for saving the information and sending it to the Backend
 
   state = {
-    totalKilometer: "",
-    totalCo2Saved: "",
+    totalKilometer: "0",
+    totalCo2Saved: "0",
     totalTreeCapacitySaved: "",
     //startpoint: this.props.startpoint,
     // endpoint: this.props.endpoint,
@@ -29,6 +29,8 @@ class ProfilePage extends Component {
   }
 
   refreshDasboardAfterSaving() {
+
+
     axios
       .get("api/routes")
       .then((response) => {
@@ -36,7 +38,8 @@ class ProfilePage extends Component {
         let totalCo2Saved = 0;
         let totalTreeCapacitySaved = 0;
 
-        for (let i = 0; i < response.data.length; i++) {
+        for (let i = 0; i < response.data.length; i++)
+         {
           let singleKilometer = parseFloat(
             response.data[i].kilometer.split("km")
           );
@@ -62,7 +65,7 @@ class ProfilePage extends Component {
       .catch((error) => {
         console.log(error);
       });
-  }
+    }
 
   static getDerivedStateFromProps(nextProps) {
     return {

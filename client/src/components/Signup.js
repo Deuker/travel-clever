@@ -40,8 +40,10 @@ export default class Signup extends Component {
   render() {
     return (
       <>
-        <h2>Signup</h2>
+      
         <div className="SignUpStyle">
+        <div className='signupSite'>
+        <h2>Signup</h2>
           <div className="SignUpForm">
             <Form onSubmit={this.handleSubmit}>
               <Form.Group>
@@ -69,6 +71,7 @@ export default class Signup extends Component {
               )}
               <Button type="submit">Signup</Button>
             </Form>
+          </div>
           </div>
           <div className="SignUpPic">
             <img src="images/main_becomecyclistoftheweek.jpg" alt=''></img>

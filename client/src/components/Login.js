@@ -42,8 +42,10 @@ export default class Login extends Component {
   render() {
     return (
       <>
-        <h2>Login</h2>
+        
         <div className="LoginStyle">
+        <div className='loginSite'>
+        <h2>Login</h2>
           <div className="LoginForm">
             <Form onSubmit={this.handleSubmit}>
               <Form.Group>
@@ -71,6 +73,7 @@ export default class Login extends Component {
               )}
               <Button type="submit">Login</Button>
             </Form>
+          </div>
           </div>
           <div className="LoginPic">
             <img src="images/bikeforlogin.jpg" alt=""></img>

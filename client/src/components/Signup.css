@@ -8,7 +8,13 @@ h2 {
   flex-direction: column;
 }
 
+.signupSite{
+  width:15rem;
+}
+
 .SignUpStyle {
+  margin: auto;
+  margin-left:5rem;
   display: flex;
   flex-direction: row;
   /* margin-top: 25vh; */
