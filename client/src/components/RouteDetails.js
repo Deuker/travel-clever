@@ -28,7 +28,6 @@ export default class RoutesDetails extends Component {
   newRoute = (newId) => {
     const routeId = newId ? newId : this.props.match.params.id;
 
-    console.log("heeeey", this.props.match.params.id, this.state.routeId);
     axios
       .get(`/api/routes/${routeId}`)
       .then((response) => {
@@ -78,10 +77,15 @@ export default class RoutesDetails extends Component {
 
     return (
       <div className="singleRoute">
-        <h3>
-          {this.state.route.startpoint} - {this.state.endpoint},
-          {this.state.kilometer} km, CO2 impact:{this.state.co2emission} kg
-        </h3>
+        <p className="singleRouteP">
+          <span className="numbers1">
+            {this.state.route.startpoint} - {this.state.endpoint}
+          </span>{" "}
+          ,<br></br>
+          Distance:<span className="numbers1">{this.state.kilometer}</span>{" "}
+          <br></br>CO2 impact:{" "}
+          <span className="numbers1">{this.state.co2emission}</span> kg
+        </p>
         {allowedToDelete && (
           <button
             class="deleteRouteBtn animate__animated animate__bounce"
