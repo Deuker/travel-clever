@@ -33,7 +33,7 @@ const LandingPage = () => {
           <p>...how much co2 you save while cycling compared to driving?</p>
           {/* <a href="/signup">Get Answers</a> */}
         </div>
-        <img src="images/doyouactuallyknow?.jpg"></img>
+        <img src="images/doyouactuallyknow.jpg"></img>
       </div>
     </div>
   );
