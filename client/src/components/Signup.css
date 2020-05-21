@@ -1,0 +1,26 @@
+h2 {
+  margin-bottom: 5vh;
+  margin-top: 5vh;
+}
+
+.SignUpForm {
+  display: flex;
+  flex-direction: column;
+}
+
+.SignUpStyle {
+  display: flex;
+  flex-direction: row;
+  /* margin-top: 25vh; */
+  justify-content: space-around;
+  align-items: center;
+}
+
+.SignUpStyle img {
+  width: 50vw;
+  /* height: 50vh; */
+  border-radius: 10px;
+  border-style: bold;
+  border-color: grey;
+  margin-left: 10vh;
+}
