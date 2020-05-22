@@ -178,10 +178,22 @@ class ProfilePage extends Component {
                 </label>
               </div>
             </div>
-            <div>From: {this.state.startpoint}</div>
-            <div>To: {this.state.endpoint}</div>
-            <div>Distance: {this.state.kilometer}</div>
-            <div>CO2: {this.state.co2emission}kg</div>
+            <p>
+              <b>From: </b>
+              <span className="numbers1">{this.state.startpoint}</span>
+            </p>
+            <p>
+              <b>To:</b>
+              <span className="numbers1"> {this.state.endpoint}</span>
+            </p>
+            <p>
+              <b>Distance: </b>
+              <span className="numbers1">{this.state.kilometer}</span>
+            </p>
+            <p>
+              <b>CO2: </b>
+              <span className="numbers">{this.state.co2emission}kg</span>
+            </p>
             <button
               className="saveRouteBtn animate__animated animate__bounce"
               onClick={this.handleSubmit}
