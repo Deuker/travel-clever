@@ -23,14 +23,15 @@ const LandingPage = () => {
       <h1>Do you actually know...</h1>
       <div className="DoYouKnow">
         <div className="DoYouKnowText">
-          <img src="images/icontreetoco2.png" alt="treetoco2"></img>
+          <img src="images/icontreetoco2.png" alt="treetoco2" className="smallImages"></img>
           <p>...how much co2 a tree compensates per year?</p>
           <img
             src="images/iconhowmanykilometers.png"
             alt="howmanykilometers"
+            className="smallImages"
           ></img>
           <p>...how much kilometers bike you ride per year?</p>
-          <img src="/images/iconcartobike.png" alt="carttobike"></img>
+          <img src="/images/iconcartobike.png" alt="carttobike" className="smallImages"></img>
           <p>...how much co2 you save while cycling compared to driving?</p>
           {/* <a href="/signup">Get Answers</a> */}
         </div>
