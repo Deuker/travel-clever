@@ -12,7 +12,7 @@ class ProfilePage extends Component {
   state = {
     totalKilometer: "0",
     totalCo2Saved: "0",
-    totalTreeCapacitySaved: "",
+    totalTreeCapacitySaved: "0",
     //startpoint: this.props.startpoint,
     // endpoint: this.props.endpoint,
     // kilometer: this.props.kilometer,
@@ -98,7 +98,7 @@ class ProfilePage extends Component {
         kilometer: this.state.returning
           ? parseFloat(this.state.kilometer.split("km")) * 2 + "km"
           : this.state.kilometer,
-        co2emission: this.state.co2emission,
+        co2emission:this.state.returning ? parseFloat(this.state.co2emission)*2 : this.state.co2emission,
         oneWay: this.state.oneWay,
         returning: this.state.returning,
       })
